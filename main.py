@@ -4,8 +4,11 @@ Example of Pymunk Physics Engine Platformer
 import math
 import os.path
 
+from dotenv import load_dotenv
 import arcade
 from pyglet.event import EVENT_HANDLE_STATE
+
+load_dotenv()
 
 SCREEN_TITLE = "PyMunk Platformer"
 SPRITE_IMAGE_SIZE = 16
@@ -64,6 +67,10 @@ DISTANCE_TO_CHANGE_TEXTURE = 20
 BULLET_MOVE_FORCE = 4500
 BULLET_MASS = 0.1
 BULLET_GRAVITY = 300
+
+# Music and sound
+VOLUME_MUSIC = float(os.environ.get("VOLUME_MUSIC"))
+VOLUME_SOUND = float(os.environ.get("VOLUME_SOUND"))
 
 
 class PlayerSprite(arcade.Sprite):
@@ -278,7 +285,7 @@ class GameWindow(arcade.Window):
         )
 
         if not self.music_is_playing:
-            arcade.play_sound(self.music, loop=True)
+            arcade.play_sound(self.music, loop=True, volume=VOLUME_MUSIC)
             self.music_is_playing = True
 
 
@@ -293,7 +300,7 @@ class GameWindow(arcade.Window):
             if self.physics_engine.is_on_ground(self.player_sprite):
                 impulse = (0, PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
-                arcade.play_sound(self.jump_sound)
+                arcade.play_sound(self.jump_sound, volume=VOLUME_SOUND)
 
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.A:
