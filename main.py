@@ -194,6 +194,8 @@ class GameWindow(arcade.Window):
         self.music_is_playing = False
         self.jump_sound = arcade.load_sound(":data:/sounds/jump.wav")
 
+        self.scene = None
+
 
     def setup(self):
         """Set up everything with the game"""
@@ -209,12 +211,7 @@ class GameWindow(arcade.Window):
         tile_map = arcade.load_tilemap(map_name, SPRITE_SCALING_TILES)
 
         # Pull the sprite layers out of the tile map
-        self.wall_list = tile_map.sprite_lists["Platforms"]
-        self.item_list = tile_map.sprite_lists["Dynamic Items"]
-        self.water_list = tile_map.sprite_lists["Water"]
-        self.background = tile_map.sprite_lists["Background"]
-        self.foreground = tile_map.sprite_lists["Foreground"]
-        self.moving_sprites_list = tile_map.sprite_lists["Moving Sprites"]
+        self.scene = arcade.Scene.from_tilemap(tile_map)
 
         # Create player sprite
         self.player_sprite = PlayerSprite()
@@ -226,6 +223,9 @@ class GameWindow(arcade.Window):
         self.player_sprite.center_y = SPRITE_SIZE * grid_y + SPRITE_SIZE / 2
         # Add to player sprite list
         self.player_list.append(self.player_sprite)
+        self.scene.add_sprite_list_before("Player", "Foreground")
+        self.scene.add_sprite("Player", self.player_sprite)
+
 
         # Pymunk Physics Engine Setup
         damping = DEFAULT_DUMPING
@@ -258,20 +258,20 @@ class GameWindow(arcade.Window):
         )
 
         self.physics_engine.add_sprite_list(
-            self.wall_list,
+            self.scene["Platforms"],
             friction=WALL_FRICTION,
             collision_type="wall",
             body_type=arcade.PymunkPhysicsEngine.STATIC,
         )
 
         self.physics_engine.add_sprite_list(
-            self.item_list,
+            self.scene["Dynamic Items"],
             friction=DYNAMIC_ITEM_FRICTION,
             collision_type="item"
         )
 
         self.physics_engine.add_sprite_list(
-            self.moving_sprites_list,
+            self.scene["Moving Sprites"],
             friction=WALL_FRICTION,
             collision_type="wall",
             body_type=arcade.PymunkPhysicsEngine.KINEMATIC
@@ -326,7 +326,7 @@ class GameWindow(arcade.Window):
 
         self.physics_engine.step()
 
-        for moving_sprite in self.moving_sprites_list:
+        for moving_sprite in self.scene["Moving Sprites"]:
             if moving_sprite.boundary_right and \
                     moving_sprite.change_x > 0 and \
                     moving_sprite.right > moving_sprite.boundary_right:
@@ -412,15 +412,7 @@ class GameWindow(arcade.Window):
     def on_draw(self):
         """Draw everything"""
         self.clear()
-        self.background.draw()
-        self.wall_list.draw()
-        self.moving_sprites_list.draw()
-        self.bullet_list.draw()
-        self.water_list.draw()
-        self.item_list.draw()
-        self.player_list.draw()
-        self.foreground.draw()
-
+        self.scene.draw()
 
 
 
