@@ -1,7 +1,6 @@
 """
 Example of Pymunk Physics Engine Platformer
 """
-import math
 import os.path
 
 from dotenv import load_dotenv
@@ -23,6 +22,23 @@ SCREEN_GRID_HEIGHT = 20
 
 SCREEN_WIDTH = SPRITE_SIZE * SCREEN_GRID_WIDTH
 SCREEN_HEIGHT = SPRITE_SIZE * SCREEN_GRID_HEIGHT
+
+# Player sprite
+PLAYER_SPRITE = os.environ.get("PLAYER_SPRITE")
+
+# Sprite numbers
+WALK_SPRITE_COUNT = 0
+IDLE_SPRITE_COUNT = 0
+if PLAYER_SPRITE == "knight":
+    WALK_SPRITE_COUNT = 16
+    IDLE_SPRITE_COUNT = 4
+elif PLAYER_SPRITE == "cat":
+    WALK_SPRITE_COUNT = 32
+    IDLE_SPRITE_COUNT = 16
+
+# Change idle pic counter coefficient
+IDLE_PIC_COUNTER_COEF = 50
+
 
 # --- Physics forces. Higher number, faster accelerating
 
@@ -77,7 +93,7 @@ class PlayerSprite(arcade.Sprite):
         # Let parent initialize
         super().__init__(scale=SPRITE_SCALING_PLAYER)
 
-        main_path = ":data:/knight/knight"
+        main_path = f":data:/{PLAYER_SPRITE}/{PLAYER_SPRITE}"
 
         # Load textures for jump, and fall states
         jump_texture = arcade.load_texture(f"{main_path}_walk0.png")
@@ -87,13 +103,14 @@ class PlayerSprite(arcade.Sprite):
         self.fall_texture_pair = fall_texture, fall_texture.flip_left_right()
 
         self.idle_textures = []
-        for i in range(4):
+
+        for i in range(IDLE_SPRITE_COUNT):
             texture = arcade.load_texture(f"{main_path}_idle{i}.png")
             self.idle_textures.append((texture, texture.flip_left_right()))
 
         # Load textures for walking and make pairs of textures facing left and right
         self.walk_textures = []
-        for i in range(16):
+        for i in range(WALK_SPRITE_COUNT):
             texture = arcade.load_texture(f"{main_path}_walk{i}.png")
             self.walk_textures.append((texture, texture.flip_left_right()))
 
@@ -139,9 +156,9 @@ class PlayerSprite(arcade.Sprite):
         # Idle animation
         if abs(dx) <= DEAD_ZONE:
             self.cur_idle_texture += 1
-            if self.cur_idle_texture >= 200:
+            if self.cur_idle_texture >= IDLE_SPRITE_COUNT * IDLE_PIC_COUNTER_COEF:
                 self.cur_idle_texture = 0
-            self.texture = self.idle_textures[self.cur_idle_texture // 50][self.character_face_direction]
+            self.texture = self.idle_textures[self.cur_idle_texture // IDLE_PIC_COUNTER_COEF][self.character_face_direction]
             return
 
         # Have we moved far enough to change the texture?
@@ -151,7 +168,7 @@ class PlayerSprite(arcade.Sprite):
 
             # Advance the walking animation
             self.cur_walk_texture += 1
-            if self.cur_walk_texture > 15:
+            if self.cur_walk_texture > WALK_SPRITE_COUNT-1:
                 self.cur_walk_texture = 0
             self.texture = self.walk_textures[self.cur_walk_texture][self.character_face_direction]
 
