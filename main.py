@@ -35,9 +35,6 @@ if PLAYER_SPRITE == "knight":
 elif PLAYER_SPRITE == "cat":
     WALK_SPRITE_COUNT = 32
     IDLE_SPRITE_COUNT = 16
-elif PLAYER_SPRITE == "sonic":
-    WALK_SPRITE_COUNT = 1
-    IDLE_SPRITE_COUNT = 1
 
 # Change idle pic counter coefficient
 IDLE_PIC_COUNTER_COEF = 50
