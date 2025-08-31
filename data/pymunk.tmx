@@ -30,8 +30,8 @@
   <object id="1" name="moving_platform" gid="261" x="240.02" y="288.026" width="16" height="16">
    <properties>
     <property name="boundary_bottom" type="float" value="0"/>
-    <property name="boundary_left" type="float" value="720"/>
-    <property name="boundary_right" type="float" value="960"/>
+    <property name="boundary_left" type="float" value="240"/>
+    <property name="boundary_right" type="float" value="320"/>
     <property name="boundary_top" type="float" value="0"/>
     <property name="change_x" type="float" value="2"/>
     <property name="change_y" type="float" value="0"/>
@@ -39,10 +39,10 @@
   </object>
   <object id="3" name="moving_platform" gid="261" x="112" y="192" width="16" height="16">
    <properties>
-    <property name="boundary_bottom" type="float" value="256"/>
+    <property name="boundary_bottom" type="float" value="86"/>
     <property name="boundary_left" type="float" value="0"/>
     <property name="boundary_right" type="float" value="0"/>
-    <property name="boundary_top" type="float" value="720"/>
+    <property name="boundary_top" type="float" value="240"/>
     <property name="change_x" type="float" value="0"/>
     <property name="change_y" type="float" value="2"/>
    </properties>
