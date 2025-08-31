@@ -97,3 +97,9 @@ class PlayerSprite(arcade.Sprite):
             if self.cur_walk_texture > app_config.WALK_SPRITE_COUNT-1:
                 self.cur_walk_texture = 0
             self.texture = self.walk_textures[self.cur_walk_texture][self.character_face_direction]
+
+    def move_to_default_location(self) -> None:
+        grid_x = 1
+        grid_y = 3.3
+        self.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
+        self.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2

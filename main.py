@@ -3,8 +3,13 @@ Example of Pymunk Physics Engine Platformer
 """
 import os.path
 
+from arcade import SpriteList, Scene, TileMap
+
+from coin import CoinList
+from engine import PhysicsEngine
 from sprites import PlayerSprite
 from config import AppConfig
+from sound_player import SoundPlayer
 
 import arcade
 from pyglet.event import EVENT_HANDLE_STATE
@@ -19,12 +24,12 @@ class GameWindow(arcade.Window):
         super().__init__(width, height, title)
 
         self.coin_textures = None
-        self.cur_coin_texture = None
+        self.cur_coin_texture: int | None = None
         print(f"screen size: {app_config.SCREEN_WIDTH} X {app_config.SCREEN_HEIGHT}\nscaling: {app_config.SPRITE_SCALING_TILES}")
 
-        self.water_list = None
-        self.foreground = None
-        self.background = None
+        self.water_list: SpriteList | None = None
+        self.foreground: SpriteList | None = None
+        self.background: SpriteList | None = None
         arcade.resources.add_resource_handle("data", f"{os.path.abspath('.')}/data")
 
         # Player sprite
@@ -41,32 +46,33 @@ class GameWindow(arcade.Window):
         self.right_pressed: bool = False
 
         # Physic engine
-        self.physics_engine: arcade.PymunkPhysicsEngine | None = None
+        self.physics_engine: PhysicsEngine | None = None
 
-        self.music = arcade.load_sound(":data:/sounds/time_for_adventure.mp3")
-        self.music_is_playing = False
-        self.jump_sound = arcade.load_sound(":data:/sounds/jump.wav")
+        self.music_is_playing: bool = False
+        self.sound_player: SoundPlayer = SoundPlayer()
 
-        self.scene = None
+        self.scene: arcade.Scene | None = None
 
         # Score
-        self.score = 0
+        self.score: int = 0
 
         # Score text
-        self.score_text = None
+        self.score_text: arcade.Text | None = None
 
         # Reset score
-        self.reset_score = True
+        self.reset_score: bool = True
 
         # Reset map
-        self.reset_coin = True
+        self.reset_coin: bool = True
 
         # Max life points
-        self.max_life_points = 5
+        self.max_life_points: int = 5
         # Life points
-        self.life_points = 5
+        self.life_points: int = 5
         # Life text
-        self.life_text = None
+        self.life_text: arcade.Text | None = None
+
+        self.coin_list: CoinList | None = None
 
 
     def setup(self):
@@ -77,16 +83,18 @@ class GameWindow(arcade.Window):
 
         __coin_list = None
         if self.scene is not None and "Coins" in self.scene:
-            __coin_list = self.scene["Coins"]
+            __coin_list = CoinList(self.scene["Coins"])
 
         # Map name
         map_name = ":data:pymunk.tmx"
 
         # Load in TileMap
-        tile_map = arcade.load_tilemap(map_name, app_config.SPRITE_SCALING_TILES)
+        tile_map: TileMap = arcade.load_tilemap(map_name, app_config.SPRITE_SCALING_TILES)
 
         # Pull the sprite layers out of the tile map
-        self.scene = arcade.Scene.from_tilemap(tile_map)
+        self.scene: Scene = arcade.Scene.from_tilemap(tile_map)
+
+        self.coin_list = CoinList(self.scene["Coins"])
 
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
@@ -100,67 +108,46 @@ class GameWindow(arcade.Window):
                 "Coins",
                 "Foreground",
                 use_spatial_hash=True,
-                sprite_list=__coin_list
+                sprite_list=__coin_list.obj
             )
             self.reset_coin = True
 
         # Create player sprite
         self.player_sprite = PlayerSprite()
+        self.player_sprite.move_to_default_location()
 
-        # Set player location
-        grid_x = 1
-        grid_y = 3.3
-        self.player_sprite.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
-        self.player_sprite.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2
         # Add to player sprite list
         self.player_list.append(self.player_sprite)
         self.scene.add_sprite_list_before("Player", "Foreground")
         self.scene.add_sprite("Player", self.player_sprite)
 
-
         # Pymunk Physics Engine Setup
         damping = app_config.DEFAULT_DUMPING
         gravity = (0, -app_config.GRAVITY)
 
-        self.physics_engine = arcade.PymunkPhysicsEngine(
+        self.physics_engine = PhysicsEngine(
             damping=damping,
             gravity=gravity
         )
 
-
-
-        self.physics_engine.add_sprite(
-            self.player_sprite,
-            friction=app_config.PLAYER_FRICTION,
-            mass=app_config.PLAYER_MASS,
-            moment_of_inertia=arcade.PymunkPhysicsEngine.MOMENT_INF,
-            collision_type="player",
-            max_horizontal_velocity=app_config.PLAYER_MAX_HORIZONTAL_SPEED,
-            max_vertical_velocity=app_config.PLAYER_MAX_VERTICAL_SPEED,
+        self.physics_engine.add_player(
+            self.player_sprite
         )
 
-        self.physics_engine.add_sprite_list(
+        self.physics_engine.add_platforms(
             self.scene["Platforms"],
-            friction=app_config.WALL_FRICTION,
-            collision_type="wall",
-            body_type=arcade.PymunkPhysicsEngine.STATIC,
         )
 
-        self.physics_engine.add_sprite_list(
+        self.physics_engine.add_items(
             self.scene["Dynamic Items"],
-            friction=app_config.DYNAMIC_ITEM_FRICTION,
-            collision_type="item"
         )
 
-        self.physics_engine.add_sprite_list(
+        self.physics_engine.add_moving_sprites(
             self.scene["Moving Sprites"],
-            friction=app_config.WALL_FRICTION,
-            collision_type="wall",
-            body_type=arcade.PymunkPhysicsEngine.KINEMATIC
         )
 
-        if app_config.VOLUME_MUSIC > 0 and not self.music_is_playing:
-            arcade.play_sound(self.music, loop=True, volume=app_config.VOLUME_MUSIC)
+        if not self.music_is_playing:
+            self.sound_player.play_music()
             self.music_is_playing = True
 
         path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
@@ -188,15 +175,6 @@ class GameWindow(arcade.Window):
             self.score = 0
         self.reset_score = True
 
-        main_path = ":data:/coins"
-
-        self.coin_textures = []
-        for i in range(12):
-            texture = arcade.load_texture(f"{main_path}/coin_{i}.png")
-            self.coin_textures.append(texture)
-
-        self.cur_coin_texture = 0
-
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ESCAPE:
@@ -210,7 +188,7 @@ class GameWindow(arcade.Window):
             if self.physics_engine.is_on_ground(self.player_sprite):
                 impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
-                arcade.play_sound(self.jump_sound, volume=app_config.VOLUME_SOUND)
+                self.sound_player.sound_jump()
 
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.A:
@@ -219,7 +197,6 @@ class GameWindow(arcade.Window):
             self.right_pressed = False
 
     def on_update(self, delta_time):
-        is_on_ground = self.physics_engine.is_on_ground(self.player_sprite)
 
         if self.player_sprite.center_y < 16:
             self.life_points -= 1
@@ -227,61 +204,14 @@ class GameWindow(arcade.Window):
             self.reset_score = False
             self.setup()
 
-        if self.left_pressed and not self.right_pressed:
-            if is_on_ground:
-                force = (-app_config.PLAYER_MOVE_FORCE_ON_GROUND, 0)
-            else:
-                force = (-app_config.PLAYER_MOVE_FORCE_IN_AIR, 0)
-            self.physics_engine.apply_force(self.player_sprite, force)
-            self.physics_engine.set_friction(self.player_sprite, 0)
-        elif self.right_pressed and not self.left_pressed:
-            if is_on_ground:
-                force = (app_config.PLAYER_MOVE_FORCE_ON_GROUND, 0)
-            else:
-                force = (app_config.PLAYER_MOVE_FORCE_IN_AIR, 0)
-            self.physics_engine.apply_force(self.player_sprite, force)
-            self.physics_engine.set_friction(self.player_sprite, 0)
-        else:
-            self.physics_engine.set_friction(self.player_sprite, 1.0)
+        delta_score = self.coin_list.remove_touched(self.player_sprite)
+        self.score += delta_score
+        self.score_text.text = f"Score: {self.score}"
+        self.coin_list.check_or_update_pic()
 
-        coin_hit_list: list[arcade.Sprite] = arcade.check_for_collision_with_list(
-            self.player_sprite, self.scene["Coins"]
-        )
-
-        for coin in coin_hit_list:
-            coin.remove_from_sprite_lists()
-            # TODO: add sound
-            self.score += 50
-            self.score_text.text = f"Score: {self.score}"
-
-        for coin in self.scene["Coins"]:
-            self.cur_coin_texture += 1
-            if self.cur_coin_texture > 11 * 200:
-                self.cur_coin_texture = 0
-            coin.texture = self.coin_textures[self.cur_coin_texture//200]
-
+        self.physics_engine.move_player(self.left_pressed, self.right_pressed)
         self.physics_engine.step()
-
-        for moving_sprite in self.scene["Moving Sprites"]:
-            if moving_sprite.boundary_right and \
-                    moving_sprite.change_x > 0 and \
-                    moving_sprite.right > moving_sprite.boundary_right:
-                moving_sprite.change_x *= -1
-            elif moving_sprite.boundary_left and \
-                    moving_sprite.change_x < 0 and \
-                    moving_sprite.left < moving_sprite.boundary_left:
-                moving_sprite.change_x *= -1
-            if moving_sprite.boundary_top and \
-                    moving_sprite.change_y > 0 and \
-                    moving_sprite.top > moving_sprite.boundary_top:
-                moving_sprite.change_y *= -1
-            elif moving_sprite.boundary_bottom and \
-                    moving_sprite.change_y < 0 and \
-                    moving_sprite.bottom < moving_sprite.boundary_bottom:
-                moving_sprite.change_y *= -1
-
-            velocity = (moving_sprite.change_x * 1 / delta_time, moving_sprite.change_y * 1 / delta_time)
-            self.physics_engine.set_velocity(moving_sprite, velocity)
+        self.physics_engine.rotate_moving(delta_time)
 
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int) -> EVENT_HANDLE_STATE:
         """ Called whenever the mouse button is clicked. """
