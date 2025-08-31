@@ -166,13 +166,14 @@ class BulletSprite(arcade.SpriteSolidColor):
             self.remove_from_sprite_lists()
 
 
-
 class GameWindow(arcade.Window):
     """Main Window"""
 
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
+        self.coin_textures = None
+        self.cur_coin_texture = None
         print(f"screen size: {SCREEN_WIDTH} X {SCREEN_HEIGHT}\nscaling: {SPRITE_SCALING_TILES}")
 
         self.water_list = None
@@ -203,6 +204,25 @@ class GameWindow(arcade.Window):
 
         self.scene = None
 
+        # Score
+        self.score = 0
+
+        # Score text
+        self.score_text = None
+
+        # Reset score
+        self.reset_score = True
+
+        # Reset map
+        self.reset_coin = True
+
+        # Max life points
+        self.max_life_points = 5
+        # Life points
+        self.life_points = 5
+        # Life text
+        self.life_text = None
+
 
     def setup(self):
         """Set up everything with the game"""
@@ -211,14 +231,27 @@ class GameWindow(arcade.Window):
         self.player_list = arcade.SpriteList()
         self.bullet_list = arcade.SpriteList()
 
+        __coin_list = None
+        if self.scene is not None and "Coins" in self.scene:
+            __coin_list = self.scene["Coins"]
+
         # Map name
         map_name = ":data:pymunk.tmx"
 
-        # Load in TileMap
         tile_map = arcade.load_tilemap(map_name, SPRITE_SCALING_TILES)
 
         # Pull the sprite layers out of the tile map
         self.scene = arcade.Scene.from_tilemap(tile_map)
+
+        if not self.reset_coin and __coin_list is not None:
+            self.scene.remove_sprite_list_by_name("Coins")
+            self.scene.add_sprite_list_before(
+                "Coins",
+                "Foreground",
+                use_spatial_hash=True,
+                sprite_list=__coin_list
+            )
+            self.reset_coin = True
 
         # Create player sprite
         self.player_sprite = PlayerSprite()
@@ -284,13 +317,32 @@ class GameWindow(arcade.Window):
             body_type=arcade.PymunkPhysicsEngine.KINEMATIC
         )
 
-        if not self.music_is_playing:
+        if VOLUME_MUSIC > 0 and not self.music_is_playing:
             arcade.play_sound(self.music, loop=True, volume=VOLUME_MUSIC)
             self.music_is_playing = True
+
+        path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
+        arcade.load_font(path_to_font_file)
+        self.score_text = arcade.Text(f"Score: {self.score}", x=20, y=880, color=(0, 0, 0), font_name="Pixel Operator 8", font_size=30)
+        self.life_text = arcade.Text(f"{' ♥' * self.life_points} ", x=1440, y=880, color=(255, 0, 0), font_size=70, font_name="Arial", align="right", anchor_x="right")
+
+        if self.reset_score:
+            self.score = 0
+        self.reset_score = True
+
+        main_path = ":data:/coins"
+
+        self.coin_textures = []
+        for i in range(12):
+            texture = arcade.load_texture(f"{main_path}/coin_{i}.png")
+            self.coin_textures.append(texture)
+
+        self.cur_coin_texture = 0
 
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ESCAPE:
+            self.reset_coin = False
             self.setup()
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.left_pressed = True
@@ -312,6 +364,9 @@ class GameWindow(arcade.Window):
         is_on_ground = self.physics_engine.is_on_ground(self.player_sprite)
 
         if self.player_sprite.center_y < 16:
+            self.life_points -= 1
+            self.reset_coin = False
+            self.reset_score = False
             self.setup()
 
         if self.left_pressed and not self.right_pressed:
@@ -330,6 +385,22 @@ class GameWindow(arcade.Window):
             self.physics_engine.set_friction(self.player_sprite, 0)
         else:
             self.physics_engine.set_friction(self.player_sprite, 1.0)
+
+        coin_hit_list: list[arcade.Sprite] = arcade.check_for_collision_with_list(
+            self.player_sprite, self.scene["Coins"]
+        )
+
+        for coin in coin_hit_list:
+            coin.remove_from_sprite_lists()
+            # TODO: add sound
+            self.score += 50
+            self.score_text.text = f"Score: {self.score}"
+
+        for coin in self.scene["Coins"]:
+            self.cur_coin_texture += 1
+            if self.cur_coin_texture > 11 * 200:
+                self.cur_coin_texture = 0
+            coin.texture = self.coin_textures[self.cur_coin_texture//200]
 
         self.physics_engine.step()
 
@@ -420,7 +491,8 @@ class GameWindow(arcade.Window):
         """Draw everything"""
         self.clear()
         self.scene.draw()
-
+        self.score_text.draw()
+        self.life_text.draw()
 
 
 def main():
