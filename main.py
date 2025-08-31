@@ -9,8 +9,6 @@ from config import AppConfig
 import arcade
 from pyglet.event import EVENT_HANDLE_STATE
 
-SCREEN_TITLE = "PyMunk Platformer"
-
 app_config = AppConfig()
 
 
