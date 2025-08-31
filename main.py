@@ -10,15 +10,15 @@ from pyglet.event import EVENT_HANDLE_STATE
 load_dotenv()
 
 SCREEN_TITLE = "PyMunk Platformer"
-SPRITE_IMAGE_SIZE = 16
+SPRITE_IMAGE_SIZE = float(os.environ.get("SPRITE_IMAGE_SIZE"))
 
-SPRITE_SCALING_PLAYER = 1
-SPRITE_SCALING_TILES = 1
+SPRITE_SCALING_PLAYER = float(os.environ.get("SPRITE_SCALING_PLAYER"))
+SPRITE_SCALING_TILES = float(os.environ.get("SPRITE_SCALING_TILES"))
 
 SPRITE_SIZE = int(SPRITE_IMAGE_SIZE * SPRITE_SCALING_TILES)
 
-SCREEN_GRID_WIDTH = 30
-SCREEN_GRID_HEIGHT = 20
+SCREEN_GRID_WIDTH = int(os.environ.get("SCREEN_GRID_WIDTH"))
+SCREEN_GRID_HEIGHT = int(os.environ.get("SCREEN_GRID_HEIGHT"))
 
 SCREEN_WIDTH = SPRITE_SIZE * SCREEN_GRID_WIDTH
 SCREEN_HEIGHT = SPRITE_SIZE * SCREEN_GRID_HEIGHT
@@ -43,11 +43,11 @@ IDLE_PIC_COUNTER_COEF = 50
 # --- Physics forces. Higher number, faster accelerating
 
 # Gravity
-GRAVITY = 500 * SPRITE_SCALING_TILES
+GRAVITY = float(os.environ.get("GRAVITY_CONST")) * SPRITE_SCALING_TILES
 
 # Damping - Amount of speed lost per second
-DEFAULT_DUMPING = 1.0
-PLAYER_DUMPING = 0.4
+DEFAULT_DUMPING = float(os.environ.get("DEFAULT_DUMPING"))
+PLAYER_DUMPING = float(os.environ.get("PLAYER_DUMPING"))
 
 # Friction between objects
 PLAYER_FRICTION = 1.0
