@@ -296,7 +296,7 @@ class GameWindow(arcade.Window):
 
 
 def main():
-    window = GameWindow(app_config.SCREEN_WIDTH, app_config.SCREEN_HEIGHT, SCREEN_TITLE)
+    window = GameWindow(app_config.SCREEN_WIDTH, app_config.SCREEN_HEIGHT, app_config.SCREEN_TITLE)
     window.setup()
     arcade.run()
 

@@ -70,10 +70,6 @@ class AppConfig:
         # Player animations
         self.DEAD_ZONE = 0.1
 
-        # Constants used to track if the player is facing left or right
-        self.RIGHT_FACING = 0
-        self.LEFT_FACING = 1
-
         # How many pixels to move before we change the texture in the walking animation
         self.DISTANCE_TO_CHANGE_TEXTURE = 7 * self.SPRITE_SCALING_TILES
 
