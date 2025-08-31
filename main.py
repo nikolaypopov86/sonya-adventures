@@ -12,10 +12,10 @@ load_dotenv()
 SCREEN_TITLE = "PyMunk Platformer"
 SPRITE_IMAGE_SIZE = 16
 
-SPRITE_SCALING_PLAYER = 3
-SPRITE_SCALING_TILES = 3
+SPRITE_SCALING_PLAYER = 1
+SPRITE_SCALING_TILES = 1
 
-SPRITE_SIZE = int(SPRITE_IMAGE_SIZE * SPRITE_SCALING_PLAYER)
+SPRITE_SIZE = int(SPRITE_IMAGE_SIZE * SPRITE_SCALING_TILES)
 
 SCREEN_GRID_WIDTH = 30
 SCREEN_GRID_HEIGHT = 20
@@ -43,7 +43,7 @@ IDLE_PIC_COUNTER_COEF = 50
 # --- Physics forces. Higher number, faster accelerating
 
 # Gravity
-GRAVITY = 1500
+GRAVITY = 500 * SPRITE_SCALING_TILES
 
 # Damping - Amount of speed lost per second
 DEFAULT_DUMPING = 1.0
@@ -55,20 +55,20 @@ WALL_FRICTION = 0.7
 DYNAMIC_ITEM_FRICTION = 0.6
 
 # Mass (defaults to 1)
-PLAYER_MASS = 1.0
+PLAYER_MASS = 2.0
 
 # Keep player from going too fast
-PLAYER_MAX_HORIZONTAL_SPEED = 250
-PLAYER_MAX_VERTICAL_SPEED = 450
+PLAYER_MAX_HORIZONTAL_SPEED = 83 * SPRITE_SCALING_PLAYER
+PLAYER_MAX_VERTICAL_SPEED = 150 * SPRITE_SCALING_TILES
 
 # Force applied while on ground
-PLAYER_MOVE_FORCE_ON_GROUND = 8000
+PLAYER_MOVE_FORCE_ON_GROUND = 2500 * SPRITE_SCALING_TILES
 
 # Force applied when moving left/right in the air
-PLAYER_MOVE_FORCE_IN_AIR = 900
+PLAYER_MOVE_FORCE_IN_AIR = 300 * SPRITE_SCALING_TILES
 
 # strength of a jump
-PLAYER_JUMP_IMPULSE = 1800
+PLAYER_JUMP_IMPULSE = 1800 * SPRITE_SCALING_TILES
 
 # Player animations
 DEAD_ZONE = 0.1
@@ -78,7 +78,7 @@ RIGHT_FACING = 0
 LEFT_FACING = 1
 
 # How many pixels to move before we change the texture in the walking animation
-DISTANCE_TO_CHANGE_TEXTURE = 20
+DISTANCE_TO_CHANGE_TEXTURE = 7 * SPRITE_SCALING_TILES
 
 # Music and sound
 VOLUME_MUSIC = float(os.environ.get("VOLUME_MUSIC"))
@@ -250,6 +250,12 @@ class GameWindow(arcade.Window):
         # Pull the sprite layers out of the tile map
         self.scene = arcade.Scene.from_tilemap(tile_map)
 
+        for moving_sprite in self.scene["Moving Sprites"]:
+            moving_sprite.boundary_left *= SPRITE_SCALING_TILES
+            moving_sprite.boundary_right *= SPRITE_SCALING_TILES
+            moving_sprite.boundary_top *= SPRITE_SCALING_TILES
+            moving_sprite.boundary_bottom *= SPRITE_SCALING_TILES
+
         if not self.reset_coin and __coin_list is not None:
             self.scene.remove_sprite_list_by_name("Coins")
             self.scene.add_sprite_list_before(
@@ -321,8 +327,8 @@ class GameWindow(arcade.Window):
 
         path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
         arcade.load_font(path_to_font_file)
-        self.score_text = arcade.Text(f"Score: {self.score}", x=20, y=880, color=(0, 0, 0), font_name="Pixel Operator 8", font_size=30)
-        self.life_text = arcade.Text(f"{' ♥' * self.life_points} ", x=1440, y=880, color=(255, 0, 0), font_size=70, font_name="Arial", align="right", anchor_x="right")
+        self.score_text = arcade.Text(f"Score: {self.score}", x=7 * SPRITE_SCALING_TILES, y=293 * SPRITE_SCALING_TILES, color=(0, 0, 0), font_name="Pixel Operator 8", font_size=10 * SPRITE_SCALING_TILES)
+        self.life_text = arcade.Text(f"{' ♥' * self.life_points} ", x=480 * SPRITE_SCALING_TILES, y=293 * SPRITE_SCALING_TILES, color=(255, 0, 0), font_size=24 * SPRITE_SCALING_TILES, font_name="Arial", align="right", anchor_x="right")
 
         if self.reset_score:
             self.score = 0
