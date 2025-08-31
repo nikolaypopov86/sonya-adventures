@@ -64,10 +64,6 @@ LEFT_FACING = 1
 # How many pixels to move before we change the texture in the walking animation
 DISTANCE_TO_CHANGE_TEXTURE = 20
 
-BULLET_MOVE_FORCE = 4500
-BULLET_MASS = 0.1
-BULLET_GRAVITY = 300
-
 # Music and sound
 VOLUME_MUSIC = float(os.environ.get("VOLUME_MUSIC"))
 VOLUME_SOUND = float(os.environ.get("VOLUME_SOUND"))
@@ -160,11 +156,6 @@ class PlayerSprite(arcade.Sprite):
             self.texture = self.walk_textures[self.cur_walk_texture][self.character_face_direction]
 
 
-class BulletSprite(arcade.SpriteSolidColor):
-    def pymunk_moved(self, physics_engine, dx: float, dy: float, d_angle: float) -> None:
-        if self.center_y < -100:
-            self.remove_from_sprite_lists()
-
 
 class GameWindow(arcade.Window):
     """Main Window"""
@@ -187,7 +178,6 @@ class GameWindow(arcade.Window):
         # Sprite Lists we need
         self.player_list: arcade.SpriteList | None = None
         self.wall_list: arcade.SpriteList | None = None
-        self.bullet_list: arcade.SpriteList | None = None
         self.item_list: arcade.SpriteList | None = None
         self.moving_sprites_list: arcade.SpriteList | None = None
 
@@ -229,7 +219,6 @@ class GameWindow(arcade.Window):
 
         # Create the sprite lists
         self.player_list = arcade.SpriteList()
-        self.bullet_list = arcade.SpriteList()
 
         __coin_list = None
         if self.scene is not None and "Coins" in self.scene:
@@ -238,6 +227,7 @@ class GameWindow(arcade.Window):
         # Map name
         map_name = ":data:pymunk.tmx"
 
+        # Load in TileMap
         tile_map = arcade.load_tilemap(map_name, SPRITE_SCALING_TILES)
 
         # Pull the sprite layers out of the tile map
@@ -275,15 +265,6 @@ class GameWindow(arcade.Window):
             damping=damping,
             gravity=gravity
         )
-
-        def wall_hit_handler(bullet_sprite: BulletSprite, _wall_sprite: arcade.Sprite, _arbiter, _space, _data):
-            bullet_sprite.remove_from_sprite_lists()
-        self.physics_engine.add_collision_handler("bullet", "wall", post_handler=wall_hit_handler)
-
-        def item_hit_handler(bullet_sprite: BulletSprite, item_sprite: arcade.Sprite, _arbiter, _space, _data):
-            bullet_sprite.remove_from_sprite_lists()
-            item_sprite.remove_from_sprite_lists()
-        self.physics_engine.add_collision_handler("bullet", "item", post_handler=item_hit_handler)
 
 
 
@@ -427,65 +408,7 @@ class GameWindow(arcade.Window):
 
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int) -> EVENT_HANDLE_STATE:
         """ Called whenever the mouse button is clicked. """
-
-        bullet = BulletSprite(width=20, height=5, color=arcade.color.DARK_YELLOW)
-
-        self.bullet_list.append(bullet)
-
-        # Position the bullet at the player's current location
-        start_x = self.player_sprite.center_x
-        start_y = self.player_sprite.center_y
-
-        bullet.position = self.player_sprite.position
-
-        # Get from the mouse the destination location for the bullet
-        # IMPORTANT! If you have a scrolling screen, you will also need
-        # to add in self.view_bottom and self.view_left.
-
-        dest_x = x
-        dest_y = y
-
-        # Do math to calculate how to get the bullet to the destination
-        # Calculation the angle in radians between the start points
-        # and end points. This is the angle the bullet will travel.
-
-        x_diff = dest_x - start_x
-        y_diff = dest_y - start_y
-        angle = math.atan2(y_diff, x_diff)
-
-        # What is the 1/2 size of this sprite, so we can figure out how far
-        # away to spawn the bullet
-        size = max(self.player_sprite.width, self.player_sprite.height) / 2
-
-        # Use angle to spawn bullet away from player in proper direction
-        bullet.center_x += size * math.cos(angle)
-        bullet.center_y += size * math.sin(angle)
-
-        # Set angle of bullet
-        bullet.angle = math.degrees(angle)
-
-        # Gravity to use for the bullet
-        # If we don't use custom gravity, bullet drops too fast, or we have
-        # to make it go too fast.
-
-        # Force is in relation to bullet's angle.
-        bullet_gravity = (0, -BULLET_GRAVITY)
-
-        # Add the sprite. This needs to be done AFTER setting the fields above.
-        self.physics_engine.add_sprite(
-            bullet,
-            mass=BULLET_MASS,
-            damping=1.0,
-            friction=0.6,
-            collision_type="bullet",
-            gravity=bullet_gravity,
-            elasticity=0.9
-        )
-
-        # Add force to bullet
-        force = (BULLET_MOVE_FORCE, 0)
-
-        self.physics_engine.apply_force(bullet, force)
+        pass
 
     def on_draw(self):
         """Draw everything"""
