@@ -1,7 +1,4 @@
-"""
-Example of Pymunk Physics Engine Platformer
-"""
-import os.path
+from copy import deepcopy
 
 from arcade import SpriteList, Scene, TileMap
 
@@ -12,17 +9,22 @@ from config import AppConfig
 from sound_player import SoundPlayer
 
 import arcade
-from pyglet.event import EVENT_HANDLE_STATE
 
 app_config = AppConfig()
 
+from pyglet.event import EVENT_HANDLE_STATE
 
-class GameWindow(arcade.Window):
+
+
+class GameView(arcade.View):
     """Main Window"""
 
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title)
-
+    def __init__(
+            self,
+            window: arcade.Window = None,
+            frm = None):
+        super().__init__(window)
+        self.__from = frm
         self.coin_textures = None
         self.cur_coin_texture: int | None = None
         print(f"screen size: {app_config.SCREEN_WIDTH} X {app_config.SCREEN_HEIGHT}\nscaling: {app_config.SPRITE_SCALING_TILES}")
@@ -30,7 +32,6 @@ class GameWindow(arcade.Window):
         self.water_list: SpriteList | None = None
         self.foreground: SpriteList | None = None
         self.background: SpriteList | None = None
-        arcade.resources.add_resource_handle("data", f"{os.path.abspath('.')}/data")
 
         # Player sprite
         self.player_sprite: PlayerSprite | None = None
@@ -53,6 +54,10 @@ class GameWindow(arcade.Window):
 
         self.scene: arcade.Scene | None = None
 
+        # Camera
+        self.camera: arcade.Camera2D | None = None
+        self.gui_camera: arcade.Camera2D | None = None
+
         # Score
         self.score: int = 0
 
@@ -74,16 +79,20 @@ class GameWindow(arcade.Window):
 
         self.coin_list: CoinList | None = None
 
+        self.setup_called = False
+
 
     def setup(self):
         """Set up everything with the game"""
+
+        self.setup_called = True
 
         # Create the sprite lists
         self.player_list = arcade.SpriteList()
 
         __coin_list = None
         if self.scene is not None and "Coins" in self.scene:
-            __coin_list = CoinList(self.scene["Coins"])
+            __coin_list = CoinList(self.coin_list)
 
         # Map name
         map_name = ":data:pymunk.tmx"
@@ -94,7 +103,11 @@ class GameWindow(arcade.Window):
         # Pull the sprite layers out of the tile map
         self.scene: Scene = arcade.Scene.from_tilemap(tile_map)
 
-        self.coin_list = CoinList(self.scene["Coins"])
+        self.camera = arcade.Camera2D()
+        self.gui_camera = arcade.Camera2D()
+
+        if self.reset_coin:
+            self.coin_list = CoinList(self.scene["Coins"])
 
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
@@ -146,10 +159,6 @@ class GameWindow(arcade.Window):
             self.scene["Moving Sprites"],
         )
 
-        if not self.music_is_playing:
-            self.sound_player.play_music()
-            self.music_is_playing = True
-
         path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
         arcade.load_font(path_to_font_file)
         self.score_text = arcade.Text(
@@ -178,8 +187,10 @@ class GameWindow(arcade.Window):
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ESCAPE:
-            self.reset_coin = False
-            self.setup()
+            self.sound_player.music_playback.delete()
+            self.__from.continue_enabled = True
+            self.__from.save_game_state(self)
+            self.window.show_view(self.__from)
         if key == arcade.key.LEFT or key == arcade.key.A:
             self.left_pressed = True
         elif key == arcade.key.RIGHT or key == arcade.key.D:
@@ -198,6 +209,9 @@ class GameWindow(arcade.Window):
 
     def on_update(self, delta_time):
 
+        if not self.setup_called:
+            self.setup()
+
         if self.player_sprite.center_y < 16:
             self.life_points -= 1
             self.reset_coin = False
@@ -210,6 +224,32 @@ class GameWindow(arcade.Window):
         self.coin_list.check_or_update_pic()
 
         self.physics_engine.move_player(self.left_pressed, self.right_pressed)
+        camera_min_x = app_config.WINDOW_WIDTH // 2
+        camera_max_x = app_config.SCREEN_WIDTH  - (app_config.WINDOW_WIDTH // 2)
+        camera_min_y = app_config.WINDOW_HEIGHT // 2
+        camera_max_y = app_config.SCREEN_HEIGHT  - (app_config.WINDOW_HEIGHT // 2)
+
+        camera_x: int = 0
+        camera_y: int = 0
+
+        player_x = self.player_sprite.position[0]
+        player_y = self.player_sprite.position[1]
+
+        if player_x < camera_min_x:
+            camera_x = camera_min_x
+        elif camera_min_x < player_x < camera_max_x:
+            camera_x = player_x
+        else:
+            camera_x = camera_max_x
+
+        if player_y < camera_min_y:
+            camera_y = camera_min_y
+        elif camera_min_y < player_y < camera_max_y:
+            camera_y = player_y
+        else:
+            camera_y = camera_max_y
+
+        self.camera.position = camera_x, camera_y
         self.physics_engine.step()
         self.physics_engine.rotate_moving(delta_time)
 
@@ -217,19 +257,17 @@ class GameWindow(arcade.Window):
         """ Called whenever the mouse button is clicked. """
         pass
 
+    def on_show_view(self) -> None:
+        self.sound_player.play_music()
+
+    def on_hide_view(self) -> None:
+        pass
+
     def on_draw(self):
         """Draw everything"""
         self.clear()
+        self.camera.use()
         self.scene.draw()
+        self.gui_camera.use()
         self.score_text.draw()
         self.life_text.draw()
-
-
-def main():
-    window = GameWindow(app_config.SCREEN_WIDTH, app_config.SCREEN_HEIGHT, app_config.SCREEN_TITLE)
-    window.setup()
-    arcade.run()
-
-
-if __name__ == '__main__':
-    main()

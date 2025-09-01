@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Tuple
 
 import arcade
 from arcade import SpriteList, Sprite
@@ -40,5 +40,11 @@ class CoinList:
 
         return score_delta
 
-
-
+    def draw(
+            self,
+            *,
+            filter: int | Tuple[int, int] | None = None,
+            pixelated: bool | None = None,
+            blend_function: tuple[int, int] | tuple[int, int, int, int] | None = None
+    ):
+        self.obj.draw(filter=filter, pixelated=pixelated, blend_function=blend_function)

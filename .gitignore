@@ -1,3 +1,5 @@
 .idea
 data/sonic
 __pycache__
+log
+.run
