@@ -1,5 +1,6 @@
 .idea
-data/sonic
 __pycache__
-log
+log/
 .run
+
+qodana.yaml
