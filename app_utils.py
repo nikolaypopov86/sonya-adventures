@@ -25,14 +25,3 @@ class Counter:
         if self.max_value is not None and self.value > self.max_value:
             self.value = 0
         return self.value
-
-
-def coin_pic_counter():
-    n = 0
-    def inner():
-        nonlocal n
-        n += 1
-        if n > 11 * 20:
-            n = 0
-        return n
-    return inner

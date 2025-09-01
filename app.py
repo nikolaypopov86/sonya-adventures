@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 from config import AppConfig
-from main_view import MainView
+from views.main_view import MainView
 
 import arcade
 

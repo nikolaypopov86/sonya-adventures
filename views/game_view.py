@@ -1,10 +1,8 @@
-from copy import deepcopy
-
 from arcade import SpriteList, Scene, TileMap
 
-from coin import CoinList
+from entities.coin import CoinList
 from engine import PhysicsEngine
-from sprites import PlayerSprite
+from entities.sprites import PlayerSprite
 from config import AppConfig
 from sound_player import SoundPlayer
 

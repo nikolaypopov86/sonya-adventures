@@ -1,7 +1,7 @@
 import logging
 
 from config import AppConfig
-from game_view import GameView
+from .game_view import GameView
 from sound_player import SoundPlayer
 
 import arcade
