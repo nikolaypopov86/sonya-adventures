@@ -25,7 +25,6 @@ class GameView(arcade.View):
         self.__from = frm
         self.coin_textures = None
         self.cur_coin_texture: int | None = None
-        print(f"screen size: {app_config.SCREEN_WIDTH} X {app_config.SCREEN_HEIGHT}\nscaling: {app_config.SPRITE_SCALING_TILES}")
 
         self.water_list: SpriteList | None = None
         self.foreground: SpriteList | None = None
@@ -161,18 +160,18 @@ class GameView(arcade.View):
         arcade.load_font(path_to_font_file)
         self.score_text = arcade.Text(
             f"Score: {self.score}",
-            x=7 * app_config.SPRITE_SCALING_TILES,
-            y=293 * app_config.SPRITE_SCALING_TILES,
+            x=app_config.WINDOW_WIDTH // 40,
+            y=app_config.WINDOW_HEIGHT * 37 // 40,
             color=(0, 0, 0),
             font_name="Pixel Operator 8",
-            font_size=10 * app_config.SPRITE_SCALING_TILES
+            font_size=app_config.WINDOW_HEIGHT // 35
         )
         self.life_text = arcade.Text(
             f"{' ♥' * self.life_points} ",
-            x=480 * app_config.SPRITE_SCALING_TILES,
-            y=293 * app_config.SPRITE_SCALING_TILES,
+            x=app_config.WINDOW_WIDTH - (app_config.WINDOW_WIDTH // 40),
+            y=app_config.WINDOW_HEIGHT * 36 // 40,
             color=(255, 0, 0),
-            font_size=24 * app_config.SPRITE_SCALING_TILES,
+            font_size=app_config.WINDOW_HEIGHT // 18,
             font_name="Arial",
             align="right",
             anchor_x="right"
