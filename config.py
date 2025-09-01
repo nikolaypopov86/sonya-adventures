@@ -1,10 +1,9 @@
 import os
 
 from dotenv import load_dotenv
+load_dotenv()
 
 from app_utils import singleton
-
-load_dotenv()
 
 @singleton
 class AppConfig:
@@ -20,6 +19,9 @@ class AppConfig:
 
         self.SCREEN_WIDTH = self.SPRITE_SIZE * self.SCREEN_GRID_WIDTH
         self.SCREEN_HEIGHT = self.SPRITE_SIZE * self.SCREEN_GRID_HEIGHT
+
+        self.WINDOW_WIDTH = int(os.environ.get("WINDOW_WIDTH"))
+        self.WINDOW_HEIGHT = int(os.environ.get("WINDOW_HEIGHT"))
 
         # Player sprite
         self.PLAYER_SPRITE = os.environ.get("PLAYER_SPRITE")
