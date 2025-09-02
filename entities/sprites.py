@@ -1,6 +1,6 @@
 import arcade
 
-from config import AppConfig
+from misc.config import AppConfig
 
 # Constants
 # Facing

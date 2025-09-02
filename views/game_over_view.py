@@ -1,6 +1,6 @@
 import logging
 
-from config import AppConfig
+from misc.config import AppConfig
 
 import arcade
 import arcade.gui

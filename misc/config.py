@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from app_utils import singleton
+from .app_utils import singleton
 
 @singleton
 class AppConfig:

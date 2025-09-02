@@ -3,7 +3,7 @@ from typing import Tuple
 import arcade
 from arcade import PymunkPhysicsEngine, Sprite
 
-from config import AppConfig
+from misc.config import AppConfig
 
 app_config = AppConfig()
 
