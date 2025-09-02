@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="19">
+ <tileset firstgid="1" name="world_tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../../../brackeys_platformer_assets/sprites/world_tileset.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="platforms" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../../../brackeys_platformer_assets/sprites/platforms.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="273" name="fruit" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../../../brackeys_platformer_assets/sprites/fruit.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="289" source="../../../platforms.tsx"/>
+ <tileset firstgid="305" source="../../../coin.tsx"/>
+ <layer id="2" name="Background" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKHzP7/gmugICaumqurbAxiTWvA=
+  </data>
+ </layer>
+ <layer id="3" name="Platforms" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4D+gJGRsDgTkM2MQx0+QIw+XGpwuYvagBb2UMtMcsOdkP3Y5Ac6HvABUsIBn1pywoUStwyGsCMGkOJORTr7iZphOBjjg5ECjA2gp09ceoVAakmgmZD4xABs5pBqpxAaJgbgcjsACnQCRw==
+  </data>
+ </layer>
+ <layer id="6" name="Water" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYvGAqEZgWYCkRGBcAAGPsCws=
+  </data>
+ </layer>
+ <objectgroup id="7" name="Moving Sprites">
+  <object id="1" name="moving_platform" gid="261" x="240.02" y="288.026" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="240"/>
+    <property name="boundary_right" type="float" value="320"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="3" name="moving_platform" gid="261" x="112" y="192" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="86"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="240"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="4" name="Dynamic Items" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowATFKLxI8gwo4kINZVkmDtSQMZAO2AQgU4S1NIyTUXS0OxRMApgoIhMfa1UdcUooBQAAKBuBH8=
+  </data>
+ </layer>
+ <objectgroup id="9" name="Coins">
+  <object id="4" name="CoinSprite" type="CoinSprite" gid="305" x="16" y="240" width="16" height="16"/>
+  <object id="5" name="CoinSprite" type="CoinSprite" gid="305" x="32" y="64" width="16" height="16"/>
+  <object id="6" name="CoinSprite" type="CoinSprite" gid="305" x="272" y="240" width="16" height="16"/>
+  <object id="7" name="CoinSprite" type="CoinSprite" gid="305" x="288" y="240" width="16" height="16"/>
+  <object id="8" name="CoinSprite" type="CoinSprite" gid="305" x="352" y="128" width="16" height="16"/>
+  <object id="9" name="CoinSprite" type="CoinSprite" gid="305" x="272" y="48" width="16" height="16"/>
+  <object id="10" name="CoinSprite" type="CoinSprite" gid="305" x="256" y="128" width="16" height="16"/>
+  <object id="11" name="CoinSprite" type="CoinSprite" gid="305" x="208" y="80" width="16" height="16"/>
+  <object id="12" name="CoinSprite" type="CoinSprite" gid="305" x="400" y="256" width="16" height="16"/>
+  <object id="13" name="CoinSprite" type="CoinSprite" gid="305" x="432" y="128" width="16" height="16"/>
+  <object id="14" name="CoinSprite" type="CoinSprite" gid="305" x="176" y="64" width="16" height="16"/>
+  <object id="15" name="CoinSprite" type="CoinSprite" gid="305" x="128" y="128" width="16" height="16"/>
+  <object id="16" name="CoinSprite" type="CoinSprite" gid="305" x="160" y="192" width="16" height="16"/>
+  <object id="17" name="CoinSprite" type="CoinSprite" gid="305" x="16" y="144" width="16" height="16"/>
+  <object id="18" name="CoinSprite" type="CoinSprite" gid="305" x="208" y="240" width="16" height="16"/>
+ </objectgroup>
+ <layer id="5" name="Foreground" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMFSBMxC7ALErne0NBuIQIA6ls73JQJwCxKl0thcESmhkbhAB8RYonUSBHU4U6B0F5AEAJCMFNQ==
+  </data>
+ </layer>
+</map>

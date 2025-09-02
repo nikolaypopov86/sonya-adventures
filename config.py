@@ -14,11 +14,11 @@ class AppConfig:
         self.SPRITE_SCALING_TILES = float(os.environ.get("SPRITE_SCALING_TILES"))
         self.SPRITE_SIZE = int(self.SPRITE_IMAGE_SIZE * self.SPRITE_SCALING_TILES)
 
-        self.SCREEN_GRID_WIDTH = int(os.environ.get("SCREEN_GRID_WIDTH"))
-        self.SCREEN_GRID_HEIGHT = int(os.environ.get("SCREEN_GRID_HEIGHT"))
+#        self.SCREEN_GRID_WIDTH = int(os.environ.get("SCREEN_GRID_WIDTH"))
+#        self.SCREEN_GRID_HEIGHT = int(os.environ.get("SCREEN_GRID_HEIGHT"))
 
-        self.SCREEN_WIDTH = self.SPRITE_SIZE * self.SCREEN_GRID_WIDTH
-        self.SCREEN_HEIGHT = self.SPRITE_SIZE * self.SCREEN_GRID_HEIGHT
+#        self.SCREEN_WIDTH = self.SPRITE_SIZE * self.SCREEN_GRID_WIDTH
+#        self.SCREEN_HEIGHT = self.SPRITE_SIZE * self.SCREEN_GRID_HEIGHT
 
         self.WINDOW_WIDTH = int(os.environ.get("WINDOW_WIDTH"))
         self.WINDOW_HEIGHT = int(os.environ.get("WINDOW_HEIGHT"))
@@ -78,3 +78,5 @@ class AppConfig:
         # Music and sound
         self.VOLUME_MUSIC = float(os.environ.get("VOLUME_MUSIC"))
         self.VOLUME_SOUND = float(os.environ.get("VOLUME_SOUND"))
+
+        self.BASE_LVL = int(os.environ.get("BASE_LVL"))
