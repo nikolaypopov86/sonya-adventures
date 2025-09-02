@@ -1,3 +1,5 @@
+import logging
+
 from arcade import SpriteList, Scene, TileMap
 
 from entities.coin import CoinList
@@ -12,6 +14,7 @@ app_config = AppConfig()
 
 from pyglet.event import EVENT_HANDLE_STATE
 
+logger = logging.getLogger(__name__)
 
 
 class GameView(arcade.View):
@@ -22,6 +25,7 @@ class GameView(arcade.View):
             window: arcade.Window = None,
             frm = None):
         super().__init__(window)
+
         self.__from = frm
         self.coin_textures = None
         self.cur_coin_texture: int | None = None
@@ -50,6 +54,7 @@ class GameView(arcade.View):
         self.sound_player: SoundPlayer = SoundPlayer()
 
         self.scene: arcade.Scene | None = None
+        self.end_of_map = None
 
         # Camera
         self.camera: arcade.Camera2D | None = None
@@ -78,6 +83,13 @@ class GameView(arcade.View):
 
         self.setup_called = False
 
+        self.level: int = app_config.BASE_LVL
+
+        self.map_width: int | None = None
+        self.map_height: int | None = None
+
+        self.widgets = None
+
 
     def setup(self):
         """Set up everything with the game"""
@@ -91,11 +103,27 @@ class GameView(arcade.View):
         if self.scene is not None and "Coins" in self.scene:
             __coin_list = CoinList(self.coin_list)
 
-        # Map name
-        map_name = ":data:pymunk.tmx"
+        layer_options = {
+            "Platforms": {
+                "use_spatial_hash": True
+            }
+        }
 
         # Load in TileMap
-        tile_map: TileMap = arcade.load_tilemap(map_name, app_config.SPRITE_SCALING_TILES)
+        tile_map: TileMap = arcade.load_tilemap(
+            f":data:/maps/map_{self.level}.tmx",
+            scaling=app_config.SPRITE_SCALING_TILES,
+            layer_options=layer_options
+        )
+
+        logger.info(f"level: {self.level}")
+
+        self.map_width = tile_map.width * tile_map.tile_width * tile_map.scaling
+        self.map_height = tile_map.height * tile_map.tile_height * tile_map.scaling
+
+        logger.info(f"map size: {self.map_width} X {self.map_height}")
+
+        self.end_of_map = (tile_map.width * tile_map.tile_width) * tile_map.scaling
 
         # Pull the sprite layers out of the tile map
         self.scene: Scene = arcade.Scene.from_tilemap(tile_map)
@@ -177,6 +205,8 @@ class GameView(arcade.View):
             anchor_x="right"
         )
 
+        self.widgets = (self.score_text, self.life_text)
+
         if self.reset_score:
             self.score = 0
         self.reset_score = True
@@ -215,6 +245,12 @@ class GameView(arcade.View):
             self.reset_score = False
             self.setup()
 
+        if self.player_sprite.center_x >= self.end_of_map:
+            self.reset_score = False
+            self.level += 1
+            self.reset_coin = True
+            self.setup()
+
         delta_score = self.coin_list.remove_touched(self.player_sprite)
         self.score += delta_score
         self.score_text.text = f"Score: {self.score}"
@@ -222,9 +258,9 @@ class GameView(arcade.View):
 
         self.physics_engine.move_player(self.left_pressed, self.right_pressed)
         camera_min_x = app_config.WINDOW_WIDTH // 2
-        camera_max_x = app_config.SCREEN_WIDTH  - (app_config.WINDOW_WIDTH // 2)
+        camera_max_x = self.map_width  - (app_config.WINDOW_WIDTH // 2)
         camera_min_y = app_config.WINDOW_HEIGHT // 2
-        camera_max_y = app_config.SCREEN_HEIGHT  - (app_config.WINDOW_HEIGHT // 2)
+        camera_max_y = self.map_height  - (app_config.WINDOW_HEIGHT // 2)
 
         camera_x: int = 0
         camera_y: int = 0
@@ -266,5 +302,5 @@ class GameView(arcade.View):
         self.camera.use()
         self.scene.draw()
         self.gui_camera.use()
-        self.score_text.draw()
-        self.life_text.draw()
+        for widget in self.widgets:
+            widget.draw()

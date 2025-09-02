@@ -100,6 +100,6 @@ class PlayerSprite(arcade.Sprite):
 
     def move_to_default_location(self) -> None:
         grid_x = 1
-        grid_y = 3.3
+        grid_y = 6
         self.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
         self.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="76">
+ <tileset firstgid="1" source="../../../world_tileset.tsx"/>
+ <tileset firstgid="257" source="../../../platforms.tsx"/>
+ <tileset firstgid="273" source="../../../coin.tsx"/>
+ <layer id="2" name="Background" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJztwzENAAAMBKHzP7/guugECaumqqqqqqqqqqqqqqqqqqqqqqqqTw9NFNeX
+  </data>
+ </layer>
+ <layer id="1" name="Platforms" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJztmn9zwyAIhk132/5Ov/+HXXc7d5S+KBpUkvLcec2vGkCBSJJSEARBEARBEARBEARBEATBGLbtef/22P/Y8LXBH18P+3xv8n6A+Zxso6uMi1YP7svBM7PnX+aM4yLlAen4VXztSlxhTGrPI+g88rcNtKAMtdUNNMmeV3iGlHyH6qbJJ3dFOyvavHY0Dkk2q9luVb6fycwYz8fbQ36hMqB4JM1RJPuI5zRPsVCjH43v/8eMdch+ifqtzSlNXB6BRSzR+Evrc3fGKtbNWqscHS8uJ9J/dHyava6z1sdLbFqZRzzksFa8jFsvXuohXuT45exjupLeceR/W1EX8DjuqFaC2h3sn3o9m8i6Ib2uJeB/hJOadf/IWkBJfusaGB9/us3nCLq31n9n2I7rgnSwvqfUT4uennJZZk+yDvtCuYIx8FxmMSc95scRlGz1Ljbo4Wjdw4ttJTms4/oRfXtsPTovSTLNWNf3xDtJrhX5e+Y9tXOnRaZVvluT0cOzmJe4JoH8YITMR99ZleattCag64UZeJhvNV5iZdKv5c6gXw1LHbLtWhkZEyz7fof39hn4rZKR/l5ygLUcXt7ZrKgXt1CquWmvt64R0rYn2zpQrd6IdBFrkgnnpVLfUi4r1j6VbQeNf6dhQa7N7Wy7dax669/0+xN0nNsT2UWyk9SO1nGRvEfq08gmko2ke9Pj/LfUT0/rrYXTWjDarvXJz9/Bca63Ro+aTUe2DN1G9uB+SuXT+ETJjvycxg69vv4DEycTUg==
+  </data>
+ </layer>
+ <layer id="3" name="Water" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKhDAMAMC+yYtP8O7Fu4/ZH+wT/Od68CR1FyVuicxAKCWEpKGlAAAAAAAAAAAAAAAAAAAAAHzXtx4guaH1AMlN29k1neJZ5jVeu3NsOM87KK70OsqfNV+oibIERlSvbO7c2dkeWd2xt1/1tXspeXdZe9tRPqJPbY///Isf5zROfA==
+  </data>
+ </layer>
+ <objectgroup id="5" name="Moving Sprites">
+  <object id="21" name="moving_platform" gid="261" x="608" y="752" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="184"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="384"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="36" name="moving_platform" gid="261" x="608" y="608" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="608"/>
+    <property name="boundary_right" type="float" value="816"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="9" name="Dynamic Items" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJzt1zsOgCAURUGWaW9lqTvQxH3b0/nB95SZjoSQU92EUgAAAAAAAAAAACC3OToAeNUYHfBja3W2rwBwzRYdAEAXlugAPqf+9z9paPg29MCmA3ftJ+/bHSCrKTqAdA4A+gVm
+  </data>
+ </layer>
+ <objectgroup id="7" name="Coins">
+  <object id="1" gid="273" x="352.333" y="928.333" width="16" height="16"/>
+  <object id="2" gid="273" x="560" y="911.667" width="16" height="16"/>
+  <object id="3" gid="273" x="640" y="945.333" width="16" height="16"/>
+  <object id="4" gid="273" x="688.03" y="928.182" width="16" height="16"/>
+  <object id="6" gid="273" x="128" y="768.667" width="16" height="16"/>
+  <object id="7" gid="273" x="96" y="880" width="16" height="16"/>
+  <object id="8" gid="273" x="240" y="848.333" width="16" height="16"/>
+  <object id="9" gid="273" x="400" y="689.333" width="16" height="16"/>
+  <object id="10" gid="273" x="463.333" y="816.667" width="16" height="16"/>
+  <object id="12" gid="273" x="512.072" y="592.11" width="16" height="16"/>
+  <object id="13" gid="273" x="528.009" y="592.244" width="16" height="16"/>
+  <object id="14" gid="273" x="544.076" y="592.108" width="16" height="16"/>
+  <object id="16" gid="273" x="704.75" y="799.5" width="16" height="16"/>
+  <object id="17" gid="273" x="336" y="752.667" width="16" height="16"/>
+  <object id="18" gid="273" x="175.333" y="704" width="16" height="16"/>
+  <object id="19" gid="273" x="815.636" y="912.182" width="16" height="16"/>
+  <object id="22" gid="273" x="272.25" y="608.25" width="16" height="16"/>
+  <object id="23" gid="273" x="353.333" y="576" width="16" height="16"/>
+  <object id="24" gid="273" x="1056.25" y="816" width="16" height="16"/>
+  <object id="25" gid="273" x="1072.25" y="751.75" width="16" height="16"/>
+  <object id="26" gid="273" x="1136.5" y="768" width="16" height="16"/>
+  <object id="27" gid="273" x="224" y="703.333" width="16" height="16"/>
+  <object id="28" gid="273" x="863.333" y="592" width="16" height="16"/>
+  <object id="29" gid="273" x="896" y="592" width="16" height="16"/>
+  <object id="30" gid="273" x="927.333" y="608" width="16" height="16"/>
+  <object id="31" gid="273" x="959.333" y="609.333" width="16" height="16"/>
+  <object id="32" gid="273" x="991.333" y="593.333" width="16" height="16"/>
+  <object id="37" gid="273" x="272.182" y="672" width="16" height="16"/>
+  <object id="38" gid="273" x="688.667" y="575.667" width="16" height="16"/>
+  <object id="39" gid="273" x="720.333" y="576" width="16" height="16"/>
+  <object id="40" gid="273" x="752.667" y="576" width="16" height="16"/>
+  <object id="41" gid="273" x="784.333" y="576" width="16" height="16"/>
+  <object id="42" gid="273" x="1120.14" y="704.091" width="16" height="16"/>
+  <object id="43" gid="273" x="1008.5" y="703.75" width="16" height="16"/>
+  <object id="44" gid="273" x="1040.25" y="687.75" width="16" height="16"/>
+  <object id="45" gid="273" x="832.25" y="591.75" width="16" height="16"/>
+  <object id="46" gid="273" x="800.364" y="655.636" width="16" height="16"/>
+  <object id="47" gid="273" x="784" y="688" width="16" height="16"/>
+  <object id="48" gid="273" x="784" y="720" width="16" height="16"/>
+  <object id="49" gid="273" x="672" y="352" width="16" height="16"/>
+  <object id="50" gid="273" x="688" y="352" width="16" height="16"/>
+  <object id="51" gid="273" x="704" y="352" width="16" height="16"/>
+  <object id="52" gid="273" x="720" y="352" width="16" height="16"/>
+  <object id="53" gid="273" x="736" y="352" width="16" height="16"/>
+  <object id="54" gid="273" x="367.75" y="320" width="16" height="16"/>
+  <object id="55" gid="273" x="400" y="287.75" width="16" height="16"/>
+  <object id="56" gid="273" x="480.333" y="447.333" width="16" height="16"/>
+  <object id="57" gid="273" x="463.667" y="384.333" width="16" height="16"/>
+  <object id="58" gid="273" x="384.333" y="367.667" width="16" height="16"/>
+  <object id="59" gid="273" x="400" y="448" width="16" height="16"/>
+  <object id="60" gid="273" x="576" y="432.5" width="16" height="16"/>
+  <object id="61" gid="273" x="512" y="352" width="16" height="16"/>
+  <object id="62" gid="273" x="608" y="351.5" width="16" height="16"/>
+  <object id="63" gid="273" x="624" y="368.5" width="16" height="16"/>
+  <object id="68" gid="273" x="528.5" y="256.5" width="16" height="16"/>
+  <object id="69" gid="273" x="592.25" y="239.75" width="16" height="16"/>
+  <object id="70" gid="273" x="592" y="336" width="16" height="16"/>
+  <object id="71" gid="273" x="463.333" y="255.333" width="16" height="16"/>
+  <object id="72" gid="273" x="222.667" y="480" width="16" height="16"/>
+  <object id="73" gid="273" x="272.667" y="512.667" width="16" height="16"/>
+  <object id="74" gid="273" x="193" y="448" width="16" height="16"/>
+  <object id="75" gid="273" x="303" y="560" width="16" height="16"/>
+ </objectgroup>
+ <layer id="8" name="Clouds" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20LL6AAAAAAAAAAAAAAAAAAAAAAAADgZ0sAAAE=
+  </data>
+ </layer>
+ <layer id="4" name="Foreground" width="80" height="60">
+  <data encoding="base64" compression="zlib">
+   eJzt2EsKwjAUBVC3pAMd+x/7x7G6A5cgum1TqKCdlCgkRs+BSwpN4UIGJa/TAQAAAAAAgN8xyF2gQLen53m2FmXotbzfhexTFAEAgATGIZOQae4ihVqFrEM2uYsU6hByDDnlLlKwc+4CDf3cBSJd6rVtFpDKLHeBQiwb68M25FqHOGZdAADw36p7cfOOBaUw4/6MGferbuR+M+5Xwze++ZYZd9vZjxJ0WETur/7dl9ZdacR2B+A/3QHoNQ8q
+  </data>
+ </layer>
+</map>

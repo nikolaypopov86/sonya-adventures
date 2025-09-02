@@ -63,6 +63,7 @@ class MainView(arcade.View):
             """On click handler"""
             self.game_state = None
             game_view = GameView(self.window, self)
+            game_view.level = app_config.BASE_LVL
             self.window.show_view(game_view)
 
         @continue_button.event("on_click")
@@ -112,10 +113,10 @@ class MainView(arcade.View):
         self.clear()
         text_list = [arcade.Text(
             "Приключения кошки Сони",
-            x=app_config.SCREEN_WIDTH / 2,
-            y=app_config.SCREEN_HEIGHT / 3 * 2,
+            x=app_config.WINDOW_WIDTH / 2,
+            y=app_config.WINDOW_HEIGHT / 3 * 2,
             color=arcade.csscolor.WHITE,
-            font_size=15*app_config.SPRITE_SCALING_TILES,
+            font_size=app_config.WINDOW_HEIGHT // 20,
             anchor_x="center"
         ),]
 
