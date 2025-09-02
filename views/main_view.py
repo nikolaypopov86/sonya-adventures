@@ -45,7 +45,7 @@ class MainView(arcade.View):
     def on_show_view(self):
         """This is run once when we switch to this view"""
         logger.debug(f"Выполнение метода on_show_view")
-        arcade.set_background_color(arcade.color.DARK_BLUE_GRAY)
+        arcade.set_background_color(app_config.MENU_BACKGROUND_COLOR)
 
         if self.anchor is not None:
             self.anchor.clear()

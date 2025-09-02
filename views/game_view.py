@@ -10,6 +10,8 @@ from sound_player import SoundPlayer
 
 import arcade
 
+from views.game_over_view import GameOverView
+
 app_config = AppConfig()
 
 from pyglet.event import EVENT_HANDLE_STATE
@@ -240,6 +242,11 @@ class GameView(arcade.View):
             self.setup()
 
         if self.player_sprite.center_y < 16:
+            if self.life_points == 0:
+                view = GameOverView(self.__from)
+                view.set_result(self.score)
+                self.sound_player.stop_playing_music()
+                self.window.show_view(view)
             self.life_points -= 1
             self.reset_coin = False
             self.reset_score = False
