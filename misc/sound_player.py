@@ -1,5 +1,5 @@
 import os
-from app_utils import singleton
+from .app_utils import singleton
 
 import arcade
 from pyglet.media import Player

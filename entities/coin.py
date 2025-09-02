@@ -1,9 +1,10 @@
+from itertools import count
 from typing import Any, Tuple
 
 import arcade
 from arcade import SpriteList, Sprite
 
-from app_utils import Counter
+from misc.app_utils import Counter
 
 MAIN_PATH = ":data:/coins"
 SPRITE_COUNT = 12
@@ -27,18 +28,18 @@ class CoinList:
     def remove_touched(
             self,
             player_sprite: Sprite
-    ) -> tuple[int, int]:
+    ) -> tuple[int, int, int]:
 
         coin_hit_list: list[arcade.Sprite] = arcade.check_for_collision_with_list(
             player_sprite, self.obj
         )
 
-        score_delta = 0
+        delta_coin_count = 0
         for coin in coin_hit_list:
             coin.remove_from_sprite_lists()
-            score_delta += 50
+            delta_coin_count += 1
 
-        return score_delta, len(self.obj)
+        return delta_coin_count * 50, len(self.obj), delta_coin_count
 
     def draw(
             self,

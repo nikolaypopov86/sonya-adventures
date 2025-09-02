@@ -3,7 +3,7 @@ import os
 
 from dotenv import load_dotenv
 
-from config import AppConfig
+from misc.config import AppConfig
 from views.main_view import MainView
 
 import arcade

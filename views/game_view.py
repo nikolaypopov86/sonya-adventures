@@ -5,8 +5,8 @@ from arcade import SpriteList, Scene, TileMap
 from entities.coin import CoinList
 from engine import PhysicsEngine
 from entities.sprites import PlayerSprite
-from config import AppConfig
-from sound_player import SoundPlayer
+from misc.config import AppConfig
+from misc.sound_player import SoundPlayer
 
 import arcade
 
@@ -83,6 +83,7 @@ class GameView(arcade.View):
 
         self.coin_list: CoinList | None = None
         self.coin_total: int | None = None
+        self.coin_count: int = 0
 
         self.setup_called = False
 
@@ -137,6 +138,7 @@ class GameView(arcade.View):
 
         if self.reset_coin:
             self.coin_list = CoinList(self.scene["Coins"])
+            self.coin_total = len(self.coin_list.obj)
 
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
@@ -144,7 +146,6 @@ class GameView(arcade.View):
             moving_sprite.boundary_top *= app_config.SPRITE_SCALING_TILES
             moving_sprite.boundary_bottom *= app_config.SPRITE_SCALING_TILES
 
-        self.coin_total = len(self.coin_list.obj)
 
         if not self.reset_coin and __coin_list is not None:
             self.scene.remove_sprite_list_by_name("Coins")
@@ -292,15 +293,17 @@ class GameView(arcade.View):
             self.setup()
 
         if self.player_sprite.center_x >= self.end_of_map:
+            self.reset_coin_max = True
             self.reset_score = False
             self.level += 1
             self.reset_coin = True
             self.setup()
 
-        delta_score, need_to_find = self.coin_list.remove_touched(self.player_sprite)
+        delta_score, need_to_find, delta_coin_count = self.coin_list.remove_touched(self.player_sprite)
         self.score += delta_score
+        self.coin_count += delta_coin_count
         self.score_text.text = f"Score: {self.score}"
-        self.coins_to_find.text = f"{self.coin_total - len(self.coin_list.obj)}/{self.coin_total}"
+        self.coins_to_find.text = f"{self.coin_count}/{self.coin_total}"
         self.level_text.text = f"Lvl: {self.level}"
         self.coin_list.check_or_update_pic()
 

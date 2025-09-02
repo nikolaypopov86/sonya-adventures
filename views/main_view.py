@@ -4,7 +4,7 @@ from arcade.gui import UIFlatButton
 
 from .game_view import GameView
 from .pref_view import PreferencesView
-from config import AppConfig
+from misc.config import AppConfig
 
 import arcade
 import arcade.gui

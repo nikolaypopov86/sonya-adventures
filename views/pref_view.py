@@ -1,8 +1,8 @@
 import logging
 
-from config import AppConfig
+from misc.config import AppConfig
 from .game_view import GameView
-from sound_player import SoundPlayer
+from misc.sound_player import SoundPlayer
 
 import arcade
 import arcade.gui
