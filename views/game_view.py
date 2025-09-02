@@ -82,10 +82,12 @@ class GameView(arcade.View):
         self.life_text: arcade.Text | None = None
 
         self.coin_list: CoinList | None = None
+        self.coin_total: int | None = None
 
         self.setup_called = False
 
         self.level: int = app_config.BASE_LVL
+        self.level_text: str | None = None
 
         self.map_width: int | None = None
         self.map_height: int | None = None
@@ -142,6 +144,8 @@ class GameView(arcade.View):
             moving_sprite.boundary_top *= app_config.SPRITE_SCALING_TILES
             moving_sprite.boundary_bottom *= app_config.SPRITE_SCALING_TILES
 
+        self.coin_total = len(self.coin_list.obj)
+
         if not self.reset_coin and __coin_list is not None:
             self.scene.remove_sprite_list_by_name("Coins")
             self.scene.add_sprite_list_before(
@@ -188,26 +192,61 @@ class GameView(arcade.View):
 
         path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
         arcade.load_font(path_to_font_file)
+
         self.score_text = arcade.Text(
             f"Score: {self.score}",
-            x=app_config.WINDOW_WIDTH // 40,
-            y=app_config.WINDOW_HEIGHT * 37 // 40,
+            x=app_config.WINDOW_WIDTH * 7 // 40,
+            y=app_config.WINDOW_HEIGHT * 93 // 100,
             color=(0, 0, 0),
             font_name="Pixel Operator 8",
-            font_size=app_config.WINDOW_HEIGHT // 35
+            font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )
+
+        self.coin_symb = arcade.Text(
+            "🟡",
+            x=app_config.WINDOW_WIDTH // 48,
+            y=app_config.WINDOW_HEIGHT * 93 // 100, # 37 // 40,
+            color=(255, 215, 0),
+            font_name="Segoe UI Emoji",
+            font_size=app_config.WINDOW_HEIGHT // 30
+        )
+        self.coins_to_find = arcade.Text(
+            f"{self.coin_total - len(self.coin_list.obj)}/{self.coin_total}",
+            x=app_config.WINDOW_WIDTH * 3// 42,
+            y=app_config.WINDOW_HEIGHT * 93 // 100, #37 // 40,
+            color=(0, 0, 0),
+            font_name="Pixel Operator 8",
+            font_size=app_config.WINDOW_HEIGHT * 2 // 100
+        )
+
         self.life_text = arcade.Text(
             f"{' ♥' * self.life_points} ",
-            x=app_config.WINDOW_WIDTH - (app_config.WINDOW_WIDTH // 40),
-            y=app_config.WINDOW_HEIGHT * 36 // 40,
+            x=app_config.WINDOW_WIDTH - (app_config.WINDOW_WIDTH // 200),
+            y=app_config.WINDOW_HEIGHT * 93 // 100,
             color=(255, 0, 0),
-            font_size=app_config.WINDOW_HEIGHT // 18,
-            font_name="Arial",
+            font_size=app_config.WINDOW_HEIGHT // 28,
+            font_name="Segoe UI Emoji",
             align="right",
             anchor_x="right"
         )
 
-        self.widgets = (self.score_text, self.life_text)
+        self.level_text = arcade.Text(
+            f"Lvl: {self.level}",
+            x=app_config.WINDOW_WIDTH * 20 // 40,
+            y=app_config.WINDOW_HEIGHT * 93 // 100,
+            anchor_x="center",
+            color=(0, 0, 0),
+            font_name="Pixel Operator 8",
+            font_size=app_config.WINDOW_HEIGHT * 2 // 100
+        )
+
+        self.widgets = (
+            self.score_text,
+            self.life_text,
+            self.coins_to_find,
+            self.coin_symb,
+            self.level_text
+        )
 
         if self.reset_score:
             self.score = 0
@@ -242,7 +281,7 @@ class GameView(arcade.View):
             self.setup()
 
         if self.player_sprite.center_y < 16:
-            if self.life_points == 0:
+            if self.life_points <= 0:
                 view = GameOverView(self.__from)
                 view.set_result(self.score)
                 self.sound_player.stop_playing_music()
@@ -258,9 +297,11 @@ class GameView(arcade.View):
             self.reset_coin = True
             self.setup()
 
-        delta_score = self.coin_list.remove_touched(self.player_sprite)
+        delta_score, need_to_find = self.coin_list.remove_touched(self.player_sprite)
         self.score += delta_score
         self.score_text.text = f"Score: {self.score}"
+        self.coins_to_find.text = f"{self.coin_total - len(self.coin_list.obj)}/{self.coin_total}"
+        self.level_text.text = f"Lvl: {self.level}"
         self.coin_list.check_or_update_pic()
 
         self.physics_engine.move_player(self.left_pressed, self.right_pressed)

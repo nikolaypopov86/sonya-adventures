@@ -27,7 +27,7 @@ class CoinList:
     def remove_touched(
             self,
             player_sprite: Sprite
-    ) -> int:
+    ) -> tuple[int, int]:
 
         coin_hit_list: list[arcade.Sprite] = arcade.check_for_collision_with_list(
             player_sprite, self.obj
@@ -38,7 +38,7 @@ class CoinList:
             coin.remove_from_sprite_lists()
             score_delta += 50
 
-        return score_delta
+        return score_delta, len(self.obj)
 
     def draw(
             self,
