@@ -95,7 +95,7 @@ class PreferencesView(arcade.View):
 
     def on_show_view(self) -> None:
         logger.debug("Выполнение функции on_show_view")
-        self.window.background_color = arcade.color.DARK_BLUE_GRAY
+        self.window.background_color = app_config.MENU_BACKGROUND_COLOR
         self.manager.enable()
 
     def on_hide_view(self) -> None:
