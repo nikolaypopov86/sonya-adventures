@@ -1,12 +1,15 @@
 import logging
+import uuid
 
 from arcade import SpriteList, Scene, TileMap
+from arcade.examples.minimap_camera import MINIMAP_WIDTH, MINIMAP_HEIGHT
 
 from entities.coin import CoinList
 from engine import PhysicsEngine
 from entities.sprites import PlayerSprite
 from misc.config import AppConfig
 from misc.sound_player import SoundPlayer
+from entities.minimap import MiniMap
 
 import arcade
 
@@ -31,6 +34,7 @@ class GameView(arcade.View):
         self.__from = frm
         self.coin_textures = None
         self.cur_coin_texture: int | None = None
+        self.coins_to_find: arcade.Text | None = None
 
         self.water_list: SpriteList | None = None
         self.foreground: SpriteList | None = None
@@ -92,6 +96,8 @@ class GameView(arcade.View):
 
         self.map_width: int | None = None
         self.map_height: int | None = None
+
+        self.minimap: MiniMap | None = None
 
         self.widgets = None
 
@@ -253,6 +259,8 @@ class GameView(arcade.View):
             self.score = 0
         self.reset_score = True
 
+        self.minimap = MiniMap()
+        self.minimap.setup((self.map_width, self.map_height))
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.ESCAPE:
@@ -269,6 +277,9 @@ class GameView(arcade.View):
                 impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
                 self.sound_player.sound_jump()
+        elif key == arcade.key.N:
+            self.minimap.minimap_on = not self.minimap.minimap_on
+        logger.debug(f"key {key} pressed, minimap_on: {self.minimap.minimap_on}")
 
     def on_key_release(self, key, modifiers):
         if key == arcade.key.LEFT or key == arcade.key.A:
@@ -307,6 +318,9 @@ class GameView(arcade.View):
         self.level_text.text = f"Lvl: {self.level}"
         self.coin_list.check_or_update_pic()
 
+        self.minimap.sprite_lists = tuple(self.scene[key] for key in app_config.MINIMAP_SPRITE_LISTS)
+        self.minimap.update(self.player_sprite)
+
         self.physics_engine.move_player(self.left_pressed, self.right_pressed)
         camera_min_x = app_config.WINDOW_WIDTH // 2
         camera_max_x = self.map_width  - (app_config.WINDOW_WIDTH // 2)
@@ -337,6 +351,7 @@ class GameView(arcade.View):
         self.physics_engine.step()
         self.physics_engine.rotate_moving(delta_time)
 
+
     def on_mouse_press(self, x: int, y: int, button: int, modifiers: int) -> EVENT_HANDLE_STATE:
         """ Called whenever the mouse button is clicked. """
         pass
@@ -350,8 +365,12 @@ class GameView(arcade.View):
     def on_draw(self):
         """Draw everything"""
         self.clear()
-        self.camera.use()
-        self.scene.draw()
-        self.gui_camera.use()
-        for widget in self.widgets:
-            widget.draw()
+
+        with self.camera.activate():
+            self.scene.draw()
+
+        with self.gui_camera.activate():
+            if self.minimap.minimap_on:
+                self.minimap.draw()
+            for widget in self.widgets:
+                widget.draw()

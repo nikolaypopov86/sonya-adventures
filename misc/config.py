@@ -1,5 +1,6 @@
 import os
 
+import arcade.color
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -83,4 +84,6 @@ class AppConfig:
 
         self.MENU_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MENU_BACKGROUND_COLOR").split(",")))
 
-
+        self.MINIMAP_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MINIMAP_BACKGROUNG_COLOR").split(",")))
+        self.MINIMAP_WIDTH_PART = float(os.environ.get("MINIMAP_WIDTH_PART"))
+        self.MINIMAP_SPRITE_LISTS: list[str] = os.environ.get("MINIMAP_SPRITE_LISTS").split(",")
