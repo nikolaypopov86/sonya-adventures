@@ -18,6 +18,7 @@ class MiniMap():
         self.minimap_on: bool | None = None
         self.minimap_size: Size | None = None
         self.map_size: Size | None = None
+        self.rect: arcade.Rect | None = None
 
     def setup(self, map_size: tuple[float, float]):
         self.map_size = Size(*map_size)
@@ -39,14 +40,27 @@ class MiniMap():
             center_y=self.minimap_size.y
         )
 
-        self.sprite.position = (app_config.WINDOW_WIDTH - self.minimap_size.x / 2, self.minimap_size.y / 2)
+        self.sprite.position = self.get_coord()
 
         self.sprite_list = arcade.SpriteList()
         self.sprite_list.append(self.sprite)
 
+        self.rect = arcade.shape_list.create_rectangle_outline(
+            self.sprite.position[0],
+            self.sprite.position[1],
+            width=self.minimap_size.x,
+            height=self.minimap_size.y,
+            color=(0,0,0,255)
+        )
+
+    def get_coord(self) -> tuple[int, int]:
+        return (
+            app_config.WINDOW_WIDTH - self.minimap_size.x / 2 if app_config.MINIMAP_POS_X else self.minimap_size.x // 2,
+            app_config.WINDOW_HEIGHT * 7 // 8 - self.minimap_size.y / 2 if app_config.MINIMAP_POS_Y else self.minimap_size.y // 2
+        )
+
 
     def update(self, player_sprite):
-
         proj = 0, self.map_size.x, 0, self.map_size.y
         atlas: arcade.texture_atlas.TextureAtlasBase = self.sprite_list.atlas
         with atlas.render_into(self.minimap_texture, projection=proj) as fbo:
@@ -58,11 +72,14 @@ class MiniMap():
                 player_sprite.position[0],
                 player_sprite.position[1] - 32,
                 color=arcade.csscolor.MAGENTA,
-                size=30
+                size=50
             )
 
     def draw(self):
         self.sprite_list.draw()
+
+    def draw_outline(self):
+        self.rect.draw()
 
 class Size:
     def __init__(self, x, y):

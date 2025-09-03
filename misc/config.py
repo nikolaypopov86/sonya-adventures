@@ -87,3 +87,6 @@ class AppConfig:
         self.MINIMAP_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MINIMAP_BACKGROUNG_COLOR").split(",")))
         self.MINIMAP_WIDTH_PART = float(os.environ.get("MINIMAP_WIDTH_PART"))
         self.MINIMAP_SPRITE_LISTS: list[str] = os.environ.get("MINIMAP_SPRITE_LISTS").split(",")
+
+        self.MINIMAP_POS_X = int(os.environ.get("MINIMAP_POS_X"))
+        self.MINIMAP_POS_Y = int(os.environ.get("MINIMAP_POS_Y"))

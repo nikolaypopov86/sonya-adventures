@@ -372,5 +372,6 @@ class GameView(arcade.View):
         with self.gui_camera.activate():
             if self.minimap.minimap_on:
                 self.minimap.draw()
+                self.minimap.draw_outline()
             for widget in self.widgets:
                 widget.draw()
