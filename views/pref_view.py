@@ -42,7 +42,7 @@ class PreferencesView(arcade.View):
             "Громкость музыки"
         ).set_value_min(0).set_value_max(1).set_step(0.1).set_default_value(app_config.VOLUME_MUSIC).build()
 
-        timer_checkbox = CheckboxGroupBuilder().set_on_texture(
+        timer_checkbox_group, timer_checkbox = CheckboxGroupBuilder().set_on_texture(
             "data/misc/grey_check.png"
         ).set_off_texture(
             "data/misc/empty.png"
@@ -67,9 +67,12 @@ class PreferencesView(arcade.View):
             logger.debug("Нажата кнопка 'Назад'")
             self.window.show_view(main_view)
 
-        @timer_checkbox.event("on_click")
+        @timer_checkbox.event("on_change")
         def on_click_timer_checkbox(event):
+            logger.debug(f"Вызов обработчика чекбокса таймера. Состояние чекбокса: {app_config.TIMER_ON}")
             app_config.TIMER_ON = not app_config.TIMER_ON
+            logger.debug(f"Вызов обработчика чекбокса таймера. Новое состояние чекбокса: {app_config.TIMER_ON}")
+
 
         self.grid = arcade.gui.UIGridLayout(
             column_count=1, row_count=4, horizontal_spacing=5, vertical_spacing=30
@@ -78,7 +81,7 @@ class PreferencesView(arcade.View):
 
         self.grid.add(music_vol_slider, 0, 0)
         self.grid.add(sound_vol_slider, 0, 1)
-        self.grid.add(timer_checkbox, 0, 2)
+        self.grid.add(timer_checkbox_group, 0, 2)
         self.grid.add(return_button, 0, 3)
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorLayout())
