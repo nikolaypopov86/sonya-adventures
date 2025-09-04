@@ -54,6 +54,26 @@ class PreferencesView(arcade.View):
             step=0.1
         )
 
+        timer_on_label = arcade.gui.UILabel(
+            text="Игра с таймером",
+            width=BUTTON_WIDTH,
+            text_color=(255, 255, 255),
+            font_size=6 * app_config.SPRITE_SCALING_TILES
+        )
+        timer_on_button = arcade.gui.UITextureToggle(
+            value=app_config.TIMER_ON,
+            on_texture=arcade.Texture.create_empty(
+                "ON",
+                color=arcade.csscolor.MIDNIGHT_BLUE,
+                size=(30, 10)
+            ),
+            off_texture=arcade.Texture.create_empty(
+                "OFF",
+                color=arcade.csscolor.DARK_GRAY,
+                size=(30, 10)
+            ),
+        )
+
         @music_vol_slider.event("on_change")
         def on_change_music_vol(event):
             logger.debug(f"Изменено значение громкости музыки: {music_vol_slider.value}")
@@ -71,8 +91,12 @@ class PreferencesView(arcade.View):
             logger.debug("Нажата кнопка 'Назад'")
             self.window.show_view(main_view)
 
+        @timer_on_button.event("on_click")
+        def on_click_timer_on(event):
+            app_config.TIMER_ON = not app_config.TIMER_ON
+
         self.grid = arcade.gui.UIGridLayout(
-            column_count=1, row_count=5, horizontal_spacing=20, vertical_spacing=20
+            column_count=1, row_count=7, horizontal_spacing=20, vertical_spacing=20
         )
 
         self.grid.add(music_vol_slider_label, 0, 0)
@@ -80,6 +104,8 @@ class PreferencesView(arcade.View):
         self.grid.add(sound_vol_slider_label, 0, 2)
         self.grid.add(sound_vol_slider, 0, 3)
         self.grid.add(return_button, 0, 4)
+        self.grid.add(timer_on_label, 0, 5)
+        self.grid.add(timer_on_button, 0, 6)
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorLayout())
 

@@ -90,3 +90,7 @@ class AppConfig:
 
         self.MINIMAP_POS_X = int(os.environ.get("MINIMAP_POS_X"))
         self.MINIMAP_POS_Y = int(os.environ.get("MINIMAP_POS_Y"))
+
+        self.TIMER_SECONDS = int(os.environ.get("TIMER_SECONDS"))
+
+        self.TIMER_ON = int(os.environ.get("TIMER_ON"))
