@@ -237,7 +237,7 @@ class GameView(arcade.View):
             x=app_config.WINDOW_WIDTH * 7 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             color=(0, 0, 0),
-            font_name="Pixel Operator 8",
+            font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )
 
@@ -262,7 +262,7 @@ class GameView(arcade.View):
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 86 // 100,  # 37 // 40,
             color=(0, 0, 0),
-            font_name="Pixel Operator 8",
+            font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100,
             align="right"
         )
@@ -271,7 +271,7 @@ class GameView(arcade.View):
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 93 // 100, #37 // 40,
             color=(0, 0, 0),
-            font_name="Pixel Operator 8",
+            font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100,
             align="right"
         )
@@ -293,7 +293,7 @@ class GameView(arcade.View):
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
             color=(0, 0, 0),
-            font_name="Pixel Operator 8",
+            font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )
 
@@ -303,7 +303,7 @@ class GameView(arcade.View):
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
             color=(0, 0, 0),
-            font_name="Pixel Operator 8",
+            font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )
 

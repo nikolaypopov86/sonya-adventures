@@ -1,8 +1,10 @@
 import logging
 
+from components.checkbox import CheckboxGroupBuilder
 from misc.config import AppConfig
 from .game_view import GameView
 from misc.sound_player import SoundPlayer
+from components.slider import SliderGroupBuilder
 
 import arcade
 import arcade.gui
@@ -15,6 +17,8 @@ logger = logging.getLogger(__name__)
 BUTTON_WIDTH = app_config.WINDOW_WIDTH//4
 BUTTON_HEIGHT = app_config.WINDOW_HEIGHT//15
 SLIDER_WIDTH = app_config.WINDOW_WIDTH//3.5
+CHECKBOX_LABEL_WIDTH = 50
+CHECKBOX_SIZE = (20,20)
 
 
 class PreferencesView(arcade.View):
@@ -22,57 +26,27 @@ class PreferencesView(arcade.View):
         super().__init__()
         logger.debug("Выполнение функции __init__")
 
+        self.PAW_IMAGE = arcade.load_texture(":data:/misc/paw.png")
+
         self.manager = arcade.gui.UIManager()
 
         self.sound_player = SoundPlayer()
 
-        sound_vol_slider_label = arcade.gui.UILabel(
-            text="Громкость эффектов",
-            width=BUTTON_WIDTH,
-            text_color=(255,255,255),
-            font_size=6 * app_config.SPRITE_SCALING_TILES
-        )
-        sound_vol_slider = arcade.gui.UISlider(
-            value=self.sound_player.sound_vol,
-            min_value=0,
-            max_value=1,
-            width=SLIDER_WIDTH,
-            step=0.1
-        )
+        sound_vol_slider = SliderGroupBuilder().set_text_label(
+            "Громкость эффектов"
+        ).set_value_min(0).set_value_max(1).set_step(0.1).set_default_value(app_config.VOLUME_SOUND).build()
 
-        music_vol_slider_label = arcade.gui.UILabel(
-            text="Громкость музыки",
-            width=BUTTON_WIDTH,
-            text_color=(255, 255, 255),
-            font_size=6 * app_config.SPRITE_SCALING_TILES
-        )
-        music_vol_slider = arcade.gui.UISlider(
-            value=self.sound_player.music_vol,
-            min_value=0,
-            max_value=1,
-            width=SLIDER_WIDTH,
-            step=0.1
-        )
+        music_vol_slider = SliderGroupBuilder().set_text_label(
+            "Громкость музыки"
+        ).set_value_min(0).set_value_max(1).set_step(0.1).set_default_value(app_config.VOLUME_MUSIC).build()
 
-        timer_on_label = arcade.gui.UILabel(
-            text="Игра с таймером",
-            width=BUTTON_WIDTH,
-            text_color=(255, 255, 255),
-            font_size=6 * app_config.SPRITE_SCALING_TILES
-        )
-        timer_on_button = arcade.gui.UITextureToggle(
-            value=app_config.TIMER_ON,
-            on_texture=arcade.Texture.create_empty(
-                "ON",
-                color=arcade.csscolor.MIDNIGHT_BLUE,
-                size=(30, 10)
-            ),
-            off_texture=arcade.Texture.create_empty(
-                "OFF",
-                color=arcade.csscolor.DARK_GRAY,
-                size=(30, 10)
-            ),
-        )
+        timer_checkbox = CheckboxGroupBuilder().set_on_texture(
+            "data/misc/grey_check.png"
+        ).set_off_texture(
+            "data/misc/empty.png"
+        ).set_text_label(
+            "Игра с таймером"
+        ).build()
 
         @music_vol_slider.event("on_change")
         def on_change_music_vol(event):
@@ -91,21 +65,19 @@ class PreferencesView(arcade.View):
             logger.debug("Нажата кнопка 'Назад'")
             self.window.show_view(main_view)
 
-        @timer_on_button.event("on_click")
-        def on_click_timer_on(event):
+        @timer_checkbox.event("on_click")
+        def on_click_timer_checkbox(event):
             app_config.TIMER_ON = not app_config.TIMER_ON
 
         self.grid = arcade.gui.UIGridLayout(
-            column_count=1, row_count=7, horizontal_spacing=20, vertical_spacing=20
+            column_count=1, row_count=4, horizontal_spacing=5, vertical_spacing=30
         )
 
-        self.grid.add(music_vol_slider_label, 0, 0)
-        self.grid.add(music_vol_slider, 0, 1)
-        self.grid.add(sound_vol_slider_label, 0, 2)
-        self.grid.add(sound_vol_slider, 0, 3)
-        self.grid.add(return_button, 0, 4)
-        self.grid.add(timer_on_label, 0, 5)
-        self.grid.add(timer_on_button, 0, 6)
+
+        self.grid.add(music_vol_slider, 0, 0)
+        self.grid.add(sound_vol_slider, 0, 1)
+        self.grid.add(timer_checkbox, 0, 2)
+        self.grid.add(return_button, 0, 3)
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorLayout())
 

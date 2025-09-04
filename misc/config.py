@@ -6,20 +6,23 @@ load_dotenv()
 
 from .app_utils import singleton
 
+font_paths = {
+    "Pixel Operator 8": ":data:/fonts/PixelOperator8.ttf",
+    "Pixel Operator 8 Bold": ":data:/fonts/PixelOperator8-Bold.ttf",
+    "Roboto Bold":"data/fonts/Roboto/Roboto-Bold.ttf",
+    "Roboto Condensed Regular":"data/fonts/Roboto/Roboto_Condensed-Regular.ttf",
+    "Roboto Condensed SemiBold":"data/fonts/Roboto/Roboto_Condensed-SemiBold.ttf"
+}
+
+
 @singleton
 class AppConfig:
     def __init__(self):
-        self.SCREEN_TITLE = "My adventures"
+        self.SCREEN_TITLE = "Приключения кошки Сони"
         self.SPRITE_IMAGE_SIZE = float(os.environ.get("SPRITE_IMAGE_SIZE"))
         self.SPRITE_SCALING_PLAYER = float(os.environ.get("SPRITE_SCALING_PLAYER"))
         self.SPRITE_SCALING_TILES = float(os.environ.get("SPRITE_SCALING_TILES"))
         self.SPRITE_SIZE = int(self.SPRITE_IMAGE_SIZE * self.SPRITE_SCALING_TILES)
-
-#        self.SCREEN_GRID_WIDTH = int(os.environ.get("SCREEN_GRID_WIDTH"))
-#        self.SCREEN_GRID_HEIGHT = int(os.environ.get("SCREEN_GRID_HEIGHT"))
-
-#        self.SCREEN_WIDTH = self.SPRITE_SIZE * self.SCREEN_GRID_WIDTH
-#        self.SCREEN_HEIGHT = self.SPRITE_SIZE * self.SCREEN_GRID_HEIGHT
 
         self.WINDOW_WIDTH = int(os.environ.get("WINDOW_WIDTH"))
         self.WINDOW_HEIGHT = int(os.environ.get("WINDOW_HEIGHT"))
@@ -94,3 +97,15 @@ class AppConfig:
         self.TIMER_SECONDS = int(os.environ.get("TIMER_SECONDS"))
 
         self.TIMER_ON = int(os.environ.get("TIMER_ON"))
+
+        self.FONT_NAME = os.environ.get("FONT_NAME")
+        self.MENU_FONT_NAMES = tuple(os.environ.get("MENU_FONT_NAMES").split(","))
+        self.MENU_FONT_SIZE = int(os.environ.get("MENU_FONT_SIZE"))
+
+    def load_fonts(self):
+        for name in self.MENU_FONT_NAMES:
+            if self.FONT_NAME in font_paths:
+                arcade.load_font(font_paths[self.FONT_NAME])
+
+            if name in font_paths and self.FONT_NAME != name:
+                arcade.load_font(font_paths[name])

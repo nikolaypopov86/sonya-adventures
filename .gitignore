@@ -1,6 +1,7 @@
 .idea
 __pycache__
 log/
+waste
 .run
 
 qodana.yaml
