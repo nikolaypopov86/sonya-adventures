@@ -47,7 +47,9 @@ class GameUI:
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             color=(255, 0, 0),
             font_name=EMOJI_FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT // 28
+            font_size=app_config.WINDOW_HEIGHT // 28,
+            align="right",
+            anchor_x="right"
         )
 
         self.coins_to_find = GameUIText(
