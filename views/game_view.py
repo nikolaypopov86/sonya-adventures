@@ -438,7 +438,7 @@ class GameView(arcade.View):
 
     def on_show_view(self) -> None:
         self.sound_player.play_music()
-        if self.timer:
+        if app_config.TIMER_ON and self.timer:
             self.timer.start()
 
     def on_hide_view(self) -> None:

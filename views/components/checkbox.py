@@ -38,13 +38,12 @@ class CheckboxGroupBuilder(Labeled):
         label = self.build_label(self.text_label)
 
         checkbox = arcade.gui.UITextureToggle(
+            value=app_config.TIMER_ON,
             on_texture=self.on_texture,
             off_texture=self.off_texture,
             width=20,
             height=20
         )
-
-        self.event = checkbox.event
 
         checkbox_group = arcade.gui.UIBoxLayout(
             vertical=False,
@@ -54,4 +53,4 @@ class CheckboxGroupBuilder(Labeled):
         checkbox_group.add(label)
         checkbox_group.add(checkbox)
 
-        return checkbox_group
+        return checkbox_group, checkbox
