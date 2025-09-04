@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="19">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="30">
+ <properties>
+  <property name="seconds" type="float" value="120"/>
+ </properties>
  <tileset firstgid="1" name="world_tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
   <image source="../../../brackeys_platformer_assets/sprites/world_tileset.png" width="256" height="256"/>
  </tileset>
@@ -11,6 +14,8 @@
  </tileset>
  <tileset firstgid="289" source="../../../platforms.tsx"/>
  <tileset firstgid="305" source="../../../coin.tsx"/>
+ <tileset firstgid="317" source="../../../fruit.tsx"/>
+ <tileset firstgid="333" source="../../../world_tileset.tsx"/>
  <layer id="2" name="Background" width="30" height="20">
   <data encoding="base64" compression="zlib">
    eJztwzENAAAMBKHzP7/gmugICaumqurbAxiTWvA=
@@ -18,7 +23,7 @@
  </layer>
  <layer id="3" name="Platforms" width="30" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo4D+gJGRsDgTkM2MQx0+QIw+XGpwuYvagBb2UMtMcsOdkP3Y5Ac6HvABUsIBn1pywoUStwyGsCMGkOJORTr7iZphOBjjg5ECjA2gp09ceoVAakmgmZD4xABs5pBqpxAaJgbgcjsACnQCRw==
+   eJxjYBgFo4D+gJGRsDgTkM2MQx0+QIw+XGpwuYvagBb2UMtMcsOdkP3Y5Ac6HvABUsIBn1pywoUStwyGsCMGkOJORTr7iZphOBjjg5ECjA2gp09s+nyBhBBILQPxNBMSnxiAzZw4RtLsFELDxABs5oDsBQB6lQM+
   </data>
  </layer>
  <layer id="6" name="Water" width="30" height="20">
@@ -48,6 +53,19 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="11" name="Fruits">
+  <object id="23" gid="317" x="432.75" y="159.25" width="16" height="16"/>
+  <object id="25" gid="331" x="208" y="141.5" width="16" height="16"/>
+  <object id="26" gid="329" x="31.5" y="95.5" width="16" height="16"/>
+  <object id="27" gid="327" x="176.5" y="271" width="16" height="16"/>
+  <object id="28" gid="323" x="328" y="208" width="16" height="16"/>
+  <object id="29" gid="326" x="128" y="79.5" width="16" height="16"/>
+ </objectgroup>
+ <layer id="12" name="Lvl Wall" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYKA/4BwAO0ftHbV31N5Re0ftHbV31N5RQC8AACDZAJo=
+  </data>
+ </layer>
  <layer id="4" name="Dynamic Items" width="30" height="20">
   <data encoding="base64" compression="zlib">
    eJxjYBgFowATFKLxI8gwo4kINZVkmDtSQMZAO2AQgU4S1NIyTUXS0OxRMApgoIhMfa1UdcUooBQAAKBuBH8=

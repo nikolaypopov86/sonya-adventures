@@ -1,3 +1,5 @@
+from PIL import Image
+
 def singleton(cls):
     """
     Simple Singleton impl
@@ -25,3 +27,7 @@ class Counter:
         if self.max_value is not None and self.value > self.max_value:
             self.value = 0
         return self.value
+
+
+def load_image(path):
+    return Image.open(path)
