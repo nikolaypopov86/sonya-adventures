@@ -240,7 +240,6 @@ class GameView(arcade.View):
             font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )
-
         self.coin_symb = arcade.Text(
             "🟡",
             x=app_config.WINDOW_WIDTH // 48,

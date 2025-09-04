@@ -1,4 +1,4 @@
-from components.labeled import Labeled
+from views.components.labeled import Labeled
 from misc.config import AppConfig
 
 import arcade
