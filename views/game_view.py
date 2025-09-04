@@ -13,6 +13,7 @@ from entities.minimap import MiniMap
 import arcade
 
 from misc.timer import SimpleTimer
+from views.components.game_ui import GameUI
 from views.game_over_view import GameOverView
 
 app_config = AppConfig()
@@ -106,7 +107,7 @@ class GameView(arcade.View):
 
         self.minimap: MiniMap | None = None
 
-        self.widgets = None
+        self.game_ui = None
 
         self.timer: SimpleTimer | None = None
         self.timer_text: arcade.Text | None = None
@@ -161,6 +162,7 @@ class GameView(arcade.View):
             self.coin_total = len(self.coin_list.obj)
             self.fruit_list = FruitList(self.scene["Fruits"])
             self.fruit_total = len(self.fruit_list.obj)
+            self.fruit_count = 0
 
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
@@ -231,90 +233,18 @@ class GameView(arcade.View):
             self.timer.start()
             self.next_lvl = False
             self.coin_count = 0
+            self.fruit_count = 0
 
-        self.score_text = arcade.Text(
-            f"Score: {self.score}",
-            x=app_config.WINDOW_WIDTH * 7 // 40,
-            y=app_config.WINDOW_HEIGHT * 93 // 100,
-            color=(0, 0, 0),
-            font_name=app_config.FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT * 2 // 100
-        )
-        self.coin_symb = arcade.Text(
-            "🟡",
-            x=app_config.WINDOW_WIDTH // 48,
-            y=app_config.WINDOW_HEIGHT * 93 // 100, # 37 // 40,
-            color=(255, 215, 0),
-            font_name="Segoe UI Emoji",
-            font_size=app_config.WINDOW_HEIGHT // 30
-        )
-        self.fruit_symb = arcade.Text(
-            "🍉",
-            x=app_config.WINDOW_WIDTH // 66,
-            y=app_config.WINDOW_HEIGHT * 85 // 100,  # 37 // 40,
-            color=(255, 215, 0),
-            font_name="Segoe UI Emoji",
-            font_size=app_config.WINDOW_HEIGHT // 25
-        )
-        self.fruit_to_find = arcade.Text(
-            f"{self.fruit_total - len(self.fruit_list.obj)}/{self.fruit_total}",
-            x=app_config.WINDOW_WIDTH * 4 // 42,
-            y=app_config.WINDOW_HEIGHT * 86 // 100,  # 37 // 40,
-            color=(0, 0, 0),
-            font_name=app_config.FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT * 2 // 100,
-            align="right"
-        )
-        self.coins_to_find = arcade.Text(
-            f"{self.coin_total - len(self.coin_list.obj)}/{self.coin_total}",
-            x=app_config.WINDOW_WIDTH * 4 // 42,
-            y=app_config.WINDOW_HEIGHT * 93 // 100, #37 // 40,
-            color=(0, 0, 0),
-            font_name=app_config.FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT * 2 // 100,
-            align="right"
-        )
-
-        self.life_text = arcade.Text(
-            f"{' ♥' * self.life_points} ",
-            x=app_config.WINDOW_WIDTH - (app_config.WINDOW_WIDTH // 200),
-            y=app_config.WINDOW_HEIGHT * 93 // 100,
-            color=(255, 0, 0),
-            font_size=app_config.WINDOW_HEIGHT // 28,
-            font_name="Segoe UI Emoji",
-            align="right",
-            anchor_x="right"
-        )
-
-        self.level_text = arcade.Text(
-            f"Lvl: {self.level}",
-            x=app_config.WINDOW_WIDTH * 20 // 40,
-            y=app_config.WINDOW_HEIGHT * 93 // 100,
-            anchor_x="center",
-            color=(0, 0, 0),
-            font_name=app_config.FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT * 2 // 100
-        )
-
-        self.timer_text = arcade.Text(
-            f"{self.timer.left_text()}",
-            x=app_config.WINDOW_WIDTH * 26 // 40,
-            y=app_config.WINDOW_HEIGHT * 93 // 100,
-            anchor_x="center",
-            color=(0, 0, 0),
-            font_name=app_config.FONT_NAME,
-            font_size=app_config.WINDOW_HEIGHT * 2 // 100
-        )
-
-        self.widgets = (
-            self.score_text,
-            self.life_text,
-            self.coins_to_find,
-            self.coin_symb,
-            self.level_text,
-            self.timer_text,
-            self.fruit_symb,
-            self.fruit_to_find
+        self.game_ui = GameUI()
+        self.game_ui.init(
+            self.score,
+            self.life_points,
+            self.coin_total,
+            len(self.coin_list.obj),
+            self.level,
+            self.timer.left_text(),
+            self.fruit_total,
+            len(self.fruit_list.obj)
         )
 
         if self.reset_score:
@@ -382,20 +312,24 @@ class GameView(arcade.View):
         delta_coin_score, need_coin_to_find, delta_coin_count = self.coin_list.remove_touched(self.player_sprite)
         self.score += delta_coin_score
         self.coin_count += delta_coin_count
-        self.coins_to_find.text = f"{self.coin_count}/{self.coin_total}"
-
-        self.level_text.text = f"Lvl: {self.level}"
-        self.timer_text.text = f"{self.timer.left_text()}"
         self.coin_list.check_or_update_pic()
 
-        delta_fruit_score, need_fruit_to_find, delta__count = self.fruit_list.remove_touched(self.player_sprite)
+        delta_fruit_score, need_fruit_to_find, delta_fruit_count = self.fruit_list.remove_touched(self.player_sprite)
         self.score += delta_fruit_score
-        fruit_count = self.fruit_total - len(self.fruit_list.obj)
-        self.fruit_to_find.text = f"{fruit_count}/{self.fruit_total}"
+        self.fruit_count += delta_fruit_count
 
-        self.score_text.text = f"Score: {self.score}"
+        self.game_ui.update(
+            self.score,
+            self.life_points,
+            self.coin_total,
+            self.coin_count,
+            self.level,
+            self.timer.left_text(),
+            self.fruit_total,
+            self.fruit_count
+        )
 
-        if "Lvl Wall" in self.scene and fruit_count >= self.fruit_total:
+        if "Lvl Wall" in self.scene and self.fruit_count >= self.fruit_total:
             self.scene.remove_sprite_list_by_name("Lvl Wall")
 
         self.minimap.sprite_lists = tuple(self.scene[key] for key in app_config.MINIMAP_SPRITE_LISTS)
@@ -455,5 +389,5 @@ class GameView(arcade.View):
             if self.minimap.minimap_on:
                 self.minimap.draw()
                 self.minimap.draw_outline()
-            for widget in self.widgets:
+            for widget in self.game_ui.widgets:
                 widget.draw()
