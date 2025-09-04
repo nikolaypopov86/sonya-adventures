@@ -1,11 +1,11 @@
 import logging
 
-from components.checkbox import CheckboxGroupBuilder
+from .components.checkbox import CheckboxGroupBuilder
 from misc.config import AppConfig
 from .game_view import GameView
 from misc.sound_player import SoundPlayer
 from misc.app_utils import singleton
-from components.slider import SliderGroupBuilder
+from views.components.slider import SliderGroupBuilder
 
 import arcade
 import arcade.gui
