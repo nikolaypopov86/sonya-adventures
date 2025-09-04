@@ -4,6 +4,7 @@ from components.checkbox import CheckboxGroupBuilder
 from misc.config import AppConfig
 from .game_view import GameView
 from misc.sound_player import SoundPlayer
+from misc.app_utils import singleton
 from components.slider import SliderGroupBuilder
 
 import arcade
@@ -21,6 +22,7 @@ CHECKBOX_LABEL_WIDTH = 50
 CHECKBOX_SIZE = (20,20)
 
 
+@singleton
 class PreferencesView(arcade.View):
     def __init__(self, main_view):
         super().__init__()
