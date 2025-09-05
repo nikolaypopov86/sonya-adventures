@@ -7,8 +7,8 @@ load_dotenv()
 from .app_utils import singleton
 
 font_paths = {
-    "Pixel Operator 8": ":data:/fonts/PixelOperator8.ttf",
-    "Pixel Operator 8 Bold": ":data:/fonts/PixelOperator8-Bold.ttf",
+    "Pixel Operator 8": "data/fonts/PixelOperator8.ttf",
+    "Pixel Operator 8 Bold": "data/fonts/PixelOperator8-Bold.ttf",
     "Roboto Bold":"data/fonts/Roboto/Roboto-Bold.ttf",
     "Roboto Condensed Regular":"data/fonts/Roboto/Roboto_Condensed-Regular.ttf",
     "Roboto Condensed SemiBold":"data/fonts/Roboto/Roboto_Condensed-SemiBold.ttf"

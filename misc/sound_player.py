@@ -13,8 +13,8 @@ class SoundPlayer:
         self.sound_volume = float(os.environ.get("VOLUME_SOUND"))
 
         # load music data
-        self.music = arcade.load_sound(":data:/sounds/time_for_adventure.mp3")
-        self.jump_sound = arcade.load_sound(":data:/sounds/jump.wav")
+        self.music = arcade.load_sound("data/sounds/time_for_adventure.mp3")
+        self.jump_sound = arcade.load_sound("data/sounds/jump.wav")
         self.music_playback: Player | None = None
 
     def play_music(

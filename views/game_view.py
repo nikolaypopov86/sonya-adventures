@@ -138,7 +138,7 @@ class GameView(arcade.View):
             }
         }
 
-        map_path = f":data:maps/map_{self.level}.tmx"
+        map_path = f"data/maps/map_{self.level}.tmx"
 
         logger.info(f"map_path:{map_path}")
 
