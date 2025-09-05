@@ -6,6 +6,5 @@ waste
 dist
 .help
 build/
-build.sh
 
 qodana.yaml
