@@ -3,5 +3,9 @@ __pycache__
 log/
 waste
 .run
+dist
+.help
+build/
+build.sh
 
 qodana.yaml

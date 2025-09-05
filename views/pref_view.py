@@ -28,8 +28,6 @@ class PreferencesView(arcade.View):
         super().__init__()
         logger.debug("Выполнение функции __init__")
 
-        self.PAW_IMAGE = arcade.load_texture(":data:/misc/paw.png")
-
         self.manager = arcade.gui.UIManager()
 
         self.sound_player = SoundPlayer()
