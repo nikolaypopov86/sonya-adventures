@@ -18,7 +18,7 @@ class PlayerSprite(arcade.Sprite):
         # Let parent initialize
         super().__init__(scale=app_config.SPRITE_SCALING_PLAYER)
 
-        main_path = f":data:/{app_config.PLAYER_SPRITE}/{app_config.PLAYER_SPRITE}"
+        main_path = f":data:/tilesets/{app_config.PLAYER_SPRITE}/{app_config.PLAYER_SPRITE}"
 
         # Load textures for jump, and fall states
         jump_texture = arcade.load_texture(f"{main_path}_walk0.png")

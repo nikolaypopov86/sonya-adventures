@@ -1,18 +1,27 @@
 [project]
-name = "pymunk-platformer"
+name = "sonya-adventures"
 version = "0.1.0"
 description = ""
 authors = [
     {name = "nikolaypopov86",email = "nikolaypopov.perm@gmail.com"}
 ]
-readme = "README.md"
+readme = "readme.md"
 requires-python = ">=3.13"
 dependencies = [
     "arcade (>=3.3.2,<4.0.0)",
     "python-dotenv (>=1.1.1,<2.0.0)"
 ]
-
+keywords = [
+    "cat",
+    "arcade",
+    "game",
+    "platformer"
+]
+repository = "https://github.com/nikolaypopov86/my-first-arcade"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+nuitka = "^2.7.13"

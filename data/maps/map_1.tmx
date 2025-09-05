@@ -4,18 +4,18 @@
   <property name="seconds" type="float" value="120"/>
  </properties>
  <tileset firstgid="1" name="world_tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
-  <image source="../../../brackeys_platformer_assets/sprites/world_tileset.png" width="256" height="256"/>
+  <image source="../tilesets/world_tileset.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="257" name="platforms" tilewidth="16" tileheight="16" tilecount="16" columns="4">
-  <image source="../../../brackeys_platformer_assets/sprites/platforms.png" width="64" height="64"/>
+  <image source="../tilesets/platforms.png" width="64" height="64"/>
  </tileset>
  <tileset firstgid="273" name="fruit" tilewidth="16" tileheight="16" tilecount="16" columns="4">
-  <image source="../../../brackeys_platformer_assets/sprites/fruit.png" width="64" height="64"/>
+  <image source="../tilesets/fruit.png" width="64" height="64"/>
  </tileset>
- <tileset firstgid="289" source="../../../platforms.tsx"/>
- <tileset firstgid="305" source="../../../coin.tsx"/>
- <tileset firstgid="317" source="../../../fruit.tsx"/>
- <tileset firstgid="333" source="../../../world_tileset.tsx"/>
+ <tileset firstgid="289" source="../tilesets/platforms.tsx"/>
+ <tileset firstgid="305" source="../tilesets/coin.tsx"/>
+ <tileset firstgid="317" source="../tilesets/fruit.tsx"/>
+ <tileset firstgid="333" source="../tilesets/world_tileset.tsx"/>
  <layer id="2" name="Background" width="30" height="20">
   <data encoding="base64" compression="zlib">
    eJztwzENAAAMBKHzP7/gmugICaumqurbAxiTWvA=

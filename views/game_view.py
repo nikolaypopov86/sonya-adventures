@@ -224,9 +224,6 @@ class GameView(arcade.View):
             self.scene["Moving Sprites"],
         )
 
-        path_to_font_file = ":data:/fonts/PixelOperator8.ttf"
-        arcade.load_font(path_to_font_file)
-
         self.timer = SimpleTimer()
         if self.next_lvl:
             self.timer.set_seconds(tile_map.properties.get("seconds"))

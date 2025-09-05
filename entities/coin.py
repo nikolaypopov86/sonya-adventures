@@ -7,7 +7,7 @@ from arcade import SpriteList, Sprite
 from entities.gatherable import Gatherable
 from misc.app_utils import Counter
 
-MAIN_PATH = ":data:/coins"
+MAIN_PATH = ":data:/tilesets/coins"
 SPRITE_COUNT = 12
 TICK_SCALING = 20
 COIN_SCORE_COEFFICIENT = 50
