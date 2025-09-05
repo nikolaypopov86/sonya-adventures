@@ -1,4 +1,5 @@
 import logging
+import os
 
 from arcade import SpriteList, Scene, TileMap
 
@@ -21,6 +22,8 @@ app_config = AppConfig()
 from pyglet.event import EVENT_HANDLE_STATE
 
 logger = logging.getLogger(__name__)
+
+PATH_DELIMITER=os.sep
 
 
 class GameView(arcade.View):
@@ -135,9 +138,13 @@ class GameView(arcade.View):
             }
         }
 
+        map_path = f":data:maps/map_{self.level}.tmx"
+
+        logger.info(f"map_path:{map_path}")
+
         # Load in TileMap
         tile_map: TileMap = arcade.load_tilemap(
-            f":data:/maps/map_{self.level}.tmx",
+            map_path,
             scaling=app_config.SPRITE_SCALING_TILES,
             layer_options=layer_options
         )
