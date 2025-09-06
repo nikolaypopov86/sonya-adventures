@@ -2,9 +2,8 @@
 __pycache__
 log/
 waste
-.run
-dist
 .help
 build/
+release/
 
 qodana.yaml

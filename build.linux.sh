@@ -1,6 +1,7 @@
 # Linux
 python -m nuitka app.py \
 --onefile \
+--enable-plugin=numpy \
 --include-package=arcade.gl.backends.opengl \
 --include-data-files=".env"=".env" \
 --include-data-dir=data=data \
