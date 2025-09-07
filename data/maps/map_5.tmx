@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="131">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="133">
  <properties>
   <property name="seconds" type="int" value="600"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/world_tileset.tsx"/>
  <tileset firstgid="257" source="../tilesets/platforms.tsx"/>
  <tileset firstgid="273" source="../tilesets/coin.tsx"/>
- <tileset firstgid="285" source="../tilesets/fruit.tsx"/>
+ <tileset firstgid="274" source="../tilesets/fruit.tsx"/>
+ <tileset firstgid="290" source="../tilesets/hearts.tsx"/>
  <layer id="2" name="Background" width="80" height="60">
   <data encoding="base64" compression="zlib">
    eJztwzENAAAMBKHzP7/guugECaumqqqqqqqqqqqqqqqqqqqqqqqqTw9NFNeX
@@ -24,7 +25,7 @@
  </layer>
  <layer id="3" name="Water" width="80" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt2LEJwzAQBVDNlCYjpE+T3sNkA4+QPZPCVZAwElKOC+/BRxgh7nyoUikAAAAAAAAAAAAAALDGfoR+r0YAAAAAolyjG0juFt1Aco9jvYR28V+2T55f6z2wn31SRmq19nttA2dmab0pj2RWrWxWzqy3RlYr5nZ2vvZdSt5Z1v6ttT+jTm2Ov7yLb16iU4Q=
+   eJzt2LENgzAQBVDPlCYjpE9DzzDZgBEyABsmBUWEbCVYBufQe9KXhSzrzicaSAkAAAAAAAAAjjV/ZFrCb+ZVAAAA4N/59q/3LAQAAACgl2vvBoK79W4guGFZL127OJfxncdqvXfsZ2qUmlql/a3GijOtlP4p16RVrWj2nNnWGlHtMbdv53PPKcWdZe5upf0WdXJzPPJdfAH/MFmF
   </data>
  </layer>
  <objectgroup id="5" name="Moving Sprites">
@@ -150,19 +151,23 @@
   <object id="117" gid="273" x="688.333" y="240" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="10" name="Fruits">
-  <object id="118" gid="294" x="79.5" y="624" width="16" height="16"/>
-  <object id="119" gid="291" x="144.5" y="382.5" width="16" height="16"/>
-  <object id="120" gid="289" x="591" y="61.5" width="16" height="16"/>
-  <object id="121" gid="298" x="752" y="399.5" width="16" height="16"/>
-  <object id="122" gid="287" x="928" y="622.5" width="16" height="16"/>
-  <object id="123" gid="290" x="752" y="926" width="16" height="16"/>
-  <object id="124" gid="298" x="1104.36" y="751.879" width="16" height="16"/>
-  <object id="125" gid="291" x="880.333" y="189.667" width="16" height="16"/>
-  <object id="126" gid="298" x="368.5" y="238.5" width="16" height="16"/>
-  <object id="127" gid="285" x="224.5" y="191.5" width="16" height="16"/>
-  <object id="128" gid="295" x="607" y="782" width="16" height="16"/>
-  <object id="129" gid="297" x="383.5" y="591" width="16" height="16"/>
-  <object id="130" gid="297" x="400.667" y="927.667" width="16" height="16"/>
+  <object id="118" gid="283" x="79.5" y="624" width="16" height="16"/>
+  <object id="119" gid="280" x="144.5" y="382.5" width="16" height="16"/>
+  <object id="120" gid="278" x="591" y="61.5" width="16" height="16"/>
+  <object id="121" gid="287" x="752" y="399.5" width="16" height="16"/>
+  <object id="122" gid="276" x="928" y="622.5" width="16" height="16"/>
+  <object id="123" gid="279" x="752" y="926" width="16" height="16"/>
+  <object id="124" gid="287" x="1104.36" y="751.879" width="16" height="16"/>
+  <object id="125" gid="280" x="880.333" y="189.667" width="16" height="16"/>
+  <object id="126" gid="287" x="368.5" y="238.5" width="16" height="16"/>
+  <object id="127" gid="274" x="224.5" y="191.5" width="16" height="16"/>
+  <object id="128" gid="284" x="607" y="782" width="16" height="16"/>
+  <object id="129" gid="286" x="383.5" y="591" width="16" height="16"/>
+  <object id="130" gid="286" x="400.667" y="927.667" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="12" name="Hearts">
+  <object id="131" gid="290" x="642.273" y="94.1818" width="12" height="12"/>
+  <object id="132" gid="290" x="689.792" y="398.021" width="12" height="12"/>
  </objectgroup>
  <layer id="8" name="Clouds" width="80" height="60">
   <data encoding="base64" compression="zlib">

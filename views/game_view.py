@@ -6,6 +6,7 @@ from arcade import SpriteList, Scene, TileMap
 from entities.coin import CoinList
 from engine import PhysicsEngine
 from entities.fruit import FruitList
+from entities.heart import HeartList
 from entities.sprites import PlayerSprite
 from misc.config import AppConfig
 from misc.sound_player import SoundPlayer
@@ -83,7 +84,7 @@ class GameView(arcade.View):
         self.reset_coin: bool = True
 
         # Max life points
-        self.max_life_points: int = 5
+        self.max_life_points: int = 7
         # Life points
         self.life_points: int = 5
         # Life text
@@ -99,6 +100,8 @@ class GameView(arcade.View):
         self.fruit_count: int | None = None
         self.reset_fruit_max: int | None = None
         self.fruit_to_find = None
+
+        self.heart_list: HeartList | None = None
 
         self.setup_called = False
 
@@ -128,9 +131,13 @@ class GameView(arcade.View):
 
         __coin_list = None
         __fruit_list = None
+        __heart_list = None
         if self.scene is not None and "Coins" in self.scene:
             __coin_list = CoinList(self.coin_list)
+        if self.scene is not None and "Fruits" in self.scene:
             __fruit_list = FruitList(self.fruit_list)
+        if self.scene is not None and "Hearts" in self.scene:
+            __heart_list = HeartList(self.heart_list)
 
         layer_options = {
             "Platforms": {
@@ -173,6 +180,7 @@ class GameView(arcade.View):
             self.fruit_list = FruitList(self.scene["Fruits"])
             self.fruit_total = len(self.fruit_list.obj)
             self.fruit_count = 0
+            self.heart_list = HeartList(self.scene["Hearts"])
 
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
@@ -196,6 +204,14 @@ class GameView(arcade.View):
                 "Coins",
                 use_spatial_hash=True,
                 sprite_list=__fruit_list.obj
+            )
+
+            self.scene.remove_sprite_list_by_name("Hearts")
+            self.scene.add_sprite_list_before(
+                "Hearts",
+                "Foreground",
+                use_spatial_hash=True,
+                sprite_list=__heart_list.obj
             )
 
             self.reset_coin = True
@@ -324,6 +340,10 @@ class GameView(arcade.View):
         delta_fruit_score, need_fruit_to_find, delta_fruit_count = self.fruit_list.remove_touched(self.player_sprite)
         self.score += delta_fruit_score
         self.fruit_count += delta_fruit_count
+
+        _, _, delta_life_points = self.heart_list.remove_touched(self.player_sprite)
+        if self.life_points < self.max_life_points:
+            self.life_points += delta_life_points
 
         self.game_ui.update(
             self.score,

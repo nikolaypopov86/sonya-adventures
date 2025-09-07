@@ -9,5 +9,5 @@ FRUIT_SCORE_COEFFICIENT = 100
 
 class FruitList(Gatherable):
     def __init__(self, obj):
-        super().__init__(obj, 100)
+        super().__init__(obj, FRUIT_SCORE_COEFFICIENT)
         self.obj: arcade.SpriteList = obj

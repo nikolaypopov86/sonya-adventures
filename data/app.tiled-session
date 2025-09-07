@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/map_3.tmx",
+    "activeFile": "maps/map_4.tmx",
     "expandedProjectPaths": [
+        ".",
         "tilesets",
-        "maps",
-        "."
+        "maps"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -44,11 +44,11 @@
                 7,
                 11
             ],
-            "scale": 1.6842708333333334,
-            "selectedLayer": 3,
+            "scale": 2,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 228.88242934009523,
-                "y": 195.33675551982188
+                "x": 179.5,
+                "y": 141.5
             }
         },
         "maps/map_1.tmx#fruit": {
@@ -65,14 +65,14 @@
         },
         "maps/map_2.tmx": {
             "expandedObjectLayers": [
-                9,
-                8
+                8,
+                9
             ],
-            "scale": 3,
-            "selectedLayer": 1,
+            "scale": 1,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 295.16666666666663,
-                "y": 389
+                "x": 320.5,
+                "y": 239.5
             }
         },
         "maps/map_3.tmj": {
@@ -85,26 +85,27 @@
         },
         "maps/map_3.tmx": {
             "expandedObjectLayers": [
-                9,
-                6
+                13,
+                6,
+                9
             ],
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 0.75,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 375.66666666666663,
-                "y": 388.66666666666663
+                "x": 400,
+                "y": 319.3333333333333
             }
         },
         "maps/map_4.tmx": {
             "expandedObjectLayers": [
-                9,
-                8
+                8,
+                9
             ],
-            "scale": 1.5,
-            "selectedLayer": 6,
+            "scale": 0.75,
+            "selectedLayer": 9,
             "viewCenter": {
-                "x": 226.99999999999997,
-                "y": 240.66666666666663
+                "x": 381.33333333333326,
+                "y": 289.33333333333326
             }
         },
         "maps/map_5.tmx": {
@@ -118,12 +119,15 @@
         "tilesets/coin.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 5.5,
-            "scaleInEditor": 1
+            "scaleInEditor": 8
         },
         "tilesets/fruit.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 4,
+            "scaleInDock": 5.5,
             "scaleInEditor": 5.5
+        },
+        "tilesets/hearts.tsx": {
+            "dynamicWrapping": false
         },
         "tilesets/platforms.tsx": {
             "dynamicWrapping": true,
@@ -132,11 +136,12 @@
         },
         "tilesets/world_tileset.tsx": {
             "dynamicWrapping": true,
-            "scaleInDock": 2,
+            "scaleInDock": 1.5,
             "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "/home/beta86/repos/games/pymunk-platformer/data/maps",
+    "last.imagePath": "/home/beta86/repos/games/pymunk-platformer/data/tilesets",
     "last.worldFilePath": "/home/beta86/repos/games/pymunk-platformer/data/maps",
     "loadedWorlds": [
         "/home/beta86/repos/games/pymunk-platformer/data/maps/adventures.world",
@@ -151,28 +156,33 @@
     "map.width": 50,
     "mapScene.enableWorlds": true,
     "openFiles": [
-        "tilesets/coin.tsx",
-        "tilesets/platforms.tsx",
-        "tilesets/world_tileset.tsx",
-        "maps/map_2.tmx",
-        "maps/map_4.tmx",
-        "maps/map_1.tmx",
-        "maps/map_3.tmx"
-    ],
-    "project": "app.tiled-project",
-    "property.type": "int",
-    "recentFiles": [
-        "tilesets/coin.tsx",
-        "tilesets/fruit.tsx",
         "tilesets/platforms.tsx",
         "tilesets/world_tileset.tsx",
         "maps/map_2.tmx",
         "maps/map_4.tmx",
         "maps/map_1.tmx",
         "maps/map_3.tmx",
+        "tilesets/coin.tsx"
+    ],
+    "project": "app.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "maps/map_1.tmx",
+        "tilesets/platforms.tsx",
+        "tilesets/world_tileset.tsx",
+        "maps/map_2.tmx",
+        "tilesets/coin.tsx",
+        "maps/map_3.tmx",
+        "maps/map_4.tmx",
+        "tilesets/fruit.tsx",
         "maps/map_1.tmj",
         "maps/map4.tmx",
         "maps/map_5.tmx"
     ],
-    "resizeMap.removeObjects": true
+    "resizeMap.removeObjects": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }
