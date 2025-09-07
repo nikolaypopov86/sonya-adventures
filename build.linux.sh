@@ -1,4 +1,3 @@
-# Linux
 python -m nuitka app.py \
 --onefile \
 --enable-plugin=numpy \

@@ -66,7 +66,6 @@ class MiniMap():
         with atlas.render_into(self.minimap_texture, projection=proj) as fbo:
             fbo.clear(color=app_config.MENU_BACKGROUND_COLOR)
             for sprite_list in self.sprite_lists:
-                logger.debug(sprite_list)
                 sprite_list.draw()
             arcade.draw_point(
                 player_sprite.position[0],

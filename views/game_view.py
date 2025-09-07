@@ -135,12 +135,15 @@ class GameView(arcade.View):
         layer_options = {
             "Platforms": {
                 "use_spatial_hash": True
+            },
+            "Water": {
+                "use_spatial_hash": True
             }
         }
 
-        map_path = f"data/maps/map_{self.level}.tmx"
+        map_path = f":data:/maps/map_{self.level}.tmx"
 
-        logger.info(f"map_path:{map_path}")
+        logger.info(f"map_path: {map_path}")
 
         # Load in TileMap
         tile_map: TileMap = arcade.load_tilemap(
