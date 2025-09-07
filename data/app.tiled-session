@@ -1,0 +1,178 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "maps/map_3.tmx",
+    "expandedProjectPaths": [
+        "tilesets",
+        "maps",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "maps/map4.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 387.5,
+                "y": 361
+            }
+        },
+        "maps/map_1.tmj": {
+            "scale": 5.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 156.63636363636363,
+                "y": 221.0909090909091
+            }
+        },
+        "maps/map_1.tmj#fruit": {
+            "scaleInDock": 1
+        },
+        "maps/map_1.tmj#platforms": {
+            "scaleInDock": 1
+        },
+        "maps/map_1.tmj#world_tileset": {
+            "scaleInDock": 1
+        },
+        "maps/map_1.tmx": {
+            "expandedObjectLayers": [
+                7,
+                11
+            ],
+            "scale": 1.6842708333333334,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 228.88242934009523,
+                "y": 195.33675551982188
+            }
+        },
+        "maps/map_1.tmx#fruit": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "maps/map_1.tmx#platforms": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "maps/map_1.tmx#world_tileset": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "maps/map_2.tmx": {
+            "expandedObjectLayers": [
+                9,
+                8
+            ],
+            "scale": 3,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 295.16666666666663,
+                "y": 389
+            }
+        },
+        "maps/map_3.tmj": {
+            "scale": 4,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 326.875,
+                "y": 308.25
+            }
+        },
+        "maps/map_3.tmx": {
+            "expandedObjectLayers": [
+                9,
+                6
+            ],
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 375.66666666666663,
+                "y": 388.66666666666663
+            }
+        },
+        "maps/map_4.tmx": {
+            "expandedObjectLayers": [
+                9,
+                8
+            ],
+            "scale": 1.5,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 226.99999999999997,
+                "y": 240.66666666666663
+            }
+        },
+        "maps/map_5.tmx": {
+            "scale": 0.5529296874999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 639.3217944189333,
+                "y": 479.2652772871778
+            }
+        },
+        "tilesets/coin.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 5.5,
+            "scaleInEditor": 1
+        },
+        "tilesets/fruit.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 4,
+            "scaleInEditor": 5.5
+        },
+        "tilesets/platforms.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "tilesets/world_tileset.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/home/beta86/repos/games/pymunk-platformer/data/maps",
+    "last.worldFilePath": "/home/beta86/repos/games/pymunk-platformer/data/maps",
+    "loadedWorlds": [
+        "/home/beta86/repos/games/pymunk-platformer/data/maps/adventures.world",
+        "/home/beta86/repos/games/pymunk-platformer/data/maps/adventures.world"
+    ],
+    "map.height": 40,
+    "map.lastUsedExportFilter": "Tiled map files (*.tmx *.xml)",
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": "3",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
+    "mapScene.enableWorlds": true,
+    "openFiles": [
+        "tilesets/coin.tsx",
+        "tilesets/platforms.tsx",
+        "tilesets/world_tileset.tsx",
+        "maps/map_2.tmx",
+        "maps/map_4.tmx",
+        "maps/map_1.tmx",
+        "maps/map_3.tmx"
+    ],
+    "project": "app.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "tilesets/coin.tsx",
+        "tilesets/fruit.tsx",
+        "tilesets/platforms.tsx",
+        "tilesets/world_tileset.tsx",
+        "maps/map_2.tmx",
+        "maps/map_4.tmx",
+        "maps/map_1.tmx",
+        "maps/map_3.tmx",
+        "maps/map_1.tmj",
+        "maps/map4.tmx",
+        "maps/map_5.tmx"
+    ],
+    "resizeMap.removeObjects": true
+}

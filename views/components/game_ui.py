@@ -56,7 +56,8 @@ class GameUI:
             text=f"{coin_total - coin_remained}/{coin_total}",
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
-            color=TEXT_COLOR
+            color=TEXT_COLOR,
+            font_name=app_config.FONT_NAME,
         )
 
         self.coin_symb = GameUIText(
@@ -80,7 +81,8 @@ class GameUI:
             f"{fruit_total - fruit_remained}/{fruit_total}",
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 86 // 100,
-            color=TEXT_COLOR
+            color=TEXT_COLOR,
+            font_name=app_config.FONT_NAME,
         )
 
         self.timer_text = GameUIText(

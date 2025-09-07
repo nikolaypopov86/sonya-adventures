@@ -1,6 +1,10 @@
+import logging
 from typing import Tuple
 
 import arcade
+
+logger = logging.getLogger(__name__)
+
 
 class Gatherable:
     def __init__(self, obj, score_coef):
@@ -18,6 +22,7 @@ class Gatherable:
         delta_count = 0
         for item in hit_list:
             item.remove_from_sprite_lists()
+            logger.debug(f"item {item.properties.get('name')}:{item.properties} removed")
             delta_count += 1
 
         return delta_count * self.score_coef, len(self.obj), delta_count

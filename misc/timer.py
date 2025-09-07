@@ -1,3 +1,5 @@
+import logging
+
 from math import floor
 from time import monotonic
 
@@ -5,6 +7,7 @@ from misc.app_utils import singleton
 from misc.config import AppConfig
 
 app_config = AppConfig()
+logger = logging.getLogger(__name__)
 
 
 @singleton
@@ -26,6 +29,8 @@ class SimpleTimer:
         self.is_ticking = True
 
     def pause(self):
+        t = monotonic()
+        logger.debug(f"t={t}, time_start={self.time_start}, is_ticking={self.is_ticking}")
         self.seconds -= (monotonic() - self.time_start)
         self.is_ticking = False
 
