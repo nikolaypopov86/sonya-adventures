@@ -1,7 +1,7 @@
 [project]
 name = "sonya-adventures"
-version = "0.1.0"
-description = ""
+version = "0.2.0"
+description = "A simple arcade game"
 authors = [
     {name = "nikolaypopov86",email = "nikolaypopov.perm@gmail.com"}
 ]
@@ -18,7 +18,7 @@ keywords = [
     "game",
     "platformer"
 ]
-repository = "https://github.com/nikolaypopov86/my-first-arcade"
+repository = "https://github.com/nikolaypopov86/sonya-adventures"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
