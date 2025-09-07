@@ -73,7 +73,7 @@
   </data>
  </layer>
  <objectgroup id="14" name="Hearts">
-  <object id="31" gid="578" x="290" y="45.75" width="12" height="12"/>
+  <object id="31" name="heart" gid="578" x="290" y="45.75" width="12" height="12"/>
  </objectgroup>
  <objectgroup id="9" name="Coins">
   <object id="4" name="CoinSprite" type="CoinSprite" gid="305" x="48.25" y="240" width="16" height="16"/>

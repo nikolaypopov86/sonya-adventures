@@ -44,11 +44,11 @@
                 7,
                 11
             ],
-            "scale": 1.5,
+            "scale": 2,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 293.66666666666663,
-                "y": 150.66666666666663
+                "x": 179.5,
+                "y": 141.5
             }
         },
         "maps/map_1.tmx#fruit": {
@@ -71,8 +71,8 @@
             "scale": 1,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 190.5,
-                "y": 163
+                "x": 320.5,
+                "y": 239.5
             }
         },
         "maps/map_3.tmj": {
@@ -85,15 +85,15 @@
         },
         "maps/map_3.tmx": {
             "expandedObjectLayers": [
+                13,
                 6,
-                9,
-                13
+                9
             ],
             "scale": 0.75,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 421.99999999999994,
-                "y": 171.99999999999994
+                "x": 400,
+                "y": 319.3333333333333
             }
         },
         "maps/map_4.tmx": {
@@ -104,7 +104,7 @@
             "scale": 0.75,
             "selectedLayer": 9,
             "viewCenter": {
-                "x": 381.99999999999994,
+                "x": 381.33333333333326,
                 "y": 289.33333333333326
             }
         },
