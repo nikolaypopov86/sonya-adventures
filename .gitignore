@@ -7,3 +7,5 @@ build/
 release/
 
 qodana.yaml
+
+./data/app.tiled-session
