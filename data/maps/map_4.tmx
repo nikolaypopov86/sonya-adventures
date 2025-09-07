@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="121">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="123">
  <properties>
   <property name="seconds" type="int" value="600"/>
  </properties>
@@ -7,6 +7,7 @@
  <tileset firstgid="257" source="../tilesets/coin.tsx"/>
  <tileset firstgid="258" source="../tilesets/fruit.tsx"/>
  <tileset firstgid="274" source="../tilesets/platforms.tsx"/>
+ <tileset firstgid="290" source="../tilesets/hearts.tsx"/>
  <layer id="1" name="Background" width="50" height="40">
   <data encoding="base64" compression="zlib">
    eJztw0ENAAAMA6Hz/6vjCRkkrJqqqqqqqqqqPn84v20N
@@ -162,6 +163,10 @@
   <object id="117" gid="267" x="433.333" y="558.667" width="16" height="16"/>
   <object id="118" gid="263" x="606.667" y="396.667" width="16" height="16"/>
   <object id="119" gid="270" x="176" y="415.333" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="12" name="Hearts">
+  <object id="121" gid="290" x="434" y="221.818" width="12" height="12"/>
+  <object id="122" gid="290" x="98.1818" y="78.1818" width="12" height="12"/>
  </objectgroup>
  <layer id="10" name="Clouds" width="50" height="40">
   <data encoding="base64" compression="zlib">

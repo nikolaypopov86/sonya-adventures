@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="107">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="109">
  <properties>
   <property name="seconds" value="300"/>
  </properties>
@@ -7,6 +7,7 @@
  <tileset firstgid="257" source="../tilesets/coin.tsx"/>
  <tileset firstgid="258" source="../tilesets/fruit.tsx"/>
  <tileset firstgid="274" source="../tilesets/platforms.tsx"/>
+ <tileset firstgid="290" source="../tilesets/hearts.tsx"/>
  <layer id="1" name="Background" width="50" height="40" locked="1">
   <data encoding="base64" compression="zlib">
    eJztw0ENAAAMA6Hz/6vjCRkkrJqqqqqqqqqqPn84v20N
@@ -20,6 +21,11 @@
  <layer id="3" name="Platforms" width="50" height="40" locked="1">
   <data encoding="base64" compression="zlib">
    eJztmAsKwyAMhlt2gxW23f+kW2FC+Jeo0aTG4QdhpbN5aGpSt22xmJsbiPdzHiQfjq/k/EK/03M9PPZf3RrQl5w/mrFa+5TSPFJS/CMp+Ynx9OasR8wj/bKIJ4qOk+dHzytAXo7EKte5PbOH1jWm73APWCdG4BWLRie3DhY1rDWmA4Tq24kg6b51XbcAYzrlXhA61ooINdqKf4qFEqWf1sDVBnz3Iq+XRz89A9HWxKJfy/UpNF7LuifRMr9cLnL5iLq9c1gTS40f0XIvIpiL1j044rkm2Mtdsc+OqKVec1hzrrXguWqv8bSz9ksdXvM1ey6NziOvvUv6BimNqfEt932jsVUr3HkBJfe/dHYi6eaQ9GmlB2vd3v622qy127MOaAuvUb90X2uD/kq63txZEGs=
+  </data>
+ </layer>
+ <layer id="5" name="Water" width="50" height="40" locked="1">
+  <data encoding="base64" compression="zlib">
+   eJzt09EJwCAMRVG7RO3ipSO4pv20QSXGSP24BwKi8BJQQwAAAACw2i0KAAB8ncffE0CK751c3MsW+B974E8A8PQUZTn37DUjFdU7t2bKfEueNl9T3tmr57X21Pb1kiprmd/aH+2heUsZUzk7Fg==
   </data>
  </layer>
  <layer id="4" name="Lvl Wall" width="50" height="40" locked="1">
@@ -123,11 +129,9 @@
   <object id="63" name="Coins" gid="257" x="657" y="161" width="16" height="16"/>
   <object id="64" name="Coins" gid="257" x="608.5" y="128" width="16" height="16"/>
  </objectgroup>
- <layer id="5" name="Water" width="50" height="40" locked="1">
-  <data encoding="base64" compression="zlib">
-   eJzt09EJwCAMRVG7RO3ipSO4pv20QSXGSP24BwKi8BJQQwAAAACw2i0KAAB8ncffE0CK751c3MsW+B974E8A8PQUZTn37DUjFdU7t2bKfEueNl9T3tmr57X21Pb1kiprmd/aH+2heUsZUzk7Fg==
-  </data>
- </layer>
+ <objectgroup id="13" name="Hearts">
+  <object id="107" gid="290" x="416.667" y="63.6667" width="16" height="16"/>
+ </objectgroup>
  <layer id="10" name="Clouds" width="50" height="40" locked="1">
   <data encoding="base64" compression="zlib">
    eJztzbENwDAIBED27xjBm6ZxJGRTxG7S3Ek0L3gyIrLMmFN12Ztn9Pfdfqd2fLkdsf+t+en/tff2fu24+QkAAAAAAADAfx6x1xrd
