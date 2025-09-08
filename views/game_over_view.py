@@ -49,7 +49,7 @@ class GameOverView(arcade.View):
         arcade.set_background_color(app_config.MENU_BACKGROUND_COLOR)
 
         self.text_list = [arcade.Text(
-            "Кошка Соня устала и ушла спать",
+            "Кошечка Соня устала и ушла спать",
             x=app_config.WINDOW_WIDTH / 2,
             y=app_config.WINDOW_HEIGHT / 3 * 2,
             color=arcade.csscolor.WHITE,

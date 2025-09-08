@@ -4,6 +4,7 @@ log/
 waste
 .help
 build/
+build-win
 release/
 
 qodana.yaml
