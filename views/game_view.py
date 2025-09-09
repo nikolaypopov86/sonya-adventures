@@ -174,6 +174,8 @@ class GameView(arcade.View):
         # Pull the sprite layers out of the tile map
         self.scene: Scene = arcade.Scene.from_tilemap(tile_map)
 
+        logger.debug(f"scene: {self.scene.__dict__}")
+
         self.camera = arcade.Camera2D()
         logger.debug(f"camera activate: {self.camera.width}, {self.camera.height}")
         self.gui_camera = arcade.Camera2D()
@@ -245,6 +247,14 @@ class GameView(arcade.View):
 
         self.physics_engine.add_platforms(
             self.scene["Platforms"],
+        )
+
+        self.physics_engine.add_edges(
+            self.scene["Edge"]
+        )
+
+        self.physics_engine.add_lvl_walls(
+            self.scene["Lvl Wall"]
         )
 
         self.physics_engine.add_items(

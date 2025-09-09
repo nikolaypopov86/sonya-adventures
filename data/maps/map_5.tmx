@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="133">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="133">
  <properties>
   <property name="seconds" type="int" value="600"/>
  </properties>
@@ -18,9 +18,14 @@
    eJztmttuwyAMQJNM256T///YNdqYkOsrGDAtR0JqkzaxjS/gZNsWi8VisXgd9r9BfV/8sjPjAt8XNJdiJD6XMVkouy3qOR6+97H8z4XdaEeYXxcyWE0amROoWtmTu37AGiLV8Wj5NIo8kq3CyCk4mTUXeRLRXqVwceRp4q/Hxb4nKwJamS2+AP32XdYnNfEK58HiSzP6nRfe+y7JV6PbWmsPrR6ePv2K9Nr3w3kYuTaQoGLIevwd/EciWl9p1JxQ67WS9ZyU47HzWLzNtvdP6zZuf4ThuX7T2Aw7H2UNWbMnomIn100T79R9Z/JFChhnlD1q8xA2j8f2bFd4/yj5uGX975njoR4t763NIbkMWL6ibI/J3mKeouTCG8269MjG/zFnHVJcYteVfEqTl73kk45Z0cSLdd2d8Mp1njHAyVw7X5ra0zo39t7XeesTJTeNnKcZ961R5q2UKP2QKHLczD6nIymdR6o/0ZOI8471adB9PnJu1ueOEG2/iPI96zNZ72e2nPzaPVLpvXJfSHt1zo+099e+31cDJj/Xh/OAuo5Fz0i1LHFutA5n9rsZ12CLZ2At8/DJ3vVxVD3mbBVxjRCF2r7HaNtyvbAb77xeo2+JrVvVJem6PWpKSb6j5IpYvz3R+o7FDiNiVyNfhLkcndcksDhoIXPtMyvOb6m9Qr5f6EEEf5N4ypWbfi83g34SnjqU9lla5oTWz99eFfRdJSf9o9QAbzmi9AtG9IstcD037e+99KOufXJ/MkL16jhdyJ7kxtd1qedp+Y92nGDA9zQ8SL25E3xOw3KdkpG/f4Idh7+B8mHjEEZtHxeTt6Y/Tb3rhtmIuje0l/Y6JaO0F573grHP0jXh+Qs5DvXW6CHZtOVI5J8xe8A4zeXTxARnR3hOY4fSWP8Bk3kWOw==
   </data>
  </layer>
- <layer id="11" name="Lvl Wall" width="80" height="60">
+ <layer id="11" name="Lvl Wall" width="80" height="60" opacity="0.01">
   <data encoding="base64" compression="zlib">
    eJzt0DENADAMwLC+4094HJpjmmQjiDLD1nkd8Dn/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/wDYuq8/AfA=
+  </data>
+ </layer>
+ <layer id="13" name="Edge" width="80" height="60" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJzt0EENACAMwEDczL9DPKwPQnKnoOkcinkd8Dn/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/xr/Gv8a/wDYuPRGCIk=
   </data>
  </layer>
  <layer id="3" name="Water" width="80" height="60">
