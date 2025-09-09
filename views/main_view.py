@@ -1,5 +1,4 @@
 import logging
-from typing import Tuple, Callable, List
 
 from controllers.gamepad import Gamepad
 from .game_view import GameView
@@ -9,7 +8,7 @@ from views.components.interactive import InteractiveComponentTuple
 
 import arcade
 import arcade.gui
-from arcade.gui import UIFlatButton, UIOnClickEvent
+from arcade.gui import UIFlatButton
 
 app_config = AppConfig()
 
