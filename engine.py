@@ -21,10 +21,12 @@ class PhysicsEngine(PymunkPhysicsEngine):
             gravity=gravity,
         )
 
-        self.player_sprite = None
+        self.player_sprite: arcade.Sprite | None = None
         self.platform_list = None
         self.item_list = None
         self.moving_sprites_list = None
+        self.edge_list = None
+        self.lvl_walls = None
 
     def add_player(
             self,
@@ -41,6 +43,19 @@ class PhysicsEngine(PymunkPhysicsEngine):
             max_vertical_velocity=app_config.PLAYER_MAX_VERTICAL_SPEED,
         )
 
+    def add_edges(
+            self,
+            sprite_list
+    ) -> None:
+        super().add_sprite_list(
+            sprite_list,
+            friction=app_config.WALL_FRICTION,
+            collision_type="wall",
+            body_type=arcade.PymunkPhysicsEngine.STATIC,
+        )
+
+        self.edge_list = sprite_list
+
     def add_platforms(
             self,
             sprite_list
@@ -53,6 +68,19 @@ class PhysicsEngine(PymunkPhysicsEngine):
         )
 
         self.platform_list = sprite_list
+
+    def add_lvl_walls(
+            self,
+            sprite_list
+    ):
+        super().add_sprite_list(
+            sprite_list,
+            friction=app_config.WALL_FRICTION,
+            collision_type="wall",
+            body_type=arcade.PymunkPhysicsEngine.STATIC,
+        )
+
+        self.lvl_walls = sprite_list
 
     def add_items(
             self,
@@ -103,6 +131,9 @@ class PhysicsEngine(PymunkPhysicsEngine):
             self.set_friction(self.player_sprite, 0)
         else:
             self.set_friction(self.player_sprite, 1.0)
+
+        if self.player_sprite.left < 0:
+            self.player_sprite.left = 0
 
     def rotate_moving(self, delta_time):
         for moving_sprite in self.moving_sprites_list:
