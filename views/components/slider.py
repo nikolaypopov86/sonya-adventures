@@ -79,6 +79,4 @@ class SliderGroupBuilder(Labeled):
         group_outer.add(label)
         group_outer.add(group_inner)
 
-        return group_outer
-
-
+        return group_outer, slider

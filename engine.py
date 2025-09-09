@@ -1,9 +1,9 @@
 from typing import Tuple
 
+from misc.config import AppConfig
+
 import arcade
 from arcade import PymunkPhysicsEngine, Sprite
-
-from misc.config import AppConfig
 
 app_config = AppConfig()
 

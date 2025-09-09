@@ -11,6 +11,7 @@ from entities.sprites import PlayerSprite
 from misc.config import AppConfig
 from misc.sound_player import SoundPlayer
 from entities.minimap import MiniMap
+from handlers import ControllerHandler
 
 import arcade
 
@@ -23,8 +24,6 @@ app_config = AppConfig()
 from pyglet.event import EVENT_HANDLE_STATE
 
 logger = logging.getLogger(__name__)
-
-PATH_DELIMITER=os.sep
 
 
 class GameView(arcade.View):
@@ -120,9 +119,13 @@ class GameView(arcade.View):
 
         self.next_lvl: bool = True
 
+        self.handler: ControllerHandler | None = ControllerHandler()
+
 
     def setup(self):
         """Set up everything with the game"""
+
+        logger.debug("enter GameView method setup")
 
         self.setup_called = True
 
@@ -172,7 +175,9 @@ class GameView(arcade.View):
         self.scene: Scene = arcade.Scene.from_tilemap(tile_map)
 
         self.camera = arcade.Camera2D()
+        logger.debug(f"camera activate: {self.camera.width}, {self.camera.height}")
         self.gui_camera = arcade.Camera2D()
+        logger.debug(f"gui_camera activate: {self.gui_camera.width}, {self.gui_camera.height}")
 
         if self.reset_coin:
             self.coin_list = CoinList(self.scene["Coins"])
@@ -278,20 +283,14 @@ class GameView(arcade.View):
         self.minimap.setup((self.map_width, self.map_height))
 
     def on_key_press(self, key, modifiers):
-        if key == arcade.key.ESCAPE:
-            self.sound_player.music_playback.delete()
-            self.__from.continue_enabled = True
-            self.__from.save_game_state(self)
-            self.window.show_view(self.__from)
+        if key == arcade.key.ESCAPE :
+            self.return_to_menu()
         if key == arcade.key.LEFT or key == arcade.key.A:
-            self.left_pressed = True
+            self.left()
         elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.right_pressed = True
+            self.right()
         elif key == arcade.key.UP or key == arcade.key.W:
-            if self.physics_engine.is_on_ground(self.player_sprite):
-                impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
-                self.physics_engine.apply_impulse(self.player_sprite, impulse)
-                self.sound_player.sound_jump()
+            self.up()
         elif key == arcade.key.N:
             self.minimap.minimap_on = not self.minimap.minimap_on
         logger.debug(f"key {key} pressed, minimap_on: {self.minimap.minimap_on}")
@@ -306,6 +305,22 @@ class GameView(arcade.View):
 
         if not self.setup_called:
             self.setup()
+
+        self.left_pressed = self.handler.controls["left"]
+        self.right_pressed = self.handler.controls["right"]
+
+        if self.handler.controls["up"] or self.handler.controls["a"]:
+            self.up()
+            self.handler.controls["up"] = False
+            self.handler.controls["a"] = False
+        elif self.handler.controls["y"]:
+            logger.debug(f"minimap is {'on' if self.minimap.minimap_on else 'off'}")
+            self.handler.controls["y"] = False
+            self.switch_minimap()
+        elif self.handler.controls["select"]:
+            self.handler.select_pressed = False
+            self.handler.start_pressed = False
+            self.return_to_menu()
 
         if self.player_sprite.center_y < 16:
             if self.life_points <= 0:
@@ -403,7 +418,9 @@ class GameView(arcade.View):
             self.timer.start()
 
     def on_hide_view(self) -> None:
+        self.sound_player.stop_playing_music()
         self.timer.pause()
+        self.handler.controls["select"] = False
 
     def on_draw(self):
         """Draw everything"""
@@ -418,3 +435,26 @@ class GameView(arcade.View):
                 self.minimap.draw_outline()
             for widget in self.game_ui.widgets:
                 widget.draw()
+
+    def return_to_menu(self):
+        self.sound_player.music_playback.delete()
+        self.__from.continue_enabled = True
+        self.__from.save_game_state(self)
+        self.window.show_view(self.__from)
+        self.handler.controls["back"] = False
+        self.handler.controls["start"] = False
+
+    def left(self):
+        self.left_pressed = True
+
+    def right(self):
+        self.right_pressed = True
+
+    def up(self):
+        if self.physics_engine.is_on_ground(self.player_sprite):
+            impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
+            self.physics_engine.apply_impulse(self.player_sprite, impulse)
+            self.sound_player.sound_jump()
+
+    def switch_minimap(self):
+        self.minimap.minimap_on = not self.minimap.minimap_on
