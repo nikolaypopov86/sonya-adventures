@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="41">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="41">
  <properties>
   <property name="seconds" type="int" value="300"/>
  </properties>
@@ -23,7 +23,12 @@
    eJztl00OhCAMhZnVmDg/7vQM3v+AwwJi0xQGaJ8Yw5e8hESUV2gBnRsMBgjej6P9DLoqqzs8TkESNCYNExOdn9wYK/NKZQH9XhzLmo+P7+u1+/Yc9HK28VitUwQ9J61wX1pvcW0GOjYmRK1SStaNe+qRy1Z1ic5T7lPj+9+7MZblhnVnsU6tZ+UZSPsvoqZq46zpj8ztXtT4ar1Lofcg5HlRwll3AWRuW4K6c1uQ2ockzykh/Ej/Ey2SPJb4p89oH42XlGrnI+e7dMwfNkgLTw==
   </data>
  </layer>
- <layer id="4" name="Lvl Wall" width="40" height="30">
+ <layer id="14" name="Edge" width="40" height="30" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJztzjENACAQADHcvH+HSGC4AUJaBZ31trkdOPBr/Bq/xq/xa/wav8av8Wv8Gr/Gr3n9x982yWUEHg==
+  </data>
+ </layer>
+ <layer id="4" name="Lvl Wall" width="40" height="30" opacity="0.01">
   <data encoding="base64" compression="zlib">
    eJztzjENACAQALG3gX+jSGC4AUhaBZ1517odOPBr/Bq/xq/xa/wav8av8Wv8Gr/GD/62AQ6qAnI=
   </data>

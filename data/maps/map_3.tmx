@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="109">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="109">
  <properties>
   <property name="seconds" value="300"/>
  </properties>
@@ -28,9 +28,14 @@
    eJztzsEJwCAQBED7/4eUYJv5iphwuZyvzMCCKOzaGgAAsNsxBQAAAPivc0jmvXLriz7k6T3bOfdn+qL9kVR37/5vdjO6W6UvznP/3f3bjUjPBaWhOd8=
   </data>
  </layer>
- <layer id="4" name="Lvl Wall" width="50" height="40" locked="1">
+ <layer id="4" name="Lvl Wall" width="50" height="40" locked="1" opacity="0.01">
   <data encoding="base64" compression="zlib">
    eJztzwEJADAMwLC5uH+nN3F4B4mCdma/8zvgER8tPlp8tPho8dHio8VHi48WHy0+Wny0+Gjx0eKjxUeLjxYfwCYXOu4DJg==
+  </data>
+ </layer>
+ <layer id="14" name="Edge" width="50" height="40" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJztzwENACAMwDDc3L9DTJAwSKtgm/WHuR1wiI8WHy0+Wny0+Gjx0eKjxUeLjxYfLT5afLT4aPHR4qPFR4sP4BUbjJAFfQ==
   </data>
  </layer>
  <objectgroup id="6" name="Moving Sprites" locked="1">

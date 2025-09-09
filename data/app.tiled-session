@@ -44,11 +44,11 @@
                 7,
                 11
             ],
-            "scale": 2,
-            "selectedLayer": 7,
+            "scale": 4,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 184,
-                "y": 160.25
+                "x": 94.625,
+                "y": 77
             }
         },
         "maps/map_1.tmx#fruit": {
@@ -60,19 +60,20 @@
             "scaleInDock": 1
         },
         "maps/map_1.tmx#world_tileset": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
         "maps/map_2.tmx": {
             "expandedObjectLayers": [
-                9,
-                8
+                8,
+                9
             ],
-            "scale": 1,
-            "selectedLayer": 9,
+            "scale": 2,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 320.5,
-                "y": 239.5
+                "x": 311.75,
+                "y": 183
             }
         },
         "maps/map_3.tmj": {
@@ -85,27 +86,27 @@
         },
         "maps/map_3.tmx": {
             "expandedObjectLayers": [
-                9,
+                6,
                 13,
-                6
+                9
             ],
-            "scale": 0.75,
-            "selectedLayer": 9,
+            "scale": 2,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 400,
-                "y": 319.33333333333326
+                "x": 131.25,
+                "y": 156.5
             }
         },
         "maps/map_4.tmx": {
             "expandedObjectLayers": [
-                9,
-                8
+                8,
+                9
             ],
-            "scale": 0.75,
-            "selectedLayer": 9,
+            "scale": 2,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 380.66666666666663,
-                "y": 289.33333333333326
+                "x": 188.25,
+                "y": 391.5
             }
         },
         "maps/map_5.tmx": {
@@ -166,7 +167,7 @@
         "tilesets/coin.tsx"
     ],
     "project": "app.tiled-project",
-    "property.type": "int",
+    "property.type": "color",
     "recentFiles": [
         "tilesets/platforms.tsx",
         "tilesets/world_tileset.tsx",
