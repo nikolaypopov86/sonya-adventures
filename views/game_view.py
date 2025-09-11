@@ -1,17 +1,19 @@
 import logging
-import os
+import pprint
 
 from arcade import SpriteList, Scene, TileMap
 
 from entities.coin import CoinList
-from engine import PhysicsEngine
+from base.engine import PhysicsEngine
 from entities.fruit import FruitList
 from entities.heart import HeartList
 from entities.sprites import PlayerSprite
 from misc.config import AppConfig
 from misc.sound_player import SoundPlayer
 from entities.minimap import MiniMap
-from handlers import ControllerHandler
+from handlers import GameController
+from controllers.keyboard import Keyboard
+from base.camera import PlayerCamera
 
 import arcade
 
@@ -52,6 +54,7 @@ class GameView(arcade.View):
         self.wall_list: arcade.SpriteList | None = None
         self.item_list: arcade.SpriteList | None = None
         self.moving_sprites_list: arcade.SpriteList | None = None
+        self.lvl_wall_list: arcade.SpriteList | None = None
 
         # Track the current state of what key is pressed
         self.left_pressed: bool = False
@@ -67,7 +70,7 @@ class GameView(arcade.View):
         self.end_of_map = None
 
         # Camera
-        self.camera: arcade.Camera2D | None = None
+        self.camera: PlayerCamera | None = None
         self.gui_camera: arcade.Camera2D | None = None
 
         # Score
@@ -119,7 +122,8 @@ class GameView(arcade.View):
 
         self.next_lvl: bool = True
 
-        self.handler: ControllerHandler | None = ControllerHandler()
+        self.keyboard: Keyboard  | None = None
+        self.main_controller: GameController | None = None
 
 
     def setup(self):
@@ -129,18 +133,24 @@ class GameView(arcade.View):
 
         self.setup_called = True
 
+        self.keyboard = Keyboard()
+        self.main_controller = GameController()
+
         # Create the sprite lists
         self.player_list = arcade.SpriteList()
 
         __coin_list = None
         __fruit_list = None
         __heart_list = None
+        __item_list = None
         if self.scene is not None and "Coins" in self.scene:
             __coin_list = CoinList(self.coin_list)
         if self.scene is not None and "Fruits" in self.scene:
             __fruit_list = FruitList(self.fruit_list)
         if self.scene is not None and "Hearts" in self.scene:
             __heart_list = HeartList(self.heart_list)
+        if self.scene is not None and "Items" in self.scene:
+            __item_list = self.item_list
 
         layer_options = {
             "Platforms": {
@@ -164,9 +174,6 @@ class GameView(arcade.View):
 
         logger.info(f"level: {self.level}")
 
-        self.map_width = tile_map.width * tile_map.tile_width * tile_map.scaling
-        self.map_height = tile_map.height * tile_map.tile_height * tile_map.scaling
-
         logger.info(f"map size: {self.map_width} X {self.map_height}")
 
         self.end_of_map = (tile_map.width * tile_map.tile_width) * tile_map.scaling
@@ -176,10 +183,9 @@ class GameView(arcade.View):
 
         logger.debug(f"scene: {self.scene.__dict__}")
 
-        self.camera = arcade.Camera2D()
-        logger.debug(f"camera activate: {self.camera.width}, {self.camera.height}")
-        self.gui_camera = arcade.Camera2D()
-        logger.debug(f"gui_camera activate: {self.gui_camera.width}, {self.gui_camera.height}")
+
+        self.map_width = tile_map.width * tile_map.tile_width * tile_map.scaling
+        self.map_height = tile_map.height * tile_map.tile_height * tile_map.scaling
 
         if self.reset_coin:
             self.coin_list = CoinList(self.scene["Coins"])
@@ -221,6 +227,9 @@ class GameView(arcade.View):
                 sprite_list=__heart_list.obj
             )
 
+            logger.debug(pprint.pprint(self.scene.__dict__))
+            self.scene.add_sprite_list_before("Items", "Foreground", sprite_list=__item_list)
+
             self.reset_coin = True
 
         # Create player sprite
@@ -235,6 +244,14 @@ class GameView(arcade.View):
         # Pymunk Physics Engine Setup
         damping = app_config.DEFAULT_DUMPING
         gravity = (0, -app_config.GRAVITY)
+
+        self.lvl_wall_list = self.scene["Lvl Wall"]
+
+        self.camera = PlayerCamera(self.map_width, self.map_height, self.player_sprite)
+        logger.debug(f"camera activate: {self.camera.width}, {self.camera.height}")
+
+        self.gui_camera = arcade.Camera2D()
+        logger.debug(f"gui_camera activate: {self.gui_camera.width}, {self.gui_camera.height}")
 
         self.physics_engine = PhysicsEngine(
             damping=damping,
@@ -293,44 +310,24 @@ class GameView(arcade.View):
         self.minimap.setup((self.map_width, self.map_height))
 
     def on_key_press(self, key, modifiers):
-        if key == arcade.key.ESCAPE :
-            self.return_to_menu()
-        if key == arcade.key.LEFT or key == arcade.key.A:
-            self.left()
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.right()
-        elif key == arcade.key.UP or key == arcade.key.W:
-            self.up()
-        elif key == arcade.key.N:
-            self.minimap.minimap_on = not self.minimap.minimap_on
-        logger.debug(f"key {key} pressed, minimap_on: {self.minimap.minimap_on}")
+        self.keyboard.on_key_press(key, modifiers)
 
     def on_key_release(self, key, modifiers):
-        if key == arcade.key.LEFT or key == arcade.key.A:
-            self.left_pressed = False
-        elif key == arcade.key.RIGHT or key == arcade.key.D:
-            self.right_pressed = False
+        self.keyboard.on_key_release(key, modifiers)
 
     def on_update(self, delta_time):
 
         if not self.setup_called:
             self.setup()
 
-        self.left_pressed = self.handler.controls["left"]
-        self.right_pressed = self.handler.controls["right"]
+        if self.main_controller.controls["map"]:
+            self.minimap.minimap_on = not self.minimap.minimap_on
+            self.main_controller.controls["map"] = False
 
-        if self.handler.controls["up"] or self.handler.controls["a"]:
-            self.up()
-            self.handler.controls["up"] = False
-            self.handler.controls["a"] = False
-        elif self.handler.controls["y"]:
-            logger.debug(f"minimap is {'on' if self.minimap.minimap_on else 'off'}")
-            self.handler.controls["y"] = False
-            self.switch_minimap()
-        elif self.handler.controls["select"]:
-            self.handler.select_pressed = False
-            self.handler.start_pressed = False
-            self.return_to_menu()
+        if self.main_controller.controls["select"]:
+            logger.debug(f"select control's state is true. return to menu!")
+            self._return_to_menu()
+
 
         if self.player_sprite.center_y < 16:
             if self.life_points <= 0:
@@ -381,39 +378,23 @@ class GameView(arcade.View):
             self.fruit_count
         )
 
+        # TODO: сделать так, чтобы стена исчезала, когда фруктики собраны
+        # logger.debug(f"fruit count: {self.fruit_count}, fruit total: {self.fruit_total}")
         if "Lvl Wall" in self.scene and self.fruit_count >= self.fruit_total:
-            self.scene.remove_sprite_list_by_name("Lvl Wall")
+            logger.debug(f"{pprint.pprint(self.scene.__dict__)}")
+            logger.info("Lvl Wall removed !")
+            self.physics_engine.remove_sprite(self.lvl_wall_list.sprite_list.pop())
+            self.scene.remove_sprite_list_by_object(self.lvl_wall_list)
+            logger.debug(f"{pprint.pprint(self.scene.__dict__)}")
+            self.scene.update(delta_time)
 
         self.minimap.sprite_lists = tuple(self.scene[key] for key in app_config.MINIMAP_SPRITE_LISTS)
         self.minimap.update(self.player_sprite)
 
-        self.physics_engine.move_player(self.left_pressed, self.right_pressed)
-        camera_min_x = app_config.WINDOW_WIDTH // 2
-        camera_max_x = self.map_width  - (app_config.WINDOW_WIDTH // 2)
-        camera_min_y = app_config.WINDOW_HEIGHT // 2
-        camera_max_y = self.map_height  - (app_config.WINDOW_HEIGHT // 2)
+        self.physics_engine.move_player()
 
-        camera_x: int = 0
-        camera_y: int = 0
+        self.camera.set_position()
 
-        player_x = self.player_sprite.position[0]
-        player_y = self.player_sprite.position[1]
-
-        if player_x < camera_min_x:
-            camera_x = camera_min_x
-        elif camera_min_x < player_x < camera_max_x:
-            camera_x = player_x
-        else:
-            camera_x = camera_max_x
-
-        if player_y < camera_min_y:
-            camera_y = camera_min_y
-        elif camera_min_y < player_y < camera_max_y:
-            camera_y = player_y
-        else:
-            camera_y = camera_max_y
-
-        self.camera.position = camera_x, camera_y
         self.physics_engine.step()
         self.physics_engine.rotate_moving(delta_time)
 
@@ -430,7 +411,7 @@ class GameView(arcade.View):
     def on_hide_view(self) -> None:
         self.sound_player.stop_playing_music()
         self.timer.pause()
-        self.handler.controls["select"] = False
+        self.main_controller.controls["select"] = False
 
     def on_draw(self):
         """Draw everything"""
@@ -446,25 +427,19 @@ class GameView(arcade.View):
             for widget in self.game_ui.widgets:
                 widget.draw()
 
-    def return_to_menu(self):
+    def _return_to_menu(self):
         self.sound_player.music_playback.delete()
         self.__from.continue_enabled = True
         self.__from.save_game_state(self)
         self.window.show_view(self.__from)
-        self.handler.controls["back"] = False
-        self.handler.controls["start"] = False
+        self.main_controller.controls["back"] = False
+        self.main_controller.controls["start"] = False
 
-    def left(self):
-        self.left_pressed = True
-
-    def right(self):
-        self.right_pressed = True
-
-    def up(self):
-        if self.physics_engine.is_on_ground(self.player_sprite):
-            impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
-            self.physics_engine.apply_impulse(self.player_sprite, impulse)
-            self.sound_player.sound_jump()
-
-    def switch_minimap(self):
-        self.minimap.minimap_on = not self.minimap.minimap_on
+    def clear_lists(self):
+        self.coin_list = None
+        self.player_list = None
+        self.heart_list = None
+        self.fruit_list = None
+        self.lvl_wall_list = None
+        self.wall_list = None
+        self.item_list = None

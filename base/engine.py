@@ -1,11 +1,15 @@
 from typing import Tuple
 
 from misc.config import AppConfig
+from misc.app_utils import singleton
+from handlers import GameController
+from misc.sound_player import SoundPlayer
 
 import arcade
 from arcade import PymunkPhysicsEngine, Sprite
 
 app_config = AppConfig()
+
 
 class PhysicsEngine(PymunkPhysicsEngine):
     """
@@ -20,6 +24,10 @@ class PhysicsEngine(PymunkPhysicsEngine):
             damping=damping,
             gravity=gravity,
         )
+
+        self.main_controller = GameController()
+
+        self.sound_player = SoundPlayer()
 
         self.player_sprite: arcade.Sprite | None = None
         self.platform_list = None
@@ -108,21 +116,18 @@ class PhysicsEngine(PymunkPhysicsEngine):
         self.moving_sprites_list = sprite_list
 
     def move_player(
-            self,
-            left_pressed: bool,
-            right_pressed: bool,
-            # up_pressed: bool
+            self
     ) -> None:
         is_on_ground = self.is_on_ground(self.player_sprite)
 
-        if left_pressed and not right_pressed:
+        if self.main_controller.controls["left"] and not self.main_controller.controls["right"]:
             if is_on_ground:
                 force = (-app_config.PLAYER_MOVE_FORCE_ON_GROUND, 0)
             else:
                 force = (-app_config.PLAYER_MOVE_FORCE_IN_AIR, 0)
             self.apply_force(self.player_sprite, force)
             self.set_friction(self.player_sprite, 0)
-        elif right_pressed and not left_pressed:
+        elif self.main_controller.controls["right"] and not self.main_controller.controls["left"]:
             if is_on_ground:
                 force = (app_config.PLAYER_MOVE_FORCE_ON_GROUND, 0)
             else:
@@ -132,8 +137,11 @@ class PhysicsEngine(PymunkPhysicsEngine):
         else:
             self.set_friction(self.player_sprite, 1.0)
 
-        if self.player_sprite.left < 0:
-            self.player_sprite.left = 0
+        if self.main_controller.controls["up"]:
+            if self.is_on_ground(self.player_sprite):
+                impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
+                self.apply_impulse(self.player_sprite, impulse)
+                self.sound_player.sound_jump()
 
     def rotate_moving(self, delta_time):
         for moving_sprite in self.moving_sprites_list:

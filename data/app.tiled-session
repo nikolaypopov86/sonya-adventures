@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/map_4.tmx",
+    "activeFile": "maps/map_1.tmx",
     "expandedProjectPaths": [
+        ".",
         "maps",
-        "tilesets",
-        "."
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -45,10 +45,10 @@
                 11
             ],
             "scale": 4,
-            "selectedLayer": 2,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 94.625,
-                "y": 77
+                "x": 428.625,
+                "y": 179.25
             }
         },
         "maps/map_1.tmx#fruit": {
@@ -91,7 +91,7 @@
                 9
             ],
             "scale": 2,
-            "selectedLayer": 5,
+            "selectedLayer": -1,
             "viewCenter": {
                 "x": 131.25,
                 "y": 156.5
@@ -103,18 +103,18 @@
                 9
             ],
             "scale": 2,
-            "selectedLayer": 4,
+            "selectedLayer": -1,
             "viewCenter": {
                 "x": 188.25,
                 "y": 391.5
             }
         },
         "maps/map_5.tmx": {
-            "scale": 0.5529296874999999,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": -1,
             "viewCenter": {
-                "x": 639.3217944189333,
-                "y": 479.2652772871778
+                "x": 1022.25,
+                "y": 832.5
             }
         },
         "tilesets/coin.tsx": {
@@ -164,7 +164,8 @@
         "maps/map_4.tmx",
         "maps/map_1.tmx",
         "maps/map_3.tmx",
-        "tilesets/coin.tsx"
+        "tilesets/coin.tsx",
+        "maps/map_5.tmx"
     ],
     "project": "app.tiled-project",
     "property.type": "color",
@@ -172,14 +173,14 @@
         "tilesets/platforms.tsx",
         "tilesets/world_tileset.tsx",
         "maps/map_2.tmx",
+        "maps/map_4.tmx",
+        "maps/map_5.tmx",
         "tilesets/coin.tsx",
         "maps/map_3.tmx",
         "maps/map_1.tmx",
-        "maps/map_4.tmx",
         "tilesets/fruit.tsx",
         "maps/map_1.tmj",
-        "maps/map4.tmx",
-        "maps/map_5.tmx"
+        "maps/map4.tmx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",
