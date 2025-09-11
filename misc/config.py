@@ -84,6 +84,7 @@ class AppConfig:
         self.VOLUME_SOUND = float(os.environ.get("VOLUME_SOUND"))
 
         self.BASE_LVL = int(os.environ.get("BASE_LVL"))
+        self.BASE_LIFE_POINTS = int(os.environ.get("BASE_LIFE_POINTS"))
 
         self.MENU_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MENU_BACKGROUND_COLOR").split(",")))
 

@@ -141,7 +141,6 @@ class MainView(arcade.View):
         self.game_state = None
         game_view = GameView(self.window, self)
         game_view.setup()
-        game_view.level = app_config.BASE_LVL
         self.window.show_view(game_view)
 
     def on_click_continue(self):

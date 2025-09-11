@@ -103,3 +103,4 @@ class PlayerSprite(arcade.Sprite):
         grid_y = 6
         self.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
         self.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2
+        self.update()

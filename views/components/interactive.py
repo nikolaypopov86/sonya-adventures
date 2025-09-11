@@ -1,9 +1,7 @@
 from typing import Union, Tuple, Callable
 import logging
 
-from controllers.gamepad import Gamepad
-
-from handlers import GameController
+from controllers.controller import GameController
 from arcade.gui import UIFlatButton, UITextureToggle, UISlider
 
 logger = logging.getLogger(__name__)
@@ -35,7 +33,9 @@ class InteractiveComponentTuple:
             self.components_list[self.focused][0].focused = True
             self.main_controller.controls["down"] = False
         elif self.main_controller.controls["start"]:
+            logger.debug("start pressed")
             self.main_controller.controls["start"] = False
+            logger.debug(f"вызов функции {self.components_list[self.focused]}")
             self.components_list[self.focused][1]()
         elif self.main_controller.controls["left"] and isinstance(self.components_list[self.focused][0], UISlider):
             logger.debug("left pressed on dpad at slider")
@@ -49,5 +49,7 @@ class InteractiveComponentTuple:
             if slider.value <= (slider.max_value - slider.step):
                 slider.value += slider.step
             self.main_controller.controls["right"] = False
+            self.components_list[self.focused][1]()
+
         
         

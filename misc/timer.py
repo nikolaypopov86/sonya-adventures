@@ -50,7 +50,7 @@ class SimpleTimer:
 
     # TODO: решить проблему - установка времени при отключении / включении таймера
     def left_text(self):
-        if app_config.TIMER_ON:
+        if app_config.TIMER_ON and self.timer_on:
             l = int(self.time_start + self.seconds - monotonic())
             return "{:02d}:{:02d}".format(l // 60, l % 60)
         return "--:--"

@@ -1,8 +1,7 @@
 from typing import Tuple
 
 from misc.config import AppConfig
-from misc.app_utils import singleton
-from handlers import GameController
+from controllers.controller import GameController
 from misc.sound_player import SoundPlayer
 
 import arcade

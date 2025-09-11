@@ -19,6 +19,8 @@ class SoundPlayer:
         self.jump_sound = arcade.load_sound("data/sounds/jump.wav")
         self.music_playback: Player | None = None
 
+        self.is_playing = False
+
     def play_music(
             self
     ) -> None:
@@ -28,6 +30,7 @@ class SoundPlayer:
             volume=self.music_volume,
             loop=True
         )
+        self.is_playing = True
 
     def sound_jump(
             self
@@ -59,3 +62,4 @@ class SoundPlayer:
         logger.debug(f"stop playing music")
         self.music_playback.delete()
         logger.debug(f"music playback={self.music_playback}")
+        self.is_playing = False

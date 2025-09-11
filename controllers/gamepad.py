@@ -1,7 +1,7 @@
 import logging
 
 from misc.app_utils import singleton
-from handlers import GameController
+from controllers.controller import GameController
 
 from pyglet.input import Controller, ControllerManager, DeviceOpenException
 from pyglet.math import Vec2
@@ -99,7 +99,7 @@ class Gamepad:
 
 
 def map_button_name(button_name):
-    if button_name == "back": control_name = "back"
+    if button_name == "back": control_name = "select"
     elif button_name == "y": control_name = "map"
     elif button_name == "a": control_name = "up"
     else: control_name = button_name

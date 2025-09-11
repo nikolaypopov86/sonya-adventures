@@ -1,6 +1,6 @@
 import logging
 
-from handlers import GameController
+from controllers.controller import GameController
 from misc.app_utils import singleton
 
 import arcade
