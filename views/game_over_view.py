@@ -1,6 +1,9 @@
 import logging
+from typing import Callable
 
 from misc.config import AppConfig
+from .components.interactive import InteractiveComponentTuple
+from controllers.controller import GameController
 
 import arcade
 import arcade.gui
@@ -13,13 +16,6 @@ app_config = AppConfig()
 BUTTON_WIDTH = app_config.WINDOW_WIDTH//4
 BUTTON_HEIGHT = app_config.WINDOW_HEIGHT//15
 
-def get_buttons() -> tuple[UIFlatButton]:
-    menu_button = arcade.gui.UIFlatButton(
-        text="В меню",
-        width=BUTTON_WIDTH,
-        height=BUTTON_HEIGHT
-    )
-    return menu_button,
 
 def get_text_widget() -> arcade.gui.UILabel:
     text_widget = arcade.gui.UILabel(
@@ -42,9 +38,17 @@ class GameOverView(arcade.View):
 
         self.result: int | None = None
 
-        self.main_menu = main_menu
+        self.main_menu_view = main_menu
+
+        self.interactive_components: InteractiveComponentTuple | None = None
+
+        self.controller: GameController | None = None
+
+
 
     def on_show_view(self) -> None:
+        self.controller = GameController()
+
         logger.debug(f"Выполнение метода on_show_view")
         arcade.set_background_color(app_config.MENU_BACKGROUND_COLOR)
 
@@ -60,12 +64,15 @@ class GameOverView(arcade.View):
         if self.anchor is not None:
             self.anchor.clear()
 
-        menu_button = get_buttons()[0]
+        buttons = self.get_buttons()
 
-        @menu_button.event("on_click")
+        self.interactive_components = InteractiveComponentTuple(buttons)
+
+        menu_button = buttons[0]
+
+        @menu_button[0].event("on_click")
         def on_click_menu_button(event):
-            self.main_menu.continue_enabled = False
-            self.window.show_view(self.main_menu)
+            self.show_menu()
 
         self.grid = arcade.gui.UIGridLayout(
             x=app_config.WINDOW_WIDTH // 3,
@@ -76,7 +83,7 @@ class GameOverView(arcade.View):
         score_widget = get_text_widget()
         score_widget.text = f"Ваш результат: {self.result}"
 
-        self.grid.add(menu_button, 0, 1)
+        self.grid.add(menu_button[0], 0, 1)
         self.grid.add(score_widget, 0, 0)
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorLayout())
@@ -90,10 +97,12 @@ class GameOverView(arcade.View):
 
         self.manager.enable()
 
-
     def on_hide_view(self) -> None:
         logger.debug(f"Выполнение метода on_hide_view")
         self.manager.disable()
+
+    def on_update(self, delta_time: float) -> bool | None:
+        self.interactive_components.update()
 
     def on_draw(self) -> bool | None:
         self.clear()
@@ -107,3 +116,14 @@ class GameOverView(arcade.View):
     def set_result(self, value: int):
         self.result = value
 
+    def show_menu(self):
+        self.main_menu_view.continue_enabled = False
+        self.window.show_view(self.main_menu_view)
+
+    def get_buttons(self) -> tuple[tuple[UIFlatButton, Callable], ...]:
+        menu_button = arcade.gui.UIFlatButton(
+            text="В меню",
+            width=BUTTON_WIDTH,
+            height=BUTTON_HEIGHT
+        )
+        return (menu_button, self.show_menu),

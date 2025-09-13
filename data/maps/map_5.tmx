@@ -2,6 +2,7 @@
 <map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="80" height="60" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="133">
  <properties>
   <property name="seconds" type="int" value="600"/>
+  <property name="text_color" type="color" value="#ff000000"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/world_tileset.tsx"/>
  <tileset firstgid="257" source="../tilesets/platforms.tsx"/>

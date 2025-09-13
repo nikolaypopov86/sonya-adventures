@@ -84,6 +84,7 @@ class AppConfig:
         self.VOLUME_SOUND = float(os.environ.get("VOLUME_SOUND"))
 
         self.BASE_LVL = int(os.environ.get("BASE_LVL"))
+        self.BASE_LIFE_POINTS = int(os.environ.get("BASE_LIFE_POINTS"))
 
         self.MENU_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MENU_BACKGROUND_COLOR").split(",")))
 
@@ -99,6 +100,7 @@ class AppConfig:
         self.TIMER_ON = int(os.environ.get("TIMER_ON"))
 
         self.FONT_NAME = os.environ.get("FONT_NAME")
+        self.FONT_COLOR = tuple(map(lambda x: int(x), os.environ.get("FONT_COLOR").split(",")))
         self.MENU_FONT_NAMES = tuple(os.environ.get("MENU_FONT_NAMES").split(","))
         self.MENU_FONT_SIZE = int(os.environ.get("MENU_FONT_SIZE"))
 

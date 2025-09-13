@@ -1,9 +1,11 @@
+import logging
 import os
 from .app_utils import singleton
 
 import arcade
 from pyglet.media import Player
 
+logger = logging.getLogger(__name__)
 
 @singleton
 class SoundPlayer:
@@ -17,14 +19,18 @@ class SoundPlayer:
         self.jump_sound = arcade.load_sound("data/sounds/jump.wav")
         self.music_playback: Player | None = None
 
+        self.is_playing = False
+
     def play_music(
             self
     ) -> None:
+        logger.debug(f"start playing music: vol={self.music_volume}")
         self.music_playback = arcade.play_sound(
             self.music,
             volume=self.music_volume,
             loop=True
         )
+        self.is_playing = True
 
     def sound_jump(
             self
@@ -40,6 +46,7 @@ class SoundPlayer:
 
     @music_vol.setter
     def music_vol(self, value: float):
+        logger.debug(f"music vol set to: {value}")
         self.music_volume = value
 
     @property
@@ -48,7 +55,11 @@ class SoundPlayer:
 
     @sound_vol.setter
     def sound_vol(self, value: float):
+        logger.debug(f"sound vol set to: {value}")
         self.sound_volume = value
 
     def stop_playing_music(self):
+        logger.debug(f"stop playing music")
         self.music_playback.delete()
+        logger.debug(f"music playback={self.music_playback}")
+        self.is_playing = False

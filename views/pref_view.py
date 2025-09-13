@@ -2,6 +2,7 @@ import logging
 
 from .components.checkbox import CheckboxGroupBuilder
 from misc.config import AppConfig
+from .components.interactive import InteractiveComponentTuple
 from .game_view import GameView
 from misc.sound_player import SoundPlayer
 from misc.app_utils import singleton
@@ -28,6 +29,8 @@ class PreferencesView(arcade.View):
         super().__init__()
         logger.debug("Выполнение функции __init__")
 
+        self.interactive_components: InteractiveComponentTuple | None = None
+
         self.manager = arcade.gui.UIManager()
 
         self.sound_player = SoundPlayer()
@@ -48,27 +51,28 @@ class PreferencesView(arcade.View):
             "Игра с таймером"
         ).build()
 
-        @music_vol_slider.event("on_change")
-        def on_change_music_vol(event):
-            logger.debug(f"Изменено значение громкости музыки: {music_vol_slider.value}")
-            self.sound_player.music_vol = music_vol_slider.value
+        @music_vol_slider[1].event("on_change")
+        def on_change_music_vol(event = None):
+            logger.debug(f"Изменено значение громкости музыки: {music_vol_slider[1].value}")
+            self.sound_player.music_vol = music_vol_slider[1].value
 
-        @sound_vol_slider.event("on_change")
-        def on_change_sound_vol(event):
-            logger.debug(f"Изменено значение громкости звуков: {sound_vol_slider.value}")
-            self.sound_player.sound_vol = sound_vol_slider.value
+        @sound_vol_slider[1].event("on_change")
+        def on_change_sound_vol(event = None):
+            logger.debug(f"Изменено значение громкости звуков: {sound_vol_slider[1].value}")
+            self.sound_player.sound_vol = sound_vol_slider[1].value
 
         return_button = arcade.gui.UIFlatButton(text="Назад", width=BUTTON_WIDTH, height=BUTTON_HEIGHT)
 
         @return_button.event("on_click")
-        def on_click_return_button(event):
+        def on_click_return_button(event = None):
             logger.debug("Нажата кнопка 'Назад'")
             self.window.show_view(main_view)
 
         @timer_checkbox.event("on_change")
-        def on_click_timer_checkbox(event):
+        def on_click_timer_checkbox(event = None):
             logger.debug(f"Вызов обработчика чекбокса таймера. Состояние чекбокса: {app_config.TIMER_ON}")
             app_config.TIMER_ON = not app_config.TIMER_ON
+            timer_checkbox.value = not timer_checkbox.value
             logger.debug(f"Вызов обработчика чекбокса таймера. Новое состояние чекбокса: {app_config.TIMER_ON}")
 
 
@@ -76,9 +80,17 @@ class PreferencesView(arcade.View):
             column_count=1, row_count=4, horizontal_spacing=5, vertical_spacing=30
         )
 
+        self.interactive_components = InteractiveComponentTuple(
+            (
+                (sound_vol_slider[1], on_change_sound_vol),
+                (music_vol_slider[1], on_change_music_vol),
+                (timer_checkbox, on_click_timer_checkbox),
+                (return_button, on_click_return_button)
+            )
+        )
 
-        self.grid.add(music_vol_slider, 0, 0)
-        self.grid.add(sound_vol_slider, 0, 1)
+        self.grid.add(sound_vol_slider[0], 0, 0)
+        self.grid.add(music_vol_slider[0], 0, 1)
         self.grid.add(timer_checkbox_group, 0, 2)
         self.grid.add(return_button, 0, 3)
 
@@ -129,3 +141,5 @@ class PreferencesView(arcade.View):
 
             self.window.show_view(game_view)
 
+    def on_update(self, delta_time: float) -> bool | None:
+        self.interactive_components.update()

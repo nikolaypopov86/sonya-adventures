@@ -8,10 +8,9 @@ from views.components.game_ui_text import GameUIText
 app_config = AppConfig()
 
 EMOJI_FONT_NAME = "Segoe UI Emoji"
-TEXT_COLOR = arcade.csscolor.BLACK
 
 class GameUI:
-    def __init__(self):
+    def __init__(self, text_color=app_config.FONT_COLOR):
         self.score_text: arcade.Text | None = None
         self.life_text: arcade.Text | None = None
         self.coins_to_find: arcade.Text | None = None
@@ -21,6 +20,7 @@ class GameUI:
         self.fruit_symb: arcade.Text | None = None
         self.fruit_to_find: arcade.Text | None = None
 
+        self.text_color = text_color
         self.widgets: Tuple[arcade.Text] | None = None
 
     def init(
@@ -38,7 +38,7 @@ class GameUI:
             text=f"Score: {score}",
             x=app_config.WINDOW_WIDTH * 7 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
-            color=TEXT_COLOR
+            color=self.text_color
         )
 
         self.life_text = GameUIText(
@@ -56,7 +56,7 @@ class GameUI:
             text=f"{coin_total - coin_remained}/{coin_total}",
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
-            color=TEXT_COLOR,
+            color=self.text_color,
             font_name=app_config.FONT_NAME,
         )
 
@@ -81,7 +81,7 @@ class GameUI:
             f"{fruit_total - fruit_remained}/{fruit_total}",
             x=app_config.WINDOW_WIDTH * 4 // 42,
             y=app_config.WINDOW_HEIGHT * 86 // 100,
-            color=TEXT_COLOR,
+            color=self.text_color,
             font_name=app_config.FONT_NAME,
         )
 
@@ -90,7 +90,7 @@ class GameUI:
             x=app_config.WINDOW_WIDTH * 22 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
-            color=TEXT_COLOR
+            color=self.text_color
         )
 
         self.level_text = GameUIText(
@@ -98,7 +98,7 @@ class GameUI:
             x=app_config.WINDOW_WIDTH * 16 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
-            color=TEXT_COLOR,
+            color=self.text_color,
             font_name=app_config.FONT_NAME,
             font_size=app_config.WINDOW_HEIGHT * 2 // 100
         )

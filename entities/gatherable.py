@@ -35,3 +35,6 @@ class Gatherable:
             blend_function: tuple[int, int] | tuple[int, int, int, int] | None = None
     ):
         self.obj.draw(filter=filter, pixelated=pixelated, blend_function=blend_function)
+
+    def update(self, delta_time):
+        self.obj.update(delta_time)

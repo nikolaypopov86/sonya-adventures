@@ -32,6 +32,8 @@ window = arcade.Window(app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT, app_co
 logger.info(f"windows size: {app_config.WINDOW_WIDTH} X {app_config.WINDOW_HEIGHT}")
 logger.info(f"sprite image size: {app_config.SPRITE_IMAGE_SIZE}")
 logger.info(f"scaling: {app_config.SPRITE_SCALING_TILES}")
+logger.debug(f"pyglet.options: {pyglet.options.__dict__}")
+
 view = MainView()
 window.show_view(view)
 arcade.run()

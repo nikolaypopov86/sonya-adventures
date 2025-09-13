@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="123">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="124">
  <properties>
   <property name="seconds" type="int" value="600"/>
+  <property name="text_color" type="color" value="#ff000000"/>
  </properties>
  <tileset firstgid="1" source="../tilesets/world_tileset.tsx"/>
  <tileset firstgid="257" source="../tilesets/coin.tsx"/>
@@ -20,7 +21,7 @@
  </layer>
  <layer id="3" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztWEkOwjAMbPlBC+L/F/4JByIZy07GW1qhjuRDReItY8dhWS5cqMearIvKTERt7uuvno3IKqyrRLOZZUqLBUHGeVp1WHNsWe/JAYIq3vd0jnhy//zwABzi+Yvwnq6z9INMzlM92bVEgeZXwiifrQdxoPw9qg9z+1IMyD4qlI9aPBl9meugtrNA9c24S7zQuF2RkxEqemovhuy6yZhL+PdM/708RfdZejSi81lUV2hPtfZeqeeNkDEjRe5G7Z7fmDSgZ+LJxbLY51urXlQnlX2wvneG6NmgMXvOQoOnHyB+ajFLnMgu8co3R0OLT6qPKLg/kdkUtXE23RI3KjnjgRYn9/Mm7SVSFY9XL/ed+z9z1rW+OzJrxcO1CEcjeUXi9vikzQDZONP7ycqhKOei9V9xP5wBR3AiYvNMHP4HRPKp9WFpnrDqy4Y2E0vvMI+PvVz05ispVtRPy70x8/+nZs/ra0/nTIxi8IpkY/Styesru3Eflzcgkg56
+   eJztWEkOwjAMbPlBC+L/F/4JByIZy07GW1qhjuRDReItY8dhWS5cqMearIvKTERt7uuvno3IKqyrRLOZZUqLBUHGeVp1WHNsWe/JAYIq3vd0jnhy//zwABzi+Yvwnq6z9INMzlM92bVEgeZXwiifrQdxoPw9qg9z+1IMyD4qlI9aPBl9meugtrNA9c24S7zQuF2RkxEqemovhuy6yZhL+PdM/708RfdZejSi81lUV2hPtfZeqeeNkDEjRe5G7Z7fmDSgZ+LJxbLY51urXlQnlX2wvneG6NmgMXvOQoOnHyB+ajFLnMgu8co3R0OLT6qPKLg/kdkUtXE23RI3KjnjgRYn9/Mm7SVSFY9XL/ed+z9z1rW+OzJrxcO1CEcjeUXi9vikzQDZONP7ycqhKOei9V9xP5wBR3AiYvNMHP4HRPKp9WFpnrDqy4Y2E0vvMI+PvVz05ispVtRPy70x8/+nZm8kHp0zgcTgEcnG6FuT11d24z4ubzsiDos=
   </data>
  </layer>
  <layer id="4" name="Lvl Wall" width="50" height="40" opacity="0.01">
@@ -35,7 +36,7 @@
  </layer>
  <layer id="5" name="Water" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztz0EKwCAMBED/f/cJ+WcvPaWm1oLgYQYWFJeorQEAAAAAAAA89TuR1lH0+mBG7le9PKfqfBEvmZ3vyN+3nvKHXUZ3zPars1ddhaRA7w==
+   eJztz0EKwCAMBED/f/cJ+WcvPaWmVorgYQYWFJeorQEAAAAAAAA89TuR1lH0+mBG7le9PKfqfBEvmZ3vyJ/3nvCHXUZ3zPars1ddg8VASg==
   </data>
  </layer>
  <objectgroup id="6" name="Moving Sprites">
@@ -107,7 +108,6 @@
   <object id="56" gid="257" x="63.3333" y="623.333" width="16" height="16"/>
   <object id="57" gid="257" x="79.6667" y="623" width="16" height="16"/>
   <object id="58" gid="257" x="97" y="623.667" width="16" height="16"/>
-  <object id="59" gid="257" x="0" y="624.333" width="16" height="16"/>
   <object id="60" gid="257" x="112.333" y="609" width="16" height="16"/>
   <object id="61" gid="257" x="127.667" y="608.667" width="16" height="16"/>
   <object id="62" gid="257" x="255.667" y="609" width="16" height="16"/>
@@ -147,6 +147,7 @@
   <object id="96" gid="257" x="271" y="464.667" width="16" height="16"/>
   <object id="97" gid="257" x="496" y="449.5" width="16" height="16"/>
   <object id="98" gid="257" x="464" y="544.5" width="16" height="16"/>
+  <object id="123" gid="257" x="112" y="624" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="9" name="Fruits">
   <object id="99" gid="270" x="128.25" y="559" width="16" height="16"/>
