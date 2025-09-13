@@ -57,7 +57,7 @@ class GameView(arcade.View):
         self.camera = PlayerCamera(self.level.map_width, self.level.map_height, self.level.player_sprite)
         self.gui_camera = Camera2D()
 
-        self.game_ui = GameUI()
+        self.game_ui = GameUI(self.level.ui_text_color)
         self.game_ui.init(
             self.level.score,
             self.level.life_points,

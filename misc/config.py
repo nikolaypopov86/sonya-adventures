@@ -100,6 +100,7 @@ class AppConfig:
         self.TIMER_ON = int(os.environ.get("TIMER_ON"))
 
         self.FONT_NAME = os.environ.get("FONT_NAME")
+        self.FONT_COLOR = tuple(map(lambda x: int(x), os.environ.get("FONT_COLOR").split(",")))
         self.MENU_FONT_NAMES = tuple(os.environ.get("MENU_FONT_NAMES").split(","))
         self.MENU_FONT_SIZE = int(os.environ.get("MENU_FONT_SIZE"))
 

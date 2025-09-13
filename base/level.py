@@ -1,5 +1,6 @@
 import logging
 import pprint
+from typing import Tuple
 
 from entities.gatherable import Gatherable
 from base.engine import PhysicsEngine
@@ -79,6 +80,8 @@ class Level:
         # Reset map
         self.reset_coin: bool = True
 
+        self.ui_text_color: Tuple[int, int, int, int] | None = None
+
         # Max life points
         self.max_life_points: int = 7
         # Life points
@@ -126,6 +129,8 @@ class Level:
             scaling=app_config.SPRITE_SCALING_TILES,
             layer_options=LAYER_OPTIONS
         )
+
+        self.ui_text_color = tile_map.properties["text_color"]
 
         logger.info(f"level: {self.lvl}")
 
@@ -260,10 +265,3 @@ class Level:
             self.scene.remove_sprite_list_by_object(self.lvl_wall_list)
             logger.debug(f"{pprint.pprint(self.scene.__dict__)}")
             self.scene.update(delta_time)
-
-
-    def remove_touched(self, sprite_list: Gatherable, counter):
-        delta_score, need_to_find, delta_count = sprite_list.remove_touched(self.player_sprite)
-        self.score += delta_score
-        counter += delta_count
-
