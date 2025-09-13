@@ -7,6 +7,8 @@ from .game_view import GameView
 from misc.sound_player import SoundPlayer
 from misc.app_utils import singleton
 from views.components.slider import SliderGroupBuilder
+from controllers.controller import GameController
+from controllers.keyboard import Keyboard
 
 import arcade
 import arcade.gui
@@ -34,6 +36,9 @@ class PreferencesView(arcade.View):
         self.manager = arcade.gui.UIManager()
 
         self.sound_player = SoundPlayer()
+
+        self.keyboard = Keyboard()
+        self.controller = GameController()
 
         sound_vol_slider = SliderGroupBuilder().set_text_label(
             "Громкость эффектов"
@@ -68,13 +73,15 @@ class PreferencesView(arcade.View):
             logger.debug("Нажата кнопка 'Назад'")
             self.window.show_view(main_view)
 
-        @timer_checkbox.event("on_change")
+        @timer_checkbox.event("on_click")
         def on_click_timer_checkbox(event = None):
             logger.debug(f"Вызов обработчика чекбокса таймера. Состояние чекбокса: {app_config.TIMER_ON}")
             app_config.TIMER_ON = not app_config.TIMER_ON
-            timer_checkbox.value = not timer_checkbox.value
             logger.debug(f"Вызов обработчика чекбокса таймера. Новое состояние чекбокса: {app_config.TIMER_ON}")
 
+        def on_switch_timer_checkbox(event = None):
+            on_click_timer_checkbox()
+            timer_checkbox.value = not timer_checkbox.value
 
         self.grid = arcade.gui.UIGridLayout(
             column_count=1, row_count=4, horizontal_spacing=5, vertical_spacing=30
@@ -84,7 +91,7 @@ class PreferencesView(arcade.View):
             (
                 (sound_vol_slider[1], on_change_sound_vol),
                 (music_vol_slider[1], on_change_music_vol),
-                (timer_checkbox, on_click_timer_checkbox),
+                (timer_checkbox, on_switch_timer_checkbox),
                 (return_button, on_click_return_button)
             )
         )
@@ -134,12 +141,7 @@ class PreferencesView(arcade.View):
         self.manager.draw()
 
     def on_key_press(self, key: int, modifiers: int) -> bool | None:
-        logger.debug(f"Выполнение функции on_key_press. Нажата клавиша {key} с модификаторами {modifiers}")
-        if key == arcade.key.ENTER:
-            game_view = GameView()
-            game_view.setup()
-
-            self.window.show_view(game_view)
+        self.keyboard.on_key_press(key, modifiers)
 
     def on_update(self, delta_time: float) -> bool | None:
         self.interactive_components.update()

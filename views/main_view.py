@@ -1,6 +1,7 @@
 import logging
 
 from controllers.gamepad import Gamepad
+from controllers.keyboard import Keyboard
 from .game_view import GameView
 from .pref_view import PreferencesView
 from misc.config import AppConfig
@@ -29,12 +30,15 @@ class MainView(arcade.View):
         self.anchor: arcade.gui.UIAnchorLayout | None = None
         self.game_state: arcade.View | None = None
         self.gamepad: Gamepad | None = None
+        self.keyboard: Keyboard | None = None
         self.interactive_components: InteractiveComponentTuple | None = None
         self.button_focused: int = 0
 
     def on_show_view(self):
         if self.gamepad is None:
             self.gamepad = Gamepad()
+
+        self.keyboard = Keyboard()
 
         """This is run once when we switch to this view"""
         logger.debug(f"Выполнение метода on_show_view")
@@ -165,3 +169,6 @@ class MainView(arcade.View):
         )
 
         return buttons if self.continue_enabled else buttons[1:]
+
+    def on_key_press(self, key: int, modifiers: int) -> bool | None:
+        self.keyboard.on_key_press(key, modifiers)

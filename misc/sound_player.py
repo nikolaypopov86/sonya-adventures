@@ -25,12 +25,13 @@ class SoundPlayer:
             self
     ) -> None:
         logger.debug(f"start playing music: vol={self.music_volume}")
-        self.music_playback = arcade.play_sound(
-            self.music,
-            volume=self.music_volume,
-            loop=True
-        )
-        self.is_playing = True
+        if not self.is_playing:
+            self.music_playback = arcade.play_sound(
+                self.music,
+                volume=self.music_volume,
+                loop=True
+            )
+            self.is_playing = True
 
     def sound_jump(
             self

@@ -50,6 +50,3 @@ class InteractiveComponentTuple:
                 slider.value += slider.step
             self.main_controller.controls["right"] = False
             self.components_list[self.focused][1]()
-
-        
-        

@@ -114,6 +114,7 @@ class GameView(arcade.View):
         pass
 
     def on_show_view(self) -> None:
+        self.level.sound_player.play_music()
         if app_config.TIMER_ON and self.level.timer:
             self.level.timer.start()
 
