@@ -36,7 +36,7 @@ class GameUI:
     ):
         self.score_text = GameUIText(
             text=f"Score: {score}",
-            x=app_config.WINDOW_WIDTH * 7 // 40,
+            x=app_config.WINDOW_WIDTH * 10 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             color=self.text_color
         )
@@ -87,7 +87,7 @@ class GameUI:
 
         self.timer_text = GameUIText(
             f"{timer_left}",
-            x=app_config.WINDOW_WIDTH * 22 // 40,
+            x=app_config.WINDOW_WIDTH * 24 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
             color=self.text_color
@@ -95,7 +95,7 @@ class GameUI:
 
         self.level_text = GameUIText(
             f"Lvl: {level}",
-            x=app_config.WINDOW_WIDTH * 16 // 40,
+            x=app_config.WINDOW_WIDTH * 19 // 40,
             y=app_config.WINDOW_HEIGHT * 93 // 100,
             anchor_x="center",
             color=self.text_color,
