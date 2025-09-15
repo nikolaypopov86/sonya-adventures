@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="428">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="428">
  <properties>
   <property name="seconds" type="int" value="1200"/>
   <property name="text_color" type="color" value="#ffffffff"/>
@@ -22,6 +22,11 @@
  <layer id="4" name="Edge" width="60" height="50" opacity="0.01">
   <data encoding="base64" compression="zlib">
    eJztzwENACAMwDBs3L9RXECytwq2ObvM74DH/Lb5bfPb5rfNb5vfNr9tftv8tvlt89vmt81vm982v21+2/y2+W3z2+a3zW+b37Ztv1ByAWPcBJg=
+  </data>
+ </layer>
+ <layer id="13" name="CLouds" width="60" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0LkNwCAMAED27zJCdsgIDJaGSMgy5CtS5E6yoLD8LaWUJYm1RWnvLOfIO3PkxhpZ7ThDVFtsk6iDGbL5Y59+1rt7jvr1tZ7csSaxdf9R/6v1n+6Y1cjue2eWzGzPr8Wd3t4RAAAAAAAAAAAAAP5oB+wQPL0=
   </data>
  </layer>
  <layer id="1" name="Platforms" width="60" height="50">
