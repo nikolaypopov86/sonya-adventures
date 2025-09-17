@@ -141,6 +141,12 @@ class PhysicsEngine(PymunkPhysicsEngine):
                 impulse = (0, app_config.PLAYER_JUMP_IMPULSE)
                 self.apply_impulse(self.player_sprite, impulse)
                 self.sound_player.sound_jump()
+        elif self.main_controller.controls["middle_up"]:
+            if self.is_on_ground(self.player_sprite):
+                impulse = (0, app_config.PLAYER_JUMP_IMPULSE//7)
+                self.apply_impulse(self.player_sprite, impulse)
+                self.sound_player.sound_jump()
+
 
     def rotate_moving(self, delta_time):
         for moving_sprite in self.moving_sprites_list:
