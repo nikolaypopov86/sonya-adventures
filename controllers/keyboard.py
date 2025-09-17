@@ -25,8 +25,14 @@ class Keyboard:
         elif key == arcade.key.UP or key == arcade.key.W:
             self.main_controller.set_control("up", True)
             self.main_controller.set_control("down", False)
+            self.main_controller.set_control("middle_up", False)
         elif key == arcade.key.DOWN or key == arcade.key.S:
             self.main_controller.set_control("down", True)
+            self.main_controller.set_control("up", False)
+            self.main_controller.set_control("middle_up", False)
+        elif key == arcade.key.SPACE:
+            self.main_controller.set_control("middle_up", True)
+            self.main_controller.set_control("down", False)
             self.main_controller.set_control("up", False)
         elif key == arcade.key.N:
             self.main_controller.set_control("map", True)
@@ -40,3 +46,5 @@ class Keyboard:
             self.main_controller.set_control("right", False)
         elif key == arcade.key.UP or key == arcade.key.W:
             self.main_controller.set_control("up", False)
+        elif key == arcade.key.SPACE:
+            self.main_controller.set_control("middle_up", False)

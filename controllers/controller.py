@@ -20,6 +20,7 @@ class GameController(BaseController):
             "right": False,
             "up": False,
             "down": False,
+            "middle_up": False,
             "select": False,
             "start": False,
             "map": False
