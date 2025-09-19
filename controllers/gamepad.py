@@ -102,5 +102,6 @@ def map_button_name(button_name):
     if button_name == "back": control_name = "select"
     elif button_name == "y": control_name = "map"
     elif button_name == "a": control_name = "up"
+    elif button_name == "b": control_name = "middle_up"
     else: control_name = button_name
     return control_name
