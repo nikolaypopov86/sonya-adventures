@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="41">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="86">
  <properties>
   <property name="seconds" type="int" value="300"/>
   <property name="text_color" type="color" value="#ff000000"/>
@@ -21,7 +21,7 @@
  </layer>
  <layer id="3" name="Platforms" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztl00OhCAMhZnVmDg/7vQM3v+AwwJi0xQGaJ8Yw5e8hESUV2gBnRsMBgjej6P9DLoqqzs8TkESNCYNExOdn9wYK/NKZQH9XhzLmo+P7+u1+/Yc9HK28VitUwQ9J61wX1pvcW0GOjYmRK1SStaNe+qRy1Z1ic5T7lPj+9+7MZblhnVnsU6tZ+UZSPsvoqZq46zpj8ztXtT4ar1Lofcg5HlRwll3AWRuW4K6c1uQ2ockzykh/Ej/Ey2SPJb4p89oH42XlGrnI+e7dMwfNkgLTw==
+   eJztV8sKAzEITE9d6PO2/Yb+/wd2CwkNEnU0Si4dGFjYREejZreUP1bgXIms6Wm14YFk93bS92l6vZpn9yO2rZDy0b/L0h2Fvfw0bpUj0Hil+CVshH1+JJs70RpdE7295isa9yO+x8H38XypvJbYeLznwkHLSbQ/FFSXdl5abtvZoH4zEFUDmfNSs/8izL7HkHOjmrL6W0JUn4zijezBqDmP7G2xPBfNkEjQWubq0tKb6F0p2bT4s/TjaP7OzuAvZuvPsj6ztlfBosv7LYXelV6gerLuudn4UF2Ztc3Bk6+sb+4IcHNopJkjCiT/I/tUm4Xa/zSnv3/Xr5nRwtGaD0k36vMDVt4NYw==
   </data>
  </layer>
  <layer id="14" name="Edge" width="40" height="30" opacity="0.01">
@@ -53,7 +53,7 @@
  </objectgroup>
  <layer id="7" name="Dynamic Items" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztzQENAAAIAyAzG8HkxvicUIAqAAAAPpjw3+EfuGsBYPwA9Q==
+   eJzt18ENACAIA0BmdgOd3CFQiPHu36QvSCOoNhLZeaxFrdVdAOAx7iYAN3T/l8wWAv62AaKWAuw=
   </data>
  </layer>
  <objectgroup id="9" name="Coins">
@@ -62,8 +62,6 @@
   <object id="9" gid="289" x="319" y="96" width="16" height="16"/>
   <object id="10" gid="289" x="336" y="95.5" width="16" height="16"/>
   <object id="11" gid="289" x="256" y="192.5" width="16" height="16"/>
-  <object id="12" gid="289" x="320.5" y="432.5" width="16" height="16"/>
-  <object id="13" gid="289" x="336.5" y="432.5" width="16" height="16"/>
   <object id="14" gid="289" x="32" y="207.5" width="16" height="16"/>
   <object id="15" gid="289" x="80" y="96.5" width="16" height="16"/>
   <object id="16" gid="289" x="463.5" y="256" width="16" height="16"/>
@@ -80,6 +78,40 @@
   <object id="36" gid="289" x="160" y="95.6667" width="16" height="16"/>
   <object id="37" gid="289" x="96" y="240.333" width="16" height="16"/>
   <object id="38" gid="289" x="176" y="209.5" width="16" height="16"/>
+  <object id="41" gid="289" x="369.333" y="368.667" width="16" height="16"/>
+  <object id="42" gid="289" x="416.667" y="352.667" width="16" height="16"/>
+  <object id="43" gid="289" x="416.667" y="352.667" width="16" height="16"/>
+  <object id="44" gid="289" x="432" y="352.667" width="16" height="16"/>
+  <object id="45" gid="289" x="223.333" y="16" width="16" height="16"/>
+  <object id="46" gid="289" x="240" y="16.6667" width="16" height="16"/>
+  <object id="47" gid="289" x="464" y="31.3333" width="16" height="16"/>
+  <object id="48" gid="289" x="386" y="15.3333" width="16" height="16"/>
+  <object id="49" gid="289" x="401.333" y="15.3333" width="16" height="16"/>
+  <object id="50" gid="289" x="401.333" y="15.3333" width="16" height="16"/>
+  <object id="51" gid="289" x="432" y="16" width="16" height="16"/>
+  <object id="52" gid="289" x="510.667" y="16.6667" width="16" height="16"/>
+  <object id="53" gid="289" x="576" y="31.3333" width="16" height="16"/>
+  <object id="54" gid="289" x="594" y="32" width="16" height="16"/>
+  <object id="55" gid="289" x="576" y="274" width="16" height="16"/>
+  <object id="56" gid="289" x="383.333" y="176" width="16" height="16"/>
+  <object id="57" gid="289" x="417.333" y="193.333" width="16" height="16"/>
+  <object id="58" gid="289" x="367.333" y="160.667" width="16" height="16"/>
+  <object id="59" gid="289" x="191.333" y="49.3333" width="16" height="16"/>
+  <object id="60" gid="289" x="96" y="174" width="16" height="16"/>
+  <object id="61" gid="289" x="113.333" y="173.333" width="16" height="16"/>
+  <object id="62" gid="289" x="145.333" y="192.667" width="16" height="16"/>
+  <object id="63" gid="289" x="33.3333" y="288.667" width="16" height="16"/>
+  <object id="64" gid="289" x="64" y="272" width="16" height="16"/>
+  <object id="65" gid="289" x="65.3333" y="113.333" width="16" height="16"/>
+  <object id="66" gid="289" x="383.333" y="290.667" width="16" height="16"/>
+  <object id="67" gid="289" x="432" y="272.667" width="16" height="16"/>
+  <object id="68" gid="289" x="240.667" y="353.333" width="16" height="16"/>
+  <object id="69" gid="289" x="240" y="273.333" width="16" height="16"/>
+  <object id="70" gid="289" x="255.333" y="272.667" width="16" height="16"/>
+  <object id="71" gid="289" x="208.667" y="289.333" width="16" height="16"/>
+  <object id="72" gid="289" x="607.333" y="288" width="16" height="16"/>
+  <object id="73" gid="289" x="400" y="96" width="16" height="16"/>
+  <object id="74" gid="289" x="418" y="95.3333" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="10" name="Fruits">
   <object id="1" gid="282" x="272" y="448" width="16" height="16"/>
@@ -89,6 +121,16 @@
   <object id="8" gid="279" x="448" y="288" width="16" height="16"/>
   <object id="19" gid="274" x="591" y="127" width="16" height="16"/>
   <object id="27" gid="275" x="288" y="351" width="16" height="16"/>
+  <object id="75" gid="278" x="222" y="30.6667" width="16" height="16"/>
+  <object id="76" gid="281" x="463.333" y="47.3333" width="16" height="16"/>
+  <object id="78" gid="286" x="576" y="46.6667" width="16" height="16"/>
+  <object id="79" gid="273" x="593.333" y="287.333" width="16" height="16"/>
+  <object id="80" gid="285" x="368.667" y="176.667" width="16" height="16"/>
+  <object id="81" gid="287" x="111.333" y="190.667" width="16" height="16"/>
+  <object id="82" gid="273" x="63.3333" y="288" width="16" height="16"/>
+  <object id="83" gid="273" x="63.3333" y="288" width="16" height="16"/>
+  <object id="84" gid="282" x="256" y="286.667" width="16" height="16"/>
+  <object id="85" gid="285" x="351.333" y="399.333" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="13" name="Hearts">
   <object id="40" gid="290" x="290.25" y="62.125" width="12" height="12"/>
@@ -100,7 +142,7 @@
  </layer>
  <layer id="12" name="Foreground" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1kERAAAIw7CpRzcydhyJgj6bAACXTTsAAOABz9W1l9IBDQ==
+   eJzt1kEOgCAMBEB+60/g24YDITEiLWC7kJ2Th4LbtAdCOFcS1nzVSe7w8JZrRVbUfiV2zv6n3o5Lzq80m4dscVbYynyia4qK+0IINHv4rG2dtX4rjuQgXLvODTU3aq5Cmw+9H63cz2XwDy8ob64sNb5PdgNCghJU
   </data>
  </layer>
 </map>
