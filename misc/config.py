@@ -1,4 +1,5 @@
 import os
+from typing import Any, Callable, List, Tuple, Iterator
 
 import arcade.color
 from dotenv import load_dotenv
@@ -15,6 +16,32 @@ font_paths = {
 }
 
 
+def return_self(value: Any):
+    return value
+
+def str_to_list(
+        string: str,
+        func: Callable[[str], Any] | None = None,
+        delimiter: str = ","
+) -> List[Any]:
+    return list(get_iterable_from_str(string, func, delimiter))
+
+def str_to_tuple(
+        string: str,
+        func: Callable[[str], Any] | None = None,
+        delimiter: str = ","
+) -> Tuple[Any, ...]:
+    return tuple(get_iterable_from_str(string, func, delimiter))
+
+def get_iterable_from_str(
+        string: str,
+        func: Callable[[str], Any] | None,
+        delimiter: str = ","
+) -> Iterator[Any]:
+    if func is None: func = return_self
+    return map(lambda x: func(x.strip()), string.split(delimiter))
+
+
 @singleton
 class AppConfig:
     def __init__(self):
@@ -29,6 +56,8 @@ class AppConfig:
 
         # Player sprite
         self.PLAYER_SPRITE = os.environ.get("PLAYER_SPRITE")
+
+        self.PLAYER_SPRITE_DEFAULT_POSITION=str_to_tuple(os.environ.get("PLAYER_SPRITE_DEFAULT_POSITION"), int)
 
         # Sprite numbers
         self.WALK_SPRITE_COUNT = 0
@@ -86,11 +115,11 @@ class AppConfig:
         self.BASE_LVL = int(os.environ.get("BASE_LVL"))
         self.BASE_LIFE_POINTS = int(os.environ.get("BASE_LIFE_POINTS"))
 
-        self.MENU_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MENU_BACKGROUND_COLOR").split(",")))
+        self.MENU_BACKGROUND_COLOR = str_to_tuple(os.environ.get("MENU_BACKGROUND_COLOR"), int)
 
-        self.MINIMAP_BACKGROUND_COLOR = tuple(map(lambda x: int(x), os.environ.get("MINIMAP_BACKGROUND_COLOR").split(",")))
+        self.MINIMAP_BACKGROUND_COLOR = str_to_tuple(os.environ.get("MINIMAP_BACKGROUND_COLOR"), int)
         self.MINIMAP_WIDTH_PART = float(os.environ.get("MINIMAP_WIDTH_PART"))
-        self.MINIMAP_SPRITE_LISTS: list[str] = os.environ.get("MINIMAP_SPRITE_LISTS").split(",")
+        self.MINIMAP_SPRITE_LISTS: list[str] = str_to_list(os.environ.get("MINIMAP_SPRITE_LISTS"))
 
         self.MINIMAP_POS_X = int(os.environ.get("MINIMAP_POS_X"))
         self.MINIMAP_POS_Y = int(os.environ.get("MINIMAP_POS_Y"))
@@ -100,8 +129,8 @@ class AppConfig:
         self.TIMER_ON = int(os.environ.get("TIMER_ON"))
 
         self.FONT_NAME = os.environ.get("FONT_NAME")
-        self.FONT_COLOR = tuple(map(lambda x: int(x), os.environ.get("FONT_COLOR").split(",")))
-        self.MENU_FONT_NAMES = tuple(os.environ.get("MENU_FONT_NAMES").split(","))
+        self.FONT_COLOR = str_to_tuple(os.environ.get("FONT_COLOR"), int)
+        self.MENU_FONT_NAMES = str_to_tuple(os.environ.get("MENU_FONT_NAMES"))
         self.MENU_FONT_SIZE = int(os.environ.get("MENU_FONT_SIZE"))
 
     def load_fonts(self):
