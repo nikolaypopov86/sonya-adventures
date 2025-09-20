@@ -37,7 +37,7 @@
  </layer>
  <layer id="5" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztV1sOwjAM647A/S/LFxKMJLUdtwxEJCRgqZtXXW+Mv/26HcHn22xV3I6azNYfIDjqF+19nH53MNRYZtgRZLUPmgvaQ/UMOErhmt/prBXPw/qP19npGjzrxf/VLCK57+C3cqbBGHbFu5vzWe5gzyLlb0ic6SWL6+zLOVeG7yKfzn2UxeHA22XV+WbWMDlkNe/OMcpTXU5y6YYUf8zjVrSGIwZkjdtXxenwaNoDgffLGIF731WnzlqH3pb2Tvi+8kFjecM26HTGVmoCBIs9q8w5U3kI4bgObrRPtn+KBc7b1czFz5075pP30wpDOIPVp5KGXFAI5u66gnV1aYlNgKDv8iUG629Icsp7k+fVOreh3J2+awhxrdC3Tg2s9ia6G8PvwQZMzTP/1FdIaPedYNUoIsega+Eeic9WmzrnKK+puhNd+6hd9LzSz9kZdehkdz936bIu333anut0G9eIKbM7PVgBbQ==
+   eJztV9ESwyAI00/Y//9s37q1RUgg2m633O1uU0BECKy1P34d3fh8G2b5rYhJpN9B46icdXY//a7YyPoS2bZMeuegd0HfMFsDilCo8jfMNWffjH875k4VcK47614uIndfwW9uToM+rPJ3Neez3MHWIiUvuDjzlqxd5buc78rwnSVT6UcjPxT2VsGrb0aHucMo5tU8RnmqykmquWFov8V+Z2YNhQ+Ijlo2a6fCo8M3SPC+6yPQ91Vxqugq5u3U2QO+92RQXy62BXM6g5kzAWKLrVWmzrI85HFchdsutow1b/0gA+bb06Dk5/T73tifZgDhDHY+pbl2UhCY3vUEVOdS1zbb9/v7/NR5rLzgkmHNB/uenhoMd1uxqcw0SlnlDJx9m6i379+dOKJ9mvFV9d98JqRzGWGImV13GVA+uzcb6f4Y6Fh9OjObo/3S2vc4y6yxgr+jcxRYNZdV+e5ufMbp1Z7h0wgbUicBbg==
   </data>
  </layer>
  <objectgroup id="7" name="Moving Sprites">
