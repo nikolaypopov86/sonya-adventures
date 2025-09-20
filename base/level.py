@@ -47,6 +47,7 @@ class Level:
 
         # Player sprite
         self.player_sprite: PlayerSprite | None = None
+        self.player_default_position: str | None = None
 
         # Sprite Lists we need
         self.player_list: arcade.SpriteList | None = None
@@ -154,8 +155,8 @@ class Level:
             moving_sprite.boundary_bottom *= app_config.SPRITE_SCALING_TILES
 
         self.player_sprite = PlayerSprite()
-
-        self.player_sprite.move_to_default_location(tile_map.properties.get("player_default_position"))
+        self.player_default_position = tile_map.properties.get("player_default_position")
+        self.player_sprite.move_to_default_location(self.player_default_position)
 
         # Add to player sprite list
         self.player_list.append(self.player_sprite)
@@ -235,7 +236,7 @@ class Level:
                 self._game_over()
             self.life_points -= 1
             self.physics_engine.remove_sprite(self.player_sprite)
-            self.player_sprite.move_to_default_location()
+            self.player_sprite.move_to_default_location(self.player_default_position)
             self.physics_engine.add_player(self.player_sprite)
 
         if self.timer.is_up():
