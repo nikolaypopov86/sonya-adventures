@@ -31,12 +31,12 @@
  </layer>
  <layer id="5" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztV0kOwzAITJ7Q/5/zz6hSDy2K2TwEnDISp9jAxKzb1vhH7F9yhx2kLio/ZwIJcXatOqrAw8fqP/cm1Pbs+2m4IGJEikMEImPF4ndoTk3ozsoj5P/w5B6aN+XjsVGpHt7V20Z2ETqye4TXhwq+U3hiuRoHD8Q+qDjjsZmdf96ZRnNXqv2Z9Qxtu3oOaPvwU/L5jWpcRjuZaq6csFENUblpuYfca650Wuti9psh9nTT/2dkBYi9j/nWwMKay5E7+tNxFdeo/J/xR6sLVWdWq1eNRqOh6X3cbEavHx/x6NHuAdpZi8pLkKOYSP6uwmPE5QTfRzL7
+   eJztmEkOgzAMRekRev/LVuxolHj8xg74SV4BHoiHJMfRvJHPRe6wg9Q1yt87gQFRdrU6qmCJR+s/tSajbe/6SWJB5AiXhwgic0Xjd2hNOXRn1RHyf1hqDx33GI/FRqV+eNdsW9lF6MieEVYfKvg+YsnlajFYYOeg4B2Lzez6s+5pJN9yvT+zn6FtV68B6Rx+Sj2fVItldSYT7SsdNqoRVZua75DnmplObV/MXjPEOV31/wnZAXb2Ec8aLNpajjyjP51ZXqPq3+OPVBeqz+zWr5qmaSSzj9qbee8JNLrE9wwL+TJSDc7fXeI4mfn5Ax8BAqQ=
   </data>
  </layer>
  <layer id="6" name="Water" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztzLEJAAAIA0H3793XFQJWyh18F1IFAAAAAAAA8EuHbb/SPTcMOlcMzw==
+   eJztz8EJADAIA0D3/3cE9+wEBdFPkTvILwQSAQAAAAAAALDLKWa6Ve135WfZ8uP15QIwWzvc
   </data>
  </layer>
  <objectgroup id="7" name="Moving Sprites">
