@@ -99,8 +99,8 @@ class PlayerSprite(arcade.Sprite):
             self.texture = self.walk_textures[self.cur_walk_texture][self.character_face_direction]
 
     def move_to_default_location(self) -> None:
-        grid_x = 1
-        grid_y = 6
+        grid_x, grid_y = app_config.PLAYER_SPRITE_DEFAULT_POSITION
+
         self.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
         self.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2
         self.update()
