@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="160">
+ <properties>
+  <property name="seconds" type="int" value="300"/>
+  <property name="text_color" type="color" value="#ff000000"/>
+ </properties>
  <tileset firstgid="1" source="../tilesets/world_tileset.tsx"/>
  <tileset firstgid="257" source="../tilesets/platforms.tsx"/>
  <tileset firstgid="273" source="../tilesets/fruit.tsx"/>
