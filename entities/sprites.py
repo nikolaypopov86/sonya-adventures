@@ -1,6 +1,9 @@
+from typing import Tuple
+
 import arcade
 
 from misc.config import AppConfig
+import misc.app_utils as utils
 
 # Constants
 # Facing
@@ -98,8 +101,12 @@ class PlayerSprite(arcade.Sprite):
                 self.cur_walk_texture = 0
             self.texture = self.walk_textures[self.cur_walk_texture][self.character_face_direction]
 
-    def move_to_default_location(self) -> None:
-        grid_x, grid_y = app_config.PLAYER_SPRITE_DEFAULT_POSITION
+    def move_to_default_location(self, default_position: str | None) -> None:
+        if default_position is None:
+            default_position = app_config.PLAYER_SPRITE_DEFAULT_POSITION
+        else:
+            default_position = utils.str_to_tuple(default_position, int)
+        grid_x, grid_y = default_position
 
         self.center_x = app_config.SPRITE_SIZE * grid_x + app_config.SPRITE_SIZE / 2
         self.center_y = app_config.SPRITE_SIZE * grid_y + app_config.SPRITE_SIZE / 2
