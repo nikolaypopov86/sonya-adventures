@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="82">
  <properties>
+  <property name="player_default_position" value="1,4"/>
   <property name="seconds" type="int" value="300"/>
   <property name="text_color" type="color" value="#ff000000"/>
  </properties>

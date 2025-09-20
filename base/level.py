@@ -2,7 +2,6 @@ import logging
 import pprint
 from typing import Tuple
 
-from entities.gatherable import Gatherable
 from base.engine import PhysicsEngine
 from entities.sprites import PlayerSprite
 from misc.sound_player import SoundPlayer
@@ -13,6 +12,7 @@ from misc.timer import SimpleTimer
 from entities.minimap import MiniMap
 from misc.config import AppConfig
 from views.game_over_view import GameOverView
+import misc.app_utils as utils
 
 import arcade
 from arcade import SpriteList, TileMap, Scene
@@ -134,8 +134,6 @@ class Level:
 
         logger.info(f"level: {self.lvl}")
 
-        logger.info(f"map size: {self.map_width} X {self.map_height}")
-
         self.end_of_map = (tile_map.width * tile_map.tile_width) * tile_map.scaling
 
         # Pull the sprite layers out of the tile map
@@ -147,6 +145,8 @@ class Level:
         self.map_width = tile_map.width * tile_map.tile_width * tile_map.scaling
         self.map_height = tile_map.height * tile_map.tile_height * tile_map.scaling
 
+        logger.info(f"map size: {self.map_width} X {self.map_height}")
+
         for moving_sprite in self.scene["Moving Sprites"]:
             moving_sprite.boundary_left *= app_config.SPRITE_SCALING_TILES
             moving_sprite.boundary_right *= app_config.SPRITE_SCALING_TILES
@@ -154,7 +154,8 @@ class Level:
             moving_sprite.boundary_bottom *= app_config.SPRITE_SCALING_TILES
 
         self.player_sprite = PlayerSprite()
-        self.player_sprite.move_to_default_location()
+
+        self.player_sprite.move_to_default_location(tile_map.properties.get("player_default_position"))
 
         # Add to player sprite list
         self.player_list.append(self.player_sprite)
