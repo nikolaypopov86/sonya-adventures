@@ -32,12 +32,12 @@
  </layer>
  <layer id="5" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztWEEOwzAI2w497P8fnqqtUhUlxDam6aGWdlowBBxC83o9uCO2/0+169l/3tmoNKB7iWLfkYk/4mVyPVvL1o1dO8tLdi9Rnkb2zvy1a1Ww8bPc1TYbqHUllmwfcJ2BIw6UD60Xsx7hinwgGOU74pjxozVse4PiC0Ev5w7emS/mvzOcdyGjS9Ze6ccqKnr4CL07y6EZ5f51aDTiYbVWdW6u8uuo4yxnPR9MnlF+Nxwz6AwVc350Rlt/6l6q5siMjQpGm1f3eGeP7O3L2QtH3C0/Oxsy/rJQvs/c2lZq4uhVyrzuAjL7MojirNC88t3A4uBZ/TZU2Zcd+mL07vZ95nFgVSwju6p3PcSHOkdUIaMVR1++YkY6+0Bq3+YE1UvFXtj6uM//FfPfaKab8VYDfS9sweSuahbZofQ5x72cyZfKsQJt7ZgZDeVcjbvE8eCHL8YQBtM=
+   eJztWEEOwjAMg8MO/P/DCKFJVbSmtuN0HLDEidZOnTQNPB5/MDg26ihaR/iMeD3r/ApQrSz2D8b4WY2Ml/EC1UGRxRO/Q3ypniXzKYvT5V9cq4KNn+Xu3nMktV6NJbtHDk00pjMO5u4i3Mx6hCvTQDDzO+NY8aM5jL1B0UJw5XnXG4P08pVu9Q4omiv/K+cZ16ro6OEzXL1ZjppR3l9HjWY8bK3tnM06dB15XHl2pcH4jPK74ZhBV3D2thPZHY166lm65sjKHhVMbe7u8c4eeXUuZy+ccUd+djZk9KpQfp+5a1vJiaNXKfO6C8jsyyCLs6Pmld8NLE6ejjcD1e/uy476YurdrT3yOHBXLLN9ldpDvXXepV21qu6trN0xI40aSO6jJ2i9dJyFzY/7/u+Y/2Yz3Yq3G+j/hRGMd12zyAdKn3O8yxW/VI47EHPHzGgo5934lTj++OINPNsG+w==
   </data>
  </layer>
  <layer id="6" name="Water" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJzt2DEKwCAQBMBr/H+ZJ+SbIaQJEsWAaCIzsI3FedduBG+k2Qt0kmKdW04r3ZNirXugt62Sv9kfAgAAAAAwWq13bU3edfaYWep973/kby0pzZuVr+whVw45IXyu
+   eJzt2LsJACAMQEH3X8ARXNPCRkTFQvzAHbzGIrFOCADwjzjpN6kTAAAAAMBps7vrau2tc8fM0d233tG+rTSad6tX/qFSBsJWfIY=
   </data>
  </layer>
  <objectgroup id="7" name="Moving Sprites">
