@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="108">
+ <properties>
+  <property name="seconds" type="int" value="300"/>
+  <property name="text_color" type="color" value="#ff000000"/>
+ </properties>
+ <tileset firstgid="1" source="../tilesets/world_tileset.tsx"/>
+ <tileset firstgid="257" source="../tilesets/platforms.tsx"/>
+ <tileset firstgid="273" source="../tilesets/fruit.tsx"/>
+ <tileset firstgid="289" source="../tilesets/coin.tsx"/>
+ <tileset firstgid="290" source="../tilesets/hearts.tsx"/>
+ <layer id="1" name="Background" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6Hz/6vjCRkkrJqqqqqqqqqqPn84v20N
+  </data>
+ </layer>
+ <layer id="2" name="Air" width="50" height="40" opacity="0.32" tintcolor="#70c0eb">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6Hz/6vjCRkkrJqqqqqqqqqqPn84v20N
+  </data>
+ </layer>
+ <layer id="3" name="Lvl Wall" width="50" height="40" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJztz8EJACAQwLD7uv/CbuBLsEIyQTvzv/U64BIfLT5afLT4aPHR4qPFR4uPFh8tPlp8tPho8dHio8VHi48WHy0+4GwDfPcBTg==
+  </data>
+ </layer>
+ <layer id="4" name="Edge" width="50" height="40" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJzt0UENgEAQBEF4IOL8G0UEkGs2VQqmM+uYYe0e8BIdLTpadLToaNHRoqNFR4uOFh0tOlp0tEztuM4tMx6b+sdf6WjR0aKjRUfLlA74wg2DQQOk
+  </data>
+ </layer>
+ <layer id="5" name="Platforms" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmEkOgzAMRekRev/LVuxolHj8xg74SV4BHoiHJMfRvJHPRe6wg9Q1yt87gQFRdrU6qmCJR+s/tSajbe/6SWJB5AiXhwgic0Xjd2hNOXRn1RHyf1hqDx33GI/FRqV+eNdsW9lF6MieEVYfKvg+YsnlajFYYOeg4B2Lzez6s+5pJN9yvT+zn6FtV68B6Rx+Sj2fVItldSYT7SsdNqoRVZua75DnmplObV/MXjPEOV31/wnZAXb2Ec8aLNpajjyjP51ZXqPq3+OPVBeqz+zWr5qmaSSzj9qbee8JNLrE9wwL+TJSDc7fXeI4mfn5Ax8BAqQ=
+  </data>
+ </layer>
+ <layer id="6" name="Water" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztz8EJADAIA0D3/3cE9+wEBdFPkTvILwQSAQAAAAAAALDLKWa6Ve135WfZ8uP15QIwWzvc
+  </data>
+ </layer>
+ <objectgroup id="7" name="Moving Sprites">
+  <object id="12" gid="261" x="112" y="592" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="56"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="160"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="1.8"/>
+   </properties>
+  </object>
+  <object id="13" gid="261" x="240" y="496" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="240"/>
+    <property name="boundary_right" type="float" value="336"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="14" gid="261" x="480" y="464" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="184"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="288"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="15" gid="261" x="48" y="256" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="48"/>
+    <property name="boundary_right" type="float" value="144"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="16" gid="261" x="416" y="288" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="416"/>
+    <property name="boundary_right" type="float" value="528"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="17" gid="261" x="304" y="176" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="392"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="480"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="-2"/>
+   </properties>
+  </object>
+  <object id="20" gid="261" x="416" y="592" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="54"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="176"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="21" gid="261" x="608" y="592" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="56"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="160"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="23" gid="261" x="464" y="352" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="296"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="480"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+  <object id="24" gid="261" x="656" y="240" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="408"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="496"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="8" name="Dynamic Items" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt1rEBABAQBEEt0wGVE2lA8J6ZCja7KwUAgFM9OoCURnTA0qIDAPjaDVsI5FajAwDYfDteMQFFowLr
+  </data>
+ </layer>
+ <objectgroup id="9" name="Fruits">
+  <object id="2" gid="273" x="561" y="96" width="16" height="16"/>
+  <object id="3" gid="278" x="366.5" y="46.5" width="16" height="16"/>
+  <object id="88" gid="273" x="64" y="64" width="16" height="16"/>
+  <object id="90" gid="283" x="320" y="256" width="16" height="16"/>
+  <object id="91" gid="286" x="432" y="368" width="16" height="16"/>
+  <object id="92" gid="277" x="256" y="336" width="16" height="16"/>
+  <object id="93" gid="275" x="608" y="384" width="16" height="16"/>
+  <object id="94" gid="277" x="688" y="320" width="16" height="16"/>
+  <object id="95" gid="278" x="704" y="160" width="16" height="16"/>
+  <object id="96" gid="285" x="576" y="256" width="16" height="16"/>
+  <object id="97" gid="281" x="704" y="464" width="16" height="16"/>
+  <object id="98" gid="282" x="560" y="592" width="16" height="16"/>
+  <object id="99" gid="285" x="304" y="592" width="16" height="16"/>
+  <object id="100" gid="279" x="352" y="480" width="16" height="16"/>
+  <object id="102" gid="277" x="464" y="464" width="16" height="16"/>
+  <object id="104" gid="283" x="48" y="272" width="16" height="16"/>
+  <object id="105" gid="281" x="176" y="480" width="16" height="16"/>
+  <object id="106" gid="274" x="208" y="192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="10" name="Coins">
+  <object id="4" gid="289" x="607" y="64" width="16" height="16"/>
+  <object id="5" gid="289" x="623.5" y="63" width="16" height="16"/>
+  <object id="6" gid="289" x="512.5" y="97" width="16" height="16"/>
+  <object id="25" gid="289" x="64" y="576" width="16" height="16"/>
+  <object id="26" gid="289" x="208" y="464" width="16" height="16"/>
+  <object id="27" gid="289" x="208" y="464" width="16" height="16"/>
+  <object id="28" gid="289" x="224" y="464" width="16" height="16"/>
+  <object id="29" gid="289" x="144" y="464" width="16" height="16"/>
+  <object id="30" gid="289" x="96" y="336" width="16" height="16"/>
+  <object id="31" gid="289" x="112" y="352" width="16" height="16"/>
+  <object id="32" gid="289" x="64" y="288" width="16" height="16"/>
+  <object id="33" gid="289" x="288" y="320" width="16" height="16"/>
+  <object id="34" gid="289" x="304" y="320" width="16" height="16"/>
+  <object id="35" gid="289" x="272" y="224" width="16" height="16"/>
+  <object id="36" gid="289" x="288" y="224" width="16" height="16"/>
+  <object id="37" gid="289" x="400" y="256" width="16" height="16"/>
+  <object id="38" gid="289" x="336" y="240" width="16" height="16"/>
+  <object id="39" gid="289" x="160" y="192" width="16" height="16"/>
+  <object id="40" gid="289" x="176" y="192" width="16" height="16"/>
+  <object id="41" gid="289" x="288" y="144" width="16" height="16"/>
+  <object id="42" gid="289" x="32" y="32" width="16" height="16"/>
+  <object id="43" gid="289" x="48" y="32" width="16" height="16"/>
+  <object id="44" gid="289" x="144" y="80" width="16" height="16"/>
+  <object id="45" gid="289" x="112" y="64" width="16" height="16"/>
+  <object id="46" gid="289" x="160" y="96" width="16" height="16"/>
+  <object id="47" gid="289" x="432" y="16" width="16" height="16"/>
+  <object id="48" gid="289" x="384" y="32" width="16" height="16"/>
+  <object id="49" gid="289" x="336" y="32" width="16" height="16"/>
+  <object id="50" gid="289" x="480" y="128" width="16" height="16"/>
+  <object id="51" gid="289" x="576" y="80" width="16" height="16"/>
+  <object id="52" gid="289" x="672" y="128" width="16" height="16"/>
+  <object id="53" gid="289" x="720" y="144" width="16" height="16"/>
+  <object id="54" gid="289" x="752" y="176" width="16" height="16"/>
+  <object id="55" gid="289" x="736" y="160" width="16" height="16"/>
+  <object id="56" gid="289" x="736" y="304" width="16" height="16"/>
+  <object id="57" gid="289" x="720" y="304" width="16" height="16"/>
+  <object id="58" gid="289" x="656" y="304" width="16" height="16"/>
+  <object id="59" gid="289" x="544" y="240" width="16" height="16"/>
+  <object id="60" gid="289" x="560" y="240" width="16" height="16"/>
+  <object id="61" gid="289" x="608" y="224" width="16" height="16"/>
+  <object id="62" gid="289" x="560" y="368" width="16" height="16"/>
+  <object id="63" gid="289" x="576" y="368" width="16" height="16"/>
+  <object id="64" gid="289" x="672" y="384" width="16" height="16"/>
+  <object id="65" gid="289" x="528" y="384" width="16" height="16"/>
+  <object id="66" gid="289" x="640" y="464" width="16" height="16"/>
+  <object id="67" gid="289" x="656" y="448" width="16" height="16"/>
+  <object id="68" gid="289" x="672" y="448" width="16" height="16"/>
+  <object id="69" gid="289" x="448" y="448" width="16" height="16"/>
+  <object id="70" gid="289" x="464" y="448" width="16" height="16"/>
+  <object id="71" gid="289" x="560" y="576" width="16" height="16"/>
+  <object id="72" gid="289" x="576" y="576" width="16" height="16"/>
+  <object id="73" gid="289" x="304" y="576" width="16" height="16"/>
+  <object id="74" gid="289" x="320" y="576" width="16" height="16"/>
+  <object id="75" gid="289" x="352" y="576" width="16" height="16"/>
+  <object id="78" gid="289" x="352" y="464" width="16" height="16"/>
+  <object id="79" gid="289" x="368" y="448" width="16" height="16"/>
+  <object id="80" gid="289" x="384" y="448" width="16" height="16"/>
+  <object id="81" gid="289" x="416" y="352" width="16" height="16"/>
+  <object id="82" gid="289" x="400" y="352" width="16" height="16"/>
+  <object id="83" gid="289" x="352" y="368" width="16" height="16"/>
+  <object id="84" gid="289" x="368" y="368" width="16" height="16"/>
+  <object id="85" gid="289" x="384" y="256" width="16" height="16"/>
+  <object id="86" gid="289" x="736" y="576" width="16" height="16"/>
+  <object id="87" gid="289" x="720" y="576" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="11" name="Hearts">
+  <object id="7" gid="290" x="415" y="30" width="16" height="16"/>
+  <object id="107" gid="290" x="592" y="256" width="16" height="16"/>
+ </objectgroup>
+ <layer id="12" name="Foreground" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlc0NgCAMRllJN9AN9ObV/YdQDyTEQIRSaIvfSzjavv6AzgEKu+EcPdy50ehc6qSxhpDeftr7kcKqt+eUFhDC+tzejFQPVy2We2LZHfAgsQO1OTXv7V//dVxonu1IPH1uuata5/jlpdU7RsqVUoOlumNQdtlyzZbdAaCwMsfjvENzRjzOfLj/AOhnkhZgYpEWqMS/l9t9joLvct71MD7eZdCSC0LsDoE=
+  </data>
+ </layer>
+</map>
