@@ -95,7 +95,7 @@ class MainView(arcade.View):
             align_y=-80,
             child=self.grid,
         )
-        # Enable the UIManager when the view is showm.
+        # Enable the UIManager when the view is shown.
         self.manager.enable()
 
     def on_update(self, delta_time: float) -> bool | None:
