@@ -22,12 +22,12 @@
  </layer>
  <layer id="3" name="Platforms" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlksOwyAMROmKSP1lR87Q+x+wLILkWiYasE2iiieNlAWE8Yc4IUwmOM9b/95IdDV6fR3lQ5Or0STyvOyS4DH1xrgwoe9M4derF9HxrFeO7531yc/3XQ/jM7x6r5aTK/S6Ra1KbSY6NiZvkLpxT6O+JRSreyLFa3kHrb7zyN4Sy/on9472e60vW/6FpFlZ9qF1KZ6Q8zZwHSUxadH2X8t6z94+ixG+vGflqNlRwyI+xL9nb1vC5+eZteHwmV4keZZ8t8TSmv+atxZFwaOmFhovNSE5QHsIPfMLHzEM8w==
+   eJztlUkOwyAMRemKSJ2yI2fo/Q9YFkFyLRzs2oa04klfYkHi7wEIYTLhc7+MdnAujurxS7VKYL3sqoFz8sjx6J8pfHr1IjrGeuT8nlmvvL7uuhnH8Jo9qiZnmHWLXpXeTHRsSN5807dedwnE6pzU8rU8g5b3fOvbksv6J+cOzjs1lxFIA7cvxRMn3sbcB0lIWrTzJ9nvOduj6OHL+63s9XZQWOTH8e8525bgN31kbzDFD76Hap5rviW5SOtPeZMoCj220Hih1IrH7YXE3xsDFgvI
   </data>
  </layer>
  <layer id="15" name="Ice" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztl0sKACEMQ915/xvLwCxEEPtLm0UfiBsbMxI/M0ZTwfybZMzetBoWrLpSv1bP3nqJNgq0fgSVHrVzv7Lm9VGxDojviYLR04c1N9nzWrS9+ugsafQr7rGmyUaaY8/evNW9NLXnpMdLdE2DA/WWikLzn8TEPHomGNcrE3TeWTK5e6j2gmABc/sC0g==
+   eJztl80KgDAMg3fb+7+xCB6GKCZt0xXpB8ODa5Zp6s8YzQ7mNZA562A1LFh1Ub9Wz956RFuFWj+CTI9PWWHW9tSiutko9hNFRU8n1txkr2vR9uqrs8To73iPMR6aJgI0V57eeav70mSfk+g8tpe6/2qh+paKgvlPqsS8HStR8Xplos57RiaRPazn/ni/D/gYA0I=
   </data>
  </layer>
  <layer id="16" name="Sand" width="40" height="30">

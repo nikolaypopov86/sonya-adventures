@@ -98,7 +98,7 @@ class GameView(arcade.View):
             self.level.fruit_count
         )
 
-        self.minimap.sprite_lists = tuple(self.level.scene[key] for key in app_config.MINIMAP_SPRITE_LISTS)
+        self.minimap.sprite_lists = tuple(self.level.scene[key] for key in app_config.MINIMAP_SPRITE_LISTS if key in self.level.scene)
         self.minimap.update(self.level.player_sprite)
 
         self.level.physics_engine.move_player()
