@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="86">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="86">
  <properties>
   <property name="player_default_position" value="1,4"/>
   <property name="seconds" type="int" value="300"/>
@@ -22,7 +22,17 @@
  </layer>
  <layer id="3" name="Platforms" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztV8sKAzEITE9d6PO2/Yb+/wd2CwkNEnU0Si4dGFjYREejZreUP1bgXIms6Wm14YFk93bS92l6vZpn9yO2rZDy0b/L0h2Fvfw0bpUj0Hil+CVshH1+JJs70RpdE7295isa9yO+x8H38XypvJbYeLznwkHLSbQ/FFSXdl5abtvZoH4zEFUDmfNSs/8izL7HkHOjmrL6W0JUn4zijezBqDmP7G2xPBfNkEjQWubq0tKb6F0p2bT4s/TjaP7OzuAvZuvPsj6ztlfBosv7LYXelV6gerLuudn4UF2Ztc3Bk6+sb+4IcHNopJkjCiT/I/tUm4Xa/zSnv3/Xr5nRwtGaD0k36vMDVt4NYw==
+   eJztlksOwyAMROmKSP1lR87Q+x+wLILkWiYasE2iiieNlAWE8Yc4IUwmOM9b/95IdDV6fR3lQ5Or0STyvOyS4DH1xrgwoe9M4derF9HxrFeO7531yc/3XQ/jM7x6r5aTK/S6Ra1KbSY6NiZvkLpxT6O+JRSreyLFa3kHrb7zyN4Sy/on9472e60vW/6FpFlZ9qF1KZ6Q8zZwHSUxadH2X8t6z94+ixG+vGflqNlRwyI+xL9nb1vC5+eZteHwmV4keZZ8t8TSmv+atxZFwaOmFhovNSE5QHsIPfMLHzEM8w==
+  </data>
+ </layer>
+ <layer id="15" name="Ice" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztl0sKACEMQ915/xvLwCxEEPtLm0UfiBsbMxI/M0ZTwfybZMzetBoWrLpSv1bP3nqJNgq0fgSVHrVzv7Lm9VGxDojviYLR04c1N9nzWrS9+ugsafQr7rGmyUaaY8/evNW9NLXnpMdLdE2DA/WWikLzn8TEPHomGNcrE3TeWTK5e6j2gmABc/sC0g==
+  </data>
+ </layer>
+ <layer id="16" name="Sand" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
   </data>
  </layer>
  <layer id="14" name="Edge" width="40" height="30" opacity="0.01">
@@ -143,7 +153,7 @@
  </layer>
  <layer id="12" name="Foreground" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1kEOgCAMBEB+60/g24YDITEiLWC7kJ2Th4LbtAdCOFcS1nzVSe7w8JZrRVbUfiV2zv6n3o5Lzq80m4dscVbYynyia4qK+0IINHv4rG2dtX4rjuQgXLvODTU3aq5Cmw+9H63cz2XwDy8ob64sNb5PdgNCghJU
+   eJzt1kEKwCAMBEB/25/ot8WDCEVrItZsZOfUQ7QbkoMh3CsJa77qJHdY6OXakRW1XwnP2f8023HJ+Z04J184L2x1PtE0RcN9IQSaPXzXjs6efiuu5CBcXueGmhs1V6XNh96PVunnOfAPKyhvriINvm+WAboSEc0=
   </data>
  </layer>
 </map>

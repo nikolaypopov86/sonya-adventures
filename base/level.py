@@ -204,6 +204,18 @@ class Level:
             self.scene["Platforms"],
         )
 
+        if "Ice" in self.scene:
+            self.physics_engine.add_platforms(
+                self.scene["Ice"], friction=app_config.ICE_FRICTION
+            )
+            logger.debug(f"Ice platforms added. ICE_FRICTION={app_config.ICE_FRICTION}")
+
+        if "Sand" in self.scene:
+            self.physics_engine.add_platforms(
+                self.scene["Sand"], friction=app_config.SAND_FRICTION
+            )
+            logger.debug(f"Sand platforms added. SAND_FRICTION={app_config.SAND_FRICTION}")
+
         self.physics_engine.add_edges(
             self.scene["Edge"]
         )

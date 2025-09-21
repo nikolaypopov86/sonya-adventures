@@ -65,11 +65,14 @@ class PhysicsEngine(PymunkPhysicsEngine):
 
     def add_platforms(
             self,
-            sprite_list
+            sprite_list,
+            friction: float | None = None
     ) -> None:
+        if friction is None:
+            friction = app_config.WALL_FRICTION
         super().add_sprite_list(
             sprite_list,
-            friction=app_config.WALL_FRICTION,
+            friction=friction,
             collision_type="wall",
             body_type=arcade.PymunkPhysicsEngine.STATIC,
         )
