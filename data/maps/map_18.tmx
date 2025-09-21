@@ -20,14 +20,14 @@
    eJztw0ENAAAMA6Hz/6vjCRkkrJqqqqqqqqqqPn84v20N
   </data>
  </layer>
- <layer id="3" name="Lvl Wall" width="50" height="40">
+ <layer id="3" name="Lvl Wall" width="50" height="40" opacity="0.01">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJztz8EJACAQwLD7uv/CbuBLsEIyQTvzv/U64BIfLT5afLT4aPHR4qPFR4uPFh8tPlp8tPho8dHio8VHi48WHy0+4GwDfPcBTg==
   </data>
  </layer>
- <layer id="4" name="Edge" width="50" height="40">
+ <layer id="4" name="Edge" width="50" height="40" opacity="0.01">
   <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAYH0AAAQ==
+   eJztz0ENACAQwDC++DeMCQjLpVWw7TXD/h1wiY8WHy0+Wny0+Gjx0eKjxUeLjxYfLT5afLT4aPHR4qPFR4uPlikf8MIBe/oBTg==
   </data>
  </layer>
  <layer id="6" name="Water" width="50" height="40">
