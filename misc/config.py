@@ -58,6 +58,8 @@ class AppConfig:
         self.PLAYER_FRICTION = 1.0
         self.WALL_FRICTION = 0.7
         self.DYNAMIC_ITEM_FRICTION = 0.6
+        self.ICE_FRICTION=float(os.environ.get("ICE_FRICTION"))
+        self.SAND_FRICTION=float(os.environ.get("SAND_FRICTION"))
 
         # Mass (defaults to 1)
         self.PLAYER_MASS = 2.0

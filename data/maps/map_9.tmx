@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="188">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="188">
  <properties>
   <property name="player_default_position" value="1,5"/>
   <property name="seconds" type="int" value="500"/>
@@ -22,7 +22,12 @@
  </layer>
  <layer id="1" name="Platforms" width="60" height="50">
   <data encoding="base64" compression="zlib">
-   eJztWctuxDAITE97anvM//9pe2gkhMAMMDjd1Y7kS2zzMgZMjuONN954BTz+xuSehxrRmo5sCM4C7VPs8/AQ605nXg5rzXnYtvj8WPONIOXP6t3xEc8WWp+ID+JDFqIzQ/es7M9ERUcNls4VZOw0db9RVH3bQtU/7+SFnhUau6fB8lFLXiQ2RzQm0M21ly46N0W5yqO9A51Y742uHDuwike78s+xkOFVsNOWGURyff3OfydiNnNdB1ZMmqAd8ZTr2D6QzR8SWpb/6p8Sq9q+Cqk3wwbZWtT7nj3PCv+VDBPIvC/ZPJmxgPneqMqH2FK/vxHaDDtV6wk5r+Na9i5YulsyVmpSNlA7R/ZD9ZjQNZP72bxXNThT12qutfbvjoNZVO6d1V97BnTOVNJA+dwBBu/q+/jZdK7EDen7HZ0vOh3ZszUH454yzrlKw/tP0o2raC2U6WlqdOzWtbnXt2NgZTOGztn9SK3nneOKH2o3VgycqhWQ2iTjH5Nxv/tGQd4VO3P1qm/UvZervah+mR4gIo++h1GuReNvJu9FtO5G9t0e0dFg6tmVUSJ6t6M0dtzfu+paDzv0Zp61xO7eaxYsve/4pzbhD0jOemaeWdqIbKiMnfoW4b3rvCxe3nwW0/1adu+wS0fLUu2He/v099P5PgGkf2vVipl+LzKHyoPwRtde4wecrxq4
+   eJztmkkOwyAMRdMDtF1y/5u2LCIhFMCYb/BHPCmqAnE8MFlOr+twOBw4CUoZiVy4+p6VtEXeL8ELG7q0flvozf0Z1VPTj5AZjf9MVozzze5x2gmmsYrMHK+d5kZIfkPlnp1QuRio2cm2Vj3jNZYtuz7//q9T29mwngM9e05ui9f5mYPeW1O/ETFAxlHjJ8s4RphsTfFo95NN3vKQVtxK/Ro/emRYcrZW/KR+rPYVrbuWg1v5anUGeaI3drPqa1aw2csAY0w1+0Y690d8RtTcZ8h4eoe03m/FiJ6RuHk/1yx0oL4NoefLrH1udq6gPdMZ9v3VeXAPK9eMRQ0QmaMj14SXXBw1L62+7VuBWJMsaxoNs9/eaq9WMNh4OHjHOndD1w7R/2nT1sNLcnl7KLRbIKnfPuWKPfVeSZ/UHolu6bP39QN7ixGr
+  </data>
+ </layer>
+ <layer id="13" name="Ice" width="60" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmEsShCAMRN15/xvPxsUUJZgm3UlQXpUbMT9IIHgcm83mDZzXo5Q5m+fpG49vqE8zcjNj/zafbFu+Qeze6UaoIGOdu54siirvLHYZeb9CzMr6jvbBk5+VbbX2RuMRMNfq7p01lui5R79vY7mLd8aXCKLz2+JHtM1MKviw8aHoHWfp7Uls3U82I+4TX6mdt8X4lt4GsZXV72fVCnLvVvWCiG7GPLHukko9lfbNCj54qXT2q2DVRZW8G1HdPyZR/74y1z1zT145Zo9tr7zq/FXeizJ1sNeaPU+jfp+t0yqrviOPxlW6WTIWWaRfr4wlD6rs+96cRe5BEYz+G3n9UNXgLMraRc69FYjIAQbK8yPzH4TFRjXUca9WQyxWjFvps/LMmrWn2n+QfoHho6XfbMcR2xHr1fOrN77ZfJkfwogJKg==
   </data>
  </layer>
  <layer id="4" name="Edge" width="60" height="50" opacity="0.01">

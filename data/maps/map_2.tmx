@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="86">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="86">
  <properties>
   <property name="player_default_position" value="1,4"/>
   <property name="seconds" type="int" value="300"/>
@@ -22,7 +22,17 @@
  </layer>
  <layer id="3" name="Platforms" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJztV8sKAzEITE9d6PO2/Yb+/wd2CwkNEnU0Si4dGFjYREejZreUP1bgXIms6Wm14YFk93bS92l6vZpn9yO2rZDy0b/L0h2Fvfw0bpUj0Hil+CVshH1+JJs70RpdE7295isa9yO+x8H38XypvJbYeLznwkHLSbQ/FFSXdl5abtvZoH4zEFUDmfNSs/8izL7HkHOjmrL6W0JUn4zijezBqDmP7G2xPBfNkEjQWubq0tKb6F0p2bT4s/TjaP7OzuAvZuvPsj6ztlfBosv7LYXelV6gerLuudn4UF2Ztc3Bk6+sb+4IcHNopJkjCiT/I/tUm4Xa/zSnv3/Xr5nRwtGaD0k36vMDVt4NYw==
+   eJztlUkOwyAMRemKSJ2yI2fo/Q9YFkFyLRzs2oa04klfYkHi7wEIYTLhc7+MdnAujurxS7VKYL3sqoFz8sjx6J8pfHr1IjrGeuT8nlmvvL7uuhnH8Jo9qiZnmHWLXpXeTHRsSN5807dedwnE6pzU8rU8g5b3fOvbksv6J+cOzjs1lxFIA7cvxRMn3sbcB0lIWrTzJ9nvOduj6OHL+63s9XZQWOTH8e8525bgN31kbzDFD76Hap5rviW5SOtPeZMoCj220Hih1IrH7YXE3xsDFgvI
+  </data>
+ </layer>
+ <layer id="15" name="Ice" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztl80KgDAMg3fb+7+xCB6GKCZt0xXpB8ODa5Zp6s8YzQ7mNZA562A1LFh1Ub9Wz956RFuFWj+CTI9PWWHW9tSiutko9hNFRU8n1txkr2vR9uqrs8To73iPMR6aJgI0V57eeav70mSfk+g8tpe6/2qh+paKgvlPqsS8HStR8Xplos57RiaRPazn/ni/D/gYA0I=
+  </data>
+ </layer>
+ <layer id="16" name="Sand" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
   </data>
  </layer>
  <layer id="14" name="Edge" width="40" height="30" opacity="0.01">
@@ -143,7 +153,7 @@
  </layer>
  <layer id="12" name="Foreground" width="40" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt1kEOgCAMBEB+60/g24YDITEiLWC7kJ2Th4LbtAdCOFcS1nzVSe7w8JZrRVbUfiV2zv6n3o5Lzq80m4dscVbYynyia4qK+0IINHv4rG2dtX4rjuQgXLvODTU3aq5Cmw+9H63cz2XwDy8ob64sNb5PdgNCghJU
+   eJzt1kEKwCAMBEB/25/ot8WDCEVrItZsZOfUQ7QbkoMh3CsJa77qJHdY6OXakRW1XwnP2f8023HJ+Z04J184L2x1PtE0RcN9IQSaPXzXjs6efiuu5CBcXueGmhs1V6XNh96PVunnOfAPKyhvriINvm+WAboSEc0=
   </data>
  </layer>
 </map>

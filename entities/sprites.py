@@ -4,6 +4,7 @@ import arcade
 
 from misc.config import AppConfig
 import misc.app_utils as utils
+from controllers.controller import GameController
 
 # Constants
 # Facing
@@ -57,6 +58,8 @@ class PlayerSprite(arcade.Sprite):
         # How far have we traveled horizontally since changing the texture
         self.x_odometer = 0
 
+        self.controller = GameController()
+
 
 
     def pymunk_moved(self, physics_engine, dx, dy, d_angle):
@@ -91,7 +94,7 @@ class PlayerSprite(arcade.Sprite):
             return
 
         # Have we moved far enough to change the texture?
-        if abs(self.x_odometer) > app_config.DISTANCE_TO_CHANGE_TEXTURE:
+        if (self.controller.get_control("left") or self.controller.get_control("right")) and abs(self.x_odometer) > app_config.DISTANCE_TO_CHANGE_TEXTURE:
             # Reset the odometer
             self.x_odometer = 0
 

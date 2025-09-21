@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="159">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="159">
  <properties>
-  <property name="player_default_position" value="1,3"/>
+  <property name="player_default_position" value="1,4"/>
   <property name="seconds" type="int" value="300"/>
   <property name="text_color" type="color" value="#ff000000"/>
  </properties>
@@ -32,7 +32,12 @@
  </layer>
  <layer id="5" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztWEkOwyAMpIr6gvw0/z9UOUSiFl7GC3DISD118HgBY9Laixf/OIpsVtod2a7WzLQ1svf92LmSba8+aqMCqG00lifH0RxI3Gh+6D6I2LSsqaynpKdp9nnQ+FKtIzia3V8KTl+yuXv/ytLL7GuWOlfkYHZePdpabpAY0PNk5a/MYzW4s265hyQgtYjcHUjv22EuoDxv7+jXZZ2hyHwWyatnnsqeDzPuYtSPnpc5V2ZhlgZFdi0iWD2j7Xr3oPOR137F+4XTu2HptxJPWuPlrITkH/c9oMoHzxsrQzPTXhVfWxONRdrvo33g0d7lDXQFfUFmC8+cjMxoaM+ywDpvRnrfDm/XGfrRmlTckbPnL87X2XsgEjfi6zVB4wYXD/LdkrODnhHak05grRXeN9dp9Ify0XWjvqztfa0/Ul+eH+X1oDwai+TPSKv/j2Lkk8Th4rBCq4uko+lG4vDEYgHV+AElAQkg
+   eJztWMsOwyAMY6r2Bf3T/v9h6gGJRUASEhJvqqWeBtjOq3SlPHjwjSNbgBOO8tte3q9sBRjYmUNJjD34LWd41oFEB2rftHHg9PU8ZPfTiH/mZUceovPrzcedl5XnzL6RcnOx0XjQxjm7/5BhjU1EbA/ySNcjYXV2tPsi63gUb0tcNXsl+UZ4F2tqcuf5FkRxUCDNZSQtSNDUxkoNaWe7FdwspTqk32mSWYSMmYd/7g3v2tOehXZXmeXa8w7vjRXeq9g0a+4Wu3qoV79eXFF9j1T/u4A4QxE1RSDK97W4TzuTRn6y/ye5PZwFo7+rFomeGv+TPNJ9vTvt6ntmpKU+dF0Luo566emZ8bW/UfQ0zdaMfEjB5WXGw/FafKx4kYByfAA4FweF
+  </data>
+ </layer>
+ <layer id="14" name="Sand" width="50" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztmUsOgDAIRHuX3v+OxsSFiTFQypQy5SXudByQ/rC1osDTnwuli9CW3umppdEbjVVzr6Q5ooFgVNcaixTDTM6Rdc+AdQxHxN+b3a9W90Qyz+GFL8zfRpo/VsTOkN/RPdNKdvbmTUb/p6+17Mzs0aouvrDlhCWWFT0V6UzMkksLs30TTx/W51D1w4B2DYkeBx4+M/jfgT+vWfzfRJ49vcjk9Y3Vt7X3j8wR6r9FBBk8FvtxAazNEt8=
   </data>
  </layer>
  <layer id="6" name="Water" width="50" height="40">
