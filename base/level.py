@@ -12,7 +12,6 @@ from misc.timer import SimpleTimer
 from entities.minimap import MiniMap
 from misc.config import AppConfig
 from views.game_over_view import GameOverView
-import misc.app_utils as utils
 
 import arcade
 from arcade import SpriteList, TileMap, Scene
