@@ -6,6 +6,7 @@ waste
 build/
 build-win
 release/
+release-win
 
 qodana.yaml
 
