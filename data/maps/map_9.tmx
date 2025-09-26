@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="188">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="60" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="192">
  <properties>
   <property name="player_default_position" value="1,5"/>
   <property name="seconds" type="int" value="500"/>
@@ -22,7 +22,7 @@
  </layer>
  <layer id="1" name="Platforms" width="60" height="50">
   <data encoding="base64" compression="zlib">
-   eJztmkkOwyAMRdMDtF1y/5u2LCIhFMCYb/BHPCmqAnE8MFlOr+twOBw4CUoZiVy4+p6VtEXeL8ELG7q0flvozf0Z1VPTj5AZjf9MVozzze5x2gmmsYrMHK+d5kZIfkPlnp1QuRio2cm2Vj3jNZYtuz7//q9T29mwngM9e05ui9f5mYPeW1O/ETFAxlHjJ8s4RphsTfFo95NN3vKQVtxK/Ro/emRYcrZW/KR+rPYVrbuWg1v5anUGeaI3drPqa1aw2csAY0w1+0Y690d8RtTcZ8h4eoe03m/FiJ6RuHk/1yx0oL4NoefLrH1udq6gPdMZ9v3VeXAPK9eMRQ0QmaMj14SXXBw1L62+7VuBWJMsaxoNs9/eaq9WMNh4OHjHOndD1w7R/2nT1sNLcnl7KLRbIKnfPuWKPfVeSZ/UHolu6bP39QN7ixGr
+   eJztmd0OgyAMhd0DbLvk/d90cmFCiEIpp9DD+BKzDK39oUBTj2Oz2Ww4CUoZiVw42p6VjEXeL8ELK7q0flvozf3p1VPSj5Dpjf9IZszzxepxWgmmuYqMnK+VciMkv6Hwn51QuBgo2cm2Vj3jNZY1uz7n/a9T29mwzoGWPSe3xWt+5qD31tRvRAyQcdT4yTKPESZbUzzafWeTtzqkFren+xo/WmRYarZa/KR+zPYVrbtUg1v5anUGeaI1dqP6a1aw2csAY0w1+0aa+z0+I3ruI2Q8vUPa77eiR09P3LyfaxY6UN+G0Pkyap8bXStoz3SGfX92HdzCzDVj0QNE1ujINeGlFkflpdW3fSsQa5JlTaNh9ttb79UKBhvZYV4HGv7RX+vaDa2jt37LbdH2w5/k8vHwMG6BpH97Vyu29Hsl96T2SHRLn72uH6rqEgc=
   </data>
  </layer>
  <layer id="13" name="Ice" width="60" height="50">
@@ -37,7 +37,7 @@
  </layer>
  <layer id="5" name="Water" width="60" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt2MsJwCAMANDsv4AjdM2eCkWsWlGh5T3wEjQf8JQIAAAAAAAoS7fzd0flAAAAAMBXrdxx7d6p1eqN1q/tPt/UG+0rRXkPO5p3Rc9537PyzehnNF9rnjweD/Edf6RH692b+fP4jNq9dy8ngqB2Ow==
+   eJzt2EEKgCAQBVDvf4GO0DVbBSGTqalQvAezGdKv4WpSAgAAAACA2Hapv9sLBQAAAABfNXO+tXqmVsrrzS7NPmvzWirKj+awvXvOOPOMjDf7RGcZ/c/yfrrpr3gjNZ7Wtdw/74/Irv32dADnyXOf
   </data>
  </layer>
  <objectgroup id="6" name="Moving Sprites">
@@ -224,12 +224,13 @@
   <object id="176" gid="293" x="736.5" y="768" width="16" height="16"/>
   <object id="177" gid="293" x="784.25" y="768" width="16" height="16"/>
   <object id="178" gid="293" x="928.25" y="736" width="16" height="16"/>
-  <object id="179" gid="293" x="945" y="735.5" width="16" height="16"/>
   <object id="180" gid="293" x="895.75" y="752.75" width="16" height="16"/>
   <object id="181" gid="293" x="911.5" y="752.5" width="16" height="16"/>
   <object id="182" gid="293" x="929" y="753" width="16" height="16"/>
-  <object id="183" gid="293" x="944" y="751.75" width="16" height="16"/>
   <object id="186" gid="293" x="815.75" y="768" width="16" height="16"/>
+  <object id="189" gid="293" x="912" y="768" width="16" height="16"/>
+  <object id="190" gid="293" x="928" y="768" width="16" height="16"/>
+  <object id="191" gid="293" x="896" y="768" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="11" name="Hearts">
   <object id="150" gid="289" x="799.333" y="399.333" width="16" height="16"/>
