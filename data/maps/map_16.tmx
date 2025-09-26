@@ -32,7 +32,7 @@
  </layer>
  <layer id="5" name="Platforms" width="50" height="40">
   <data encoding="base64" compression="zlib">
-   eJztVrsSwzAIM0OGDN37/1/alSN+CAO241p3XRosCYFzSengYA98F9D90CQTnYjK7G059GBmjx5zy3HMukMH44HOere7LPuW/Y3o9w2ZXo5cPf1eoIcaN8JxgXUW9PKjZ3L8t9OOaXi4D34O6SN6BrN1tXvGa7Vn5cwi+stxeu0cor3KvR3VMwKvTCRHVM4R2UnfJVCQ9ox3mBe875QmY69xlPxHzJtS3jf/v0cXzZ9S2cOjtlLEH0XkVNSlpz7qwZKxJjcPSC2130a9Zdckh1fdaFhnip7Xaoy8Tygidz/kPcs4LfQrziISkf16cau+Ef5sfiisuVDhV6uzoqWVGs80vpDePFDK8aztnvgBWfsC9Q==
+   eJztVrsOwyAMhCFDh+79/y/tVMlyMPgNoZzUpTF357OJUsrBwR74LKD7rpNMKBGV2dNy0GBmjx5za3HMukMH+eDOere7jPvG/WX0+4RML0cuTb8X00OPm8NxMess0PJzz7T4X047JuGBPuA5Th/RM5itK90zWCs9i2cW0V+LM0P3x5t9b3s6M/a2Ba9MMEdUzl7vKAjsm0IN0l5lFzTwvlOSjL3GQfmPmHctbd/wf40uN/9aaA+32k4RfBSRE6lb7/pcD5aMJbl5AGuJ/Q7qLbuGObzqsmGdKfe8VCPzPnERufsh71nAaaFfcRaRiOzXi1v0jfBn8+PCmkslfr06K0ZaZfBM4ovTmweoHM/a7okvrsAC+g==
   </data>
  </layer>
  <layer id="13" name="Ice" width="50" height="40">
