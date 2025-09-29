@@ -271,10 +271,11 @@ class Level:
 
         self.coin_list.check_or_update_pic()
 
-        if "Lvl Wall" in self.scene and self.fruit_count >= self.fruit_total:
+        if "Lvl Wall" in self.scene and self.fruit_count >= self.fruit_total and len(self.lvl_wall_list.sprite_list) > 0:
             logger.debug(f"{pprint.pprint(self.scene.__dict__)}")
             logger.info("Lvl Wall removed !")
-            self.physics_engine.remove_sprite(self.lvl_wall_list.sprite_list.pop())
+            for _ in range(len(self.lvl_wall_list.sprite_list)):
+                self.physics_engine.remove_sprite(self.lvl_wall_list.sprite_list.pop())
             self.scene.remove_sprite_list_by_object(self.lvl_wall_list)
             logger.debug(f"{pprint.pprint(self.scene.__dict__)}")
             self.scene.update(delta_time)
