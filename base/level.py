@@ -265,9 +265,10 @@ class Level:
         self.score += delta_fruit_score
         self.fruit_count += delta_fruit_count
 
-        _, _, delta_life_points = self.heart_list.remove_touched(self.player_sprite)
         if self.life_points < self.max_life_points:
-            self.life_points += delta_life_points
+            _, _, delta_life_points = self.heart_list.remove_touched(self.player_sprite)
+            if self.life_points < self.max_life_points:
+                self.life_points += delta_life_points
 
         self.coin_list.check_or_update_pic()
 
