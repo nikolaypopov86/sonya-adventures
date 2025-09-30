@@ -26,7 +26,10 @@ class AppConfig:
 
         self.WINDOW_WIDTH = int(os.environ.get("WINDOW_WIDTH"))
         self.WINDOW_HEIGHT = int(os.environ.get("WINDOW_HEIGHT"))
-        self.FULLSCREEN = os.environ.get("FULLSCREEN").lower().strip() == 'true'
+        self.FULLSCREEN = os.environ.get("FULLSCREEN").lower().strip() == "true"
+        self.VSYNC = os.environ.get("VSYNC").lower().strip() == "true"
+        self.ANTIALIASING = os.environ.get("ANTIALIASING").lower().strip() == "true"
+        self.SAMPLES = int(os.environ.get("SAMPLES"))
 
         # Player sprite
         self.PLAYER_SPRITE = os.environ.get("PLAYER_SPRITE")

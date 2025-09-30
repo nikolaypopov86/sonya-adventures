@@ -1,4 +1,5 @@
 import logging
+import pprint
 
 from controllers.gamepad import Gamepad
 from controllers.keyboard import Keyboard
@@ -20,27 +21,32 @@ logger = logging.getLogger(__name__)
 
 
 class MainView(arcade.View):
-    def __init__(self, _from: arcade.View = None):
+    def __init__(self, _from: GameView = None, w: arcade.Window = None):
         self.continue_enabled = False
         logger.debug(f"Выполнение метода __init__. __from: {_from}")
         super().__init__()
         self._from = _from
-        self.manager = arcade.gui.UIManager()
+        self.manager: arcade.gui.UIManager | None = None
         self.grid: arcade.gui.UIGridLayout | None = None
         self.anchor: arcade.gui.UIAnchorLayout | None = None
-        self.game_state: arcade.View | None = None
+        self.game_state: GameView | None = None
         self.gamepad: Gamepad | None = None
         self.keyboard: Keyboard | None = None
         self.interactive_components: InteractiveComponentTuple | None = None
         self.button_focused: int = 0
+        self.window = w
 
     def on_show_view(self):
+        self.manager = arcade.gui.UIManager()
+
+        logger.debug("run MainView.on_show_view")
+        logger.debug(app_config.WINDOW_WIDTH)
+
         if self.gamepad is None:
             self.gamepad = Gamepad()
 
         self.keyboard = Keyboard()
 
-        """This is run once when we switch to this view"""
         logger.debug(f"Выполнение метода on_show_view")
         arcade.set_background_color(app_config.MENU_BACKGROUND_COLOR)
 
@@ -77,8 +83,6 @@ class MainView(arcade.View):
 
         # Use the anchor to position the button on the screen.
         self.grid = arcade.gui.UIGridLayout(
-            x=app_config.WINDOW_WIDTH // 3,
-            y=app_config.WINDOW_HEIGHT // 2,
             column_count=1, row_count=4, horizontal_spacing=20, vertical_spacing=20
         )
 
@@ -95,7 +99,9 @@ class MainView(arcade.View):
             align_y=-80,
             child=self.grid,
         )
-        # Enable the UIManager when the view is shown.
+
+        self.grid.center_on_screen()
+
         self.manager.enable()
 
     def on_update(self, delta_time: float) -> bool | None:
@@ -112,6 +118,7 @@ class MainView(arcade.View):
         # Clear the screen
         # logger.debug(f"Выполнение метода on_draw")
         self.clear()
+
         text_list = [arcade.Text(
             "Приключения кошки Сони",
             x=app_config.WINDOW_WIDTH / 2,
@@ -127,7 +134,7 @@ class MainView(arcade.View):
         # Draw the manager.
         self.manager.draw()
 
-    def save_game_state(self, state: arcade.View):
+    def save_game_state(self, state:   GameView):
         self.game_state = state
         logger.debug("Game state saved")
 
@@ -137,7 +144,7 @@ class MainView(arcade.View):
 
     def on_click_preferences(self):
         """On click handler"""
-        pref_view = PreferencesView(self)
+        pref_view = PreferencesView(self.window, self)
         self.window.show_view(pref_view)
 
     def on_click_new_game(self):
@@ -148,6 +155,7 @@ class MainView(arcade.View):
         self.window.show_view(game_view)
 
     def on_click_continue(self):
+        self.game_state.restore()
         self.window.show_view(self.game_state)
 
     def on_click_close(self):

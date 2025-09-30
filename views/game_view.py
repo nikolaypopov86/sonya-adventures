@@ -69,6 +69,27 @@ class GameView(arcade.View):
             self.level.fruit_count
         )
 
+    def restore(self):
+        self.minimap = MiniMap()
+        self.minimap.setup((self.level.map_width, self.level.map_height))
+        self.main_controller = GameController()
+        self.keyboard = Keyboard()
+
+        self.camera = PlayerCamera(self.level.map_width, self.level.map_height, self.level.player_sprite)
+        self.gui_camera = Camera2D()
+
+        self.game_ui = GameUI(self.level.ui_text_color)
+        self.game_ui.init(
+            self.level.score,
+            self.level.life_points,
+            self.level.coin_total,
+            self.level.coin_count,
+            self.level.lvl,
+            self.level.timer.left_text(),
+            self.level.fruit_total,
+            self.level.fruit_count
+        )
+
     def on_key_press(self, key, modifiers):
         self.keyboard.on_key_press(key, modifiers)
 

@@ -18,6 +18,8 @@ class CheckboxGroupBuilder(Labeled):
         self.on_texture: arcade.Texture | None = None
         self.off_texture: arcade.Texture | None = None
 
+        self.value: bool = False
+
         self.event =  None
 
     def get_on_texture(self):
@@ -34,15 +36,19 @@ class CheckboxGroupBuilder(Labeled):
         self.off_texture = arcade.Texture(Image.open(path).convert("RGBA"))
         return self
 
+    def set_value(self, value: bool):
+        self.value = value
+        return self
+
     def build(self):
         label = self.build_label(self.text_label)
 
         checkbox = arcade.gui.UITextureToggle(
-            value=app_config.TIMER_ON,
+            value=self.value,
             on_texture=self.on_texture,
             off_texture=self.off_texture,
             width=20,
-            height=20
+            height=20,
         )
 
         checkbox_group = arcade.gui.UIBoxLayout(

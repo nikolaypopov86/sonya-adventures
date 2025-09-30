@@ -32,7 +32,16 @@ logger.info(f"{pyglet.gl.gl_info._gl_info.__dict__}")
 if app_config.FULLSCREEN:
     app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT = arcade.window_commands.get_display_size()
 
-window = arcade.Window(app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT, app_config.SCREEN_TITLE, fullscreen=app_config.FULLSCREEN)
+window = arcade.Window(
+    width=app_config.WINDOW_WIDTH,
+    height=app_config.WINDOW_HEIGHT,
+    title=app_config.SCREEN_TITLE,
+    fullscreen=app_config.FULLSCREEN,
+    vsync=app_config.VSYNC,
+    antialiasing=app_config.ANTIALIASING,
+    samples=app_config.SAMPLES
+)
+
 logger.info(f"windows size: {app_config.WINDOW_WIDTH} X {app_config.WINDOW_HEIGHT}")
 logger.info(f"sprite image size: {app_config.SPRITE_IMAGE_SIZE}")
 logger.info(f"scaling: {app_config.SPRITE_SCALING_TILES}")
