@@ -1,4 +1,5 @@
 import logging
+import os
 
 from .components.checkbox import CheckboxGroupBuilder
 from misc.config import AppConfig
@@ -27,8 +28,11 @@ CHECKBOX_SIZE = (20,20)
 
 @singleton
 class PreferencesView(arcade.View):
-    def __init__(self, main_view):
+    def __init__(self, w: arcade.Window = None,  main_view = None):
         super().__init__()
+
+        self.window = w
+
         logger.debug("Выполнение функции __init__")
 
         self.interactive_components: InteractiveComponentTuple | None = None
@@ -54,6 +58,28 @@ class PreferencesView(arcade.View):
             "data/misc/empty.png"
         ).set_text_label(
             "Игра с таймером"
+        ).set_value(
+            app_config.TIMER_ON
+        ).build()
+
+        fullscreen_checkbox_group, fullscreen_checkbox = CheckboxGroupBuilder().set_on_texture(
+            "data/misc/grey_check.png"
+        ).set_off_texture(
+            "data/misc/empty.png"
+        ).set_text_label(
+            "Полный экран"
+        ).set_value(
+            app_config.FULLSCREEN
+        ).build()
+
+        vsync_checkbox_group, vsync_checkbox = CheckboxGroupBuilder().set_on_texture(
+            "data/misc/grey_check.png"
+        ).set_off_texture(
+            "data/misc/empty.png"
+        ).set_text_label(
+            "Вертикальная синхронизация"
+        ).set_value(
+            app_config.VSYNC
         ).build()
 
         @music_vol_slider[1].event("on_change")
@@ -79,12 +105,38 @@ class PreferencesView(arcade.View):
             app_config.TIMER_ON = not app_config.TIMER_ON
             logger.debug(f"Вызов обработчика чекбокса таймера. Новое состояние чекбокса: {app_config.TIMER_ON}")
 
+        @fullscreen_checkbox.event("on_click")
+        def on_click_fullscreen_checkbox(event = None):
+            if not self.window.fullscreen:
+                app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT = arcade.window_commands.get_display_size()
+            self.window.set_fullscreen(not self.window.fullscreen, width=app_config.WINDOW_WIDTH, height=app_config.WINDOW_HEIGHT)
+            if not self.window.fullscreen:
+                app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT = int(os.environ.get("WINDOW_WIDTH")), int(os.environ.get("WINDOW_HEIGHT"))
+                self.window.set_size(
+                    app_config.WINDOW_WIDTH,
+                    app_config.WINDOW_HEIGHT
+                )
+
+        @vsync_checkbox.event("on_click")
+        def on_click_vsync_checkbox(event=None):
+            logger.debug(f"vsync current state: {self.window.vsync}")
+            self.window.set_vsync(not self.window.vsync)
+            logger.debug(f"vsync set to: {self.window.vsync}")
+
         def on_switch_timer_checkbox(event = None):
             on_click_timer_checkbox()
             timer_checkbox.value = not timer_checkbox.value
 
+        def on_switch_fullscreen_checkbox(event = None):
+            on_click_fullscreen_checkbox()
+            fullscreen_checkbox.value = not fullscreen_checkbox.value
+
+        def on_switch_vsync_checkbox(event = None):
+            on_click_vsync_checkbox()
+            vsync_checkbox.value = not vsync_checkbox.value
+
         self.grid = arcade.gui.UIGridLayout(
-            column_count=1, row_count=4, horizontal_spacing=5, vertical_spacing=30
+            column_count=1, row_count=6, horizontal_spacing=5, vertical_spacing=30
         )
 
         self.interactive_components = InteractiveComponentTuple(
@@ -92,6 +144,8 @@ class PreferencesView(arcade.View):
                 (sound_vol_slider[1], on_change_sound_vol),
                 (music_vol_slider[1], on_change_music_vol),
                 (timer_checkbox, on_switch_timer_checkbox),
+                (fullscreen_checkbox, on_switch_fullscreen_checkbox),
+                (vsync_checkbox, on_switch_vsync_checkbox),
                 (return_button, on_click_return_button)
             )
         )
@@ -99,7 +153,9 @@ class PreferencesView(arcade.View):
         self.grid.add(sound_vol_slider[0], 0, 0)
         self.grid.add(music_vol_slider[0], 0, 1)
         self.grid.add(timer_checkbox_group, 0, 2)
-        self.grid.add(return_button, 0, 3)
+        self.grid.add(fullscreen_checkbox_group, 0,3)
+        self.grid.add(vsync_checkbox_group, 0, 4)
+        self.grid.add(return_button, 0, 5)
 
         self.anchor = self.manager.add(arcade.gui.UIAnchorLayout())
 
@@ -129,7 +185,7 @@ class PreferencesView(arcade.View):
         text_list = [arcade.Text(
             "Приключения кошки Сони",
             x=app_config.WINDOW_WIDTH / 2,
-            y=app_config.WINDOW_HEIGHT / 3 * 2,
+            y=app_config.WINDOW_HEIGHT / 4 * 3,
             color=arcade.csscolor.WHITE,
             font_size=app_config.WINDOW_HEIGHT//20,
             anchor_x="center"
