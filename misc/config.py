@@ -26,6 +26,7 @@ class AppConfig:
 
         self.WINDOW_WIDTH = int(os.environ.get("WINDOW_WIDTH"))
         self.WINDOW_HEIGHT = int(os.environ.get("WINDOW_HEIGHT"))
+        self.FULLSCREEN = os.environ.get("FULLSCREEN").lower().strip() == 'true'
 
         # Player sprite
         self.PLAYER_SPRITE = os.environ.get("PLAYER_SPRITE")
