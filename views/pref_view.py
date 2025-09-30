@@ -127,6 +127,14 @@ class PreferencesView(arcade.View):
             on_click_timer_checkbox()
             timer_checkbox.value = not timer_checkbox.value
 
+        def on_switch_fullscreen_checkbox(event = None):
+            on_click_fullscreen_checkbox()
+            fullscreen_checkbox.value = not fullscreen_checkbox.value
+
+        def on_switch_vsync_checkbox(event = None):
+            on_click_vsync_checkbox()
+            vsync_checkbox.value = not vsync_checkbox.value
+
         self.grid = arcade.gui.UIGridLayout(
             column_count=1, row_count=6, horizontal_spacing=5, vertical_spacing=30
         )
@@ -136,8 +144,8 @@ class PreferencesView(arcade.View):
                 (sound_vol_slider[1], on_change_sound_vol),
                 (music_vol_slider[1], on_change_music_vol),
                 (timer_checkbox, on_switch_timer_checkbox),
-                (fullscreen_checkbox, on_click_fullscreen_checkbox),
-                (vsync_checkbox, on_click_vsync_checkbox),
+                (fullscreen_checkbox, on_switch_fullscreen_checkbox),
+                (vsync_checkbox, on_switch_vsync_checkbox),
                 (return_button, on_click_return_button)
             )
         )
