@@ -1,12 +1,15 @@
 import logging
 import pprint
+import random
 from typing import Tuple
 
 from base.engine import PhysicsEngine
+from entities.bee import BeeAnimation
 from entities.sprites import PlayerSprite
+from misc.app_utils import Counter
 from misc.sound_player import SoundPlayer
 from entities.fruit import FruitList
-from entities.coin import CoinList
+from entities.coin import CoinList, TICK_SCALING
 from entities.heart import HeartList
 from misc.timer import SimpleTimer
 from entities.minimap import MiniMap
@@ -27,6 +30,11 @@ LAYER_OPTIONS = {
         "use_spatial_hash": True
     }
 }
+
+SPRITE_COUNT = 4
+BEE_TICK_SCALING = 5
+
+c = Counter(SPRITE_COUNT * TICK_SCALING - 1)
 
 
 class Level:
@@ -54,10 +62,7 @@ class Level:
         self.item_list: arcade.SpriteList | None = None
         self.moving_sprites_list: arcade.SpriteList | None = None
         self.lvl_wall_list: arcade.SpriteList | None = None
-
-        # Track the current state of what key is pressed
-        self.left_pressed: bool = False
-        self.right_pressed: bool = False
+        self.bee_list: arcade.SpriteList | None = None
 
         # Physic engine
         self.physics_engine: PhysicsEngine | None = None
@@ -163,6 +168,16 @@ class Level:
         self.scene.add_sprite("Player", self.player_sprite)
 
         self.lvl_wall_list = self.scene["Lvl Wall"]
+
+
+        if "Bees" in self.scene:
+            bee_animation = BeeAnimation()
+            self.bee_list = self.scene["Bees"]
+            for bee in self.bee_list:
+                bee.scale_x, bee.scale_y = 2, 2
+                bee.cur_texture_index = random.randint(0, 3)
+                bee.textures = bee_animation.get_random_textures()
+
         self.setup_engine()
 
         self.timer = SimpleTimer()
@@ -256,6 +271,12 @@ class Level:
         if self.player_sprite.center_x >= self.end_of_map:
             self.lvl += 1
             self.game_view.setup()
+
+        if self.bee_list:
+            n = c.tick()
+            for bee in self.bee_list:
+                # delta_time / 60
+                bee.texture = bee.textures[(bee.cur_texture_index + n // BEE_TICK_SCALING) % 4]
 
         delta_coin_score, need_coin_to_find, delta_coin_count = self.coin_list.remove_touched(self.player_sprite)
         self.score += delta_coin_score

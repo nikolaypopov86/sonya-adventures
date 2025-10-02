@@ -34,6 +34,7 @@ class PhysicsEngine(PymunkPhysicsEngine):
         self.moving_sprites_list = None
         self.edge_list = None
         self.lvl_walls = None
+        self.bee_list = None
 
     def add_player(
             self,
