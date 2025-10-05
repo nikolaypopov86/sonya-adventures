@@ -8,6 +8,8 @@ build-win
 release/
 release-win
 
+.DS_Store
+
 qodana.yaml
 
 ./data/app.tiled-session
