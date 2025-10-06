@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="90">
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="50" height="40" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="93">
  <properties>
   <property name="player_default_position" value="1,3"/>
   <property name="seconds" type="int" value="300"/>
@@ -73,6 +73,9 @@
   <object id="14" gid="539" x="432" y="478" width="16" height="16"/>
   <object id="15" gid="550" x="514" y="381" width="16" height="16"/>
   <object id="16" gid="541" x="351" y="254" width="16" height="16"/>
+  <object id="90" gid="538" x="143" y="189" width="16" height="16"/>
+  <object id="91" gid="547" x="255" y="316" width="16" height="16"/>
+  <object id="92" gid="538" x="639" y="573" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="10" name="Coins">
   <object id="17" gid="553" x="304" y="128" width="16" height="16"/>
