@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.11" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="17" nextobjectid="103">
+ <properties>
+  <property name="player_default_position" value="1,4"/>
+  <property name="seconds" type="float" value="120"/>
+  <property name="text_color" type="color" value="#ff000000"/>
+ </properties>
+ <tileset firstgid="1" name="world_tileset" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../tilesets/world_tileset.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="platforms" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../tilesets/platforms.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="273" name="fruit" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="../tilesets/fruit.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="289" source="../tilesets/platforms.tsx"/>
+ <tileset firstgid="305" source="../tilesets/coin.tsx"/>
+ <tileset firstgid="306" source="../tilesets/fruit.tsx"/>
+ <tileset firstgid="322" source="../tilesets/world_tileset.tsx"/>
+ <tileset firstgid="578" source="../tilesets/hearts.tsx"/>
+ <layer id="2" name="Background" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztziEBAEAIBLCjv/1q9CED6gUT8+tKGgCWXv7w8/Pz8/Pz8/Pz87v3Gwm2UJ4=
+  </data>
+ </layer>
+ <layer id="3" name="Platforms" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztVgsKwyAMNd0NeoN1N9kVvP9dVmHQEqLL51kd9EEolZq8vJjYlG70ANGYvS0su9+H0zeCkye+FFfr59d3vXSOxJG+tfKs5a3xEzkjSGh4tPLx6Og9a7NoVhDtMa4BKrerem0G1DSzannFuRpVl2jc2v5tX3+Bc9LOU9T9xtd7n4PIjPPMVGtsC0bOGVRsbz20WiLvwX+a61IOUf4tzaO9YYll6SNUzWapPeeB4PXskBvi3x6p+Sz1i+BNh0mggEngfSbtO3Mqlr/G14utxWfSP5fTuwaSn0x6s3BbmWkg+bHw+wB19w49
+  </data>
+ </layer>
+ <layer id="16" name="Edge" width="40" height="30" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJztzjENACAAwDBwi38FOCAhO+BoFXQMALi35uvBmV/j1/g1fo1f49f4NX6NX/P7bwPrBwg1
+  </data>
+ </layer>
+ <layer id="6" name="Water" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAIADD7/0awpxUEDz02WAQAAAAAX+XgpRrcaviCCws=
+  </data>
+ </layer>
+ <objectgroup id="7" name="Moving Sprites">
+  <object id="1" name="moving_platform" gid="261" x="240.02" y="448.026" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="0"/>
+    <property name="boundary_left" type="float" value="240"/>
+    <property name="boundary_right" type="float" value="320"/>
+    <property name="boundary_top" type="float" value="0"/>
+    <property name="change_x" type="float" value="2"/>
+    <property name="change_y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="3" name="moving_platform" gid="261" x="112" y="352" width="16" height="16">
+   <properties>
+    <property name="boundary_bottom" type="float" value="86"/>
+    <property name="boundary_left" type="float" value="0"/>
+    <property name="boundary_right" type="float" value="0"/>
+    <property name="boundary_top" type="float" value="240"/>
+    <property name="change_x" type="float" value="0"/>
+    <property name="change_y" type="float" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="Fruits">
+  <object id="23" gid="306" x="432.75" y="319.25" width="16" height="16"/>
+  <object id="25" gid="320" x="208" y="301.5" width="16" height="16"/>
+  <object id="26" gid="318" x="31.5" y="255.5" width="16" height="16"/>
+  <object id="27" gid="316" x="176.5" y="431" width="16" height="16"/>
+  <object id="28" gid="312" x="328" y="368" width="16" height="16"/>
+  <object id="29" gid="315" x="128" y="239.5" width="16" height="16"/>
+  <object id="39" gid="279" x="400" y="222.667" width="16" height="16"/>
+  <object id="40" gid="285" x="352" y="206.667" width="16" height="16"/>
+  <object id="43" gid="306" x="64.6667" y="222" width="16" height="16"/>
+  <object id="44" gid="287" x="368" y="64" width="16" height="16"/>
+  <object id="45" gid="287" x="128" y="64" width="16" height="16"/>
+  <object id="46" gid="282" x="528" y="144" width="16" height="16"/>
+  <object id="47" gid="282" x="272" y="128" width="16" height="16"/>
+  <object id="48" gid="282" x="560" y="288" width="16" height="16"/>
+  <object id="49" gid="277" x="576" y="48" width="16" height="16"/>
+  <object id="50" gid="277" x="288" y="48" width="16" height="16"/>
+  <object id="51" gid="277" x="80" y="96" width="16" height="16"/>
+  <object id="52" gid="286" x="48" y="48" width="16" height="16"/>
+  <object id="53" gid="286" x="448" y="80" width="16" height="16"/>
+  <object id="54" gid="286" x="160" y="160" width="16" height="16"/>
+  <object id="55" gid="278" x="560" y="224" width="16" height="16"/>
+  <object id="56" gid="278" x="400" y="144" width="16" height="16"/>
+  <object id="57" gid="278" x="208" y="64" width="16" height="16"/>
+  <object id="58" gid="275" x="224" y="112" width="16" height="16"/>
+  <object id="59" gid="275" x="496" y="64" width="16" height="16"/>
+  <object id="60" gid="287" x="480" y="112" width="16" height="16"/>
+  <object id="61" gid="274" x="496" y="224" width="16" height="16"/>
+  <object id="62" gid="274" x="80" y="304" width="16" height="16"/>
+ </objectgroup>
+ <layer id="12" name="Lvl Wall" width="40" height="30" opacity="0.01">
+  <data encoding="base64" compression="zlib">
+   eJztziEBACAQALGnHv0D0QBzAsSWYDP/2uv14M6v8Wv8Gr/Gr/Fr/Bq/xq/xa/wav8aP1w5Q6gfq
+  </data>
+ </layer>
+ <layer id="4" name="Dynamic Items" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGwSgYGaAQjR9BQ7uaiFBTSUP7RwEqyBhoBwxj0EkDMwdD3ogcaAeMglEwhEARmfpaqeqKUTDcAQCAXgR/
+  </data>
+ </layer>
+ <objectgroup id="14" name="Hearts">
+  <object id="31" name="heart" gid="578" x="290" y="205.75" width="12" height="12"/>
+ </objectgroup>
+ <objectgroup id="9" name="Coins">
+  <object id="4" name="CoinSprite" type="CoinSprite" gid="305" x="48.25" y="400" width="16" height="16"/>
+  <object id="5" name="CoinSprite" type="CoinSprite" gid="305" x="32" y="224" width="16" height="16"/>
+  <object id="6" name="CoinSprite" type="CoinSprite" gid="305" x="272" y="400" width="16" height="16"/>
+  <object id="7" name="CoinSprite" type="CoinSprite" gid="305" x="288" y="400" width="16" height="16"/>
+  <object id="8" name="CoinSprite" type="CoinSprite" gid="305" x="352" y="288" width="16" height="16"/>
+  <object id="9" name="CoinSprite" type="CoinSprite" gid="305" x="272" y="208" width="16" height="16"/>
+  <object id="10" name="CoinSprite" type="CoinSprite" gid="305" x="256" y="288" width="16" height="16"/>
+  <object id="11" name="CoinSprite" type="CoinSprite" gid="305" x="208" y="240" width="16" height="16"/>
+  <object id="12" name="CoinSprite" type="CoinSprite" gid="305" x="400" y="416" width="16" height="16"/>
+  <object id="13" name="CoinSprite" type="CoinSprite" gid="305" x="432" y="288" width="16" height="16"/>
+  <object id="14" name="CoinSprite" type="CoinSprite" gid="305" x="176" y="224" width="16" height="16"/>
+  <object id="15" name="CoinSprite" type="CoinSprite" gid="305" x="128" y="288" width="16" height="16"/>
+  <object id="16" name="CoinSprite" type="CoinSprite" gid="305" x="160" y="352" width="16" height="16"/>
+  <object id="17" name="CoinSprite" type="CoinSprite" gid="305" x="16" y="304" width="16" height="16"/>
+  <object id="18" name="CoinSprite" type="CoinSprite" gid="305" x="208" y="400" width="16" height="16"/>
+  <object id="37" gid="305" x="416.667" y="209.333" width="16" height="16"/>
+  <object id="38" gid="305" x="351.333" y="192" width="16" height="16"/>
+  <object id="41" gid="305" x="79.3333" y="208" width="16" height="16"/>
+  <object id="42" gid="305" x="63.3333" y="191.333" width="16" height="16"/>
+  <object id="63" gid="305" x="336" y="32" width="16" height="16"/>
+  <object id="64" gid="305" x="384" y="48" width="16" height="16"/>
+  <object id="65" gid="305" x="560" y="32" width="16" height="16"/>
+  <object id="67" gid="305" x="512" y="128" width="16" height="16"/>
+  <object id="68" gid="305" x="528" y="64" width="16" height="16"/>
+  <object id="69" gid="305" x="560" y="96" width="16" height="16"/>
+  <object id="73" gid="305" x="560" y="160" width="16" height="16"/>
+  <object id="74" gid="305" x="576" y="208" width="16" height="16"/>
+  <object id="75" gid="305" x="576" y="272" width="16" height="16"/>
+  <object id="76" gid="305" x="560" y="320" width="16" height="16"/>
+  <object id="77" gid="305" x="528" y="240" width="16" height="16"/>
+  <object id="80" gid="305" x="512" y="176" width="16" height="16"/>
+  <object id="81" gid="305" x="448" y="128" width="16" height="16"/>
+  <object id="82" gid="305" x="448" y="64" width="16" height="16"/>
+  <object id="83" gid="305" x="368" y="96" width="16" height="16"/>
+  <object id="85" gid="305" x="320" y="80" width="16" height="16"/>
+  <object id="86" gid="305" x="96" y="16" width="16" height="16"/>
+  <object id="87" gid="305" x="128" y="48" width="16" height="16"/>
+  <object id="88" gid="305" x="96" y="80" width="16" height="16"/>
+  <object id="89" gid="305" x="64" y="32" width="16" height="16"/>
+  <object id="91" gid="305" x="128" y="112" width="16" height="16"/>
+  <object id="92" gid="305" x="192" y="128" width="16" height="16"/>
+  <object id="93" gid="305" x="240" y="96" width="16" height="16"/>
+  <object id="94" gid="305" x="224" y="48" width="16" height="16"/>
+  <object id="95" gid="305" x="288" y="112" width="16" height="16"/>
+  <object id="96" gid="305" x="112" y="176" width="16" height="16"/>
+  <object id="97" gid="305" x="480" y="160" width="16" height="16"/>
+  <object id="98" gid="305" x="400" y="352" width="16" height="16"/>
+  <object id="99" gid="305" x="464" y="352" width="16" height="16"/>
+  <object id="100" gid="305" x="480" y="272" width="16" height="16"/>
+  <object id="101" gid="305" x="544" y="400" width="16" height="16"/>
+  <object id="102" gid="305" x="608" y="192" width="16" height="16"/>
+ </objectgroup>
+ <layer id="5" name="Foreground" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJwCAQBVFrU9OAJg0Y7SAlpPD8Q67qwcOCzINBWJBd5wAAAAAAuwgqqsP6kI6sTnVZH9Jxq6qa9SEDj/H+NJm//1sWdviFv9jTB9O/BTU=
+  </data>
+ </layer>
+</map>
