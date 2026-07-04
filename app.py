@@ -27,7 +27,7 @@ logger.debug(f"app config: {app_config.__dict__}")
 app_config.load_fonts()
 
 logger.debug(f"Запуск приложения")
-logger.info(f"{pyglet.gl.gl_info._gl_info.__dict__}")
+logger.info(f"{pyglet.graphics.api.get_config().__dict__}")
 
 if app_config.FULLSCREEN:
     app_config.WINDOW_WIDTH, app_config.WINDOW_HEIGHT = arcade.window_commands.get_display_size()

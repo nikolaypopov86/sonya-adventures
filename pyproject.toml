@@ -8,9 +8,12 @@ authors = [
 readme = "readme.md"
 requires-python = ">=3.12"
 dependencies = [
-    "python-dotenv (>=1.1.1,<2.0.0)",
-    "imageio (>=2.37.0,<3.0.0)",
-    "arcade[pymunk] (>=3.3.2,<4.0.0)",
+    "python-dotenv (==1.2.2)",
+    "imageio (==2.37.3)",
+    "arcade (==4.0.0.dev5)",
+    "pyglet (==3.0.dev3)",
+    "attrs (==26.1.0)",
+    "numpy (==2.5.0rc1)",
 ]
 keywords = [
     "cat",

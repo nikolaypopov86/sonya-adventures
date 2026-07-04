@@ -3,7 +3,7 @@ import os
 from .app_utils import singleton
 
 import arcade
-from pyglet.media import Player
+from pyglet.media import AudioPlayer as Player
 
 logger = logging.getLogger(__name__)
 
